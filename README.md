@@ -1,0 +1,1 @@
+This is a backup of my home assistant configuration, EDI-Assistant!
