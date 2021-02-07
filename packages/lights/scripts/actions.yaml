@@ -1,0 +1,21 @@
+sleep_mode:
+  alias: Sleep Mode
+  sequence:
+    - service: light.turn_on
+      data:
+        entity_id: light.bedroom_lamp
+        brightness: 125
+    - service: light.turn_on
+      data:
+        entity_id: light.hall_main_light
+        brightness: 125
+    - service: light.turn_off
+      entity_id: light.kitchen
+    - service: light.turn_off
+      entity_id: light.bedroom_main_light
+    - service: light.turn_off
+      entity_id: light.office
+    - service: light.turn_off
+      entity_id: light.living_room
+    - service: light.turn_off
+      entity_id: light.living_room_lamps

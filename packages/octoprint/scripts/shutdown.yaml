@@ -1,0 +1,44 @@
+power_on_droopy:
+  alias: Power On Droopy
+  sequence:
+    - condition: state
+      entity_id: switch.droopy
+      state: "off"
+    - service: switch.turn_on
+      data:
+        entity_id: switch.droopy
+
+safely_power_off_droopy:
+  alias: Safely Power Off Droopy
+  sequence:
+    - condition: state
+      entity_id: switch.droopy
+      state: "on"
+    - service: shell_command.shutdown_octoprint
+    - delay:
+        seconds: 30
+    - service: switch.turn_off
+      data:
+        entity_id: switch.droopy
+
+emergency_power_off_droopy:
+  alias: Power On Droopy
+  sequence:
+    - condition: state
+      entity_id: switch.droopy
+      state: "on"
+    - service: switch.turn_off
+      data:
+        entity_id: switch.droopy
+
+power_cycle_droopy:
+  alias: Power Cycle Droopy
+  sequence:
+    - service: >
+        {% if is_state('switch.droopy', 'off') %}
+          script.power_on_droopy
+        {% else %}
+          script.safely_power_off_droopy
+        {% endif %}
+
+    

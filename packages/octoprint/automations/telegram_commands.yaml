@@ -1,0 +1,61 @@
+- id: send_droopy_current_status_telegram
+  alias: Send the current status of droopy
+  trigger:
+    platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/droopy_status'
+  action:
+    - service: notify.joao
+      data_template:
+        message: |
+          *State:* {{ states.sensor.droopy_current_state.state }}
+          *Job Percentage:* {{ states.sensor.droopy_job_percentage.state }}%
+          *Remaining Time:* {{ states.sensor.droopy_time_remaining.state }}s
+          *Elapsed Time:* {{ states.sensor.droopy_time_elapsed.state }}s
+
+          *Tool Temp:* {{ states.sensor.droopy_actual_tool0_temp.state }}°C
+          *Bed Temp:* {{ states.sensor.droopy_actual_bed_temp.state }}°C
+          *Target Tool Temp:* {{ states.sensor.droopy_target_tool0_temp.state }}°C
+          *Target Bed Temp:* {{ states.sensor.droopy_target_bed_temp.state }}°C
+
+- id: send_droopy_snapshot_telegram
+  alias: Send a snapshot of droopy's camera
+  trigger:
+    platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/droopy_snap'
+  action:
+    - service: notify.joao
+      data:
+        message: 'Droopy''s snapshot!'
+        data:
+          photo:
+            - url: !secret octoprint_url_webcam
+
+- id: turn_off_droopy_telegram
+  alias: Turn off droopy with telegram
+  trigger:
+    platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/droopy_off'
+  action:
+    - service: script.turn_on
+      entity_id: script.power_off_droopy
+    - service: notify.joao
+      data:
+        message: 'Droopy shutdown initiated!'
+
+- id: emergency_droopy_telegram
+  alias: Emergency shutdown droopy with telegram
+  trigger:
+    platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/droopy_emergency'
+  action:
+    - service: light.turn_off
+      data:
+        entity_id: switch.droopy

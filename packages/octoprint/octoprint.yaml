@@ -1,0 +1,23 @@
+octoprint:
+  host: !secret octoprint_host
+  api_key: !secret octoprint_api_key
+  name: Droopy
+  number_of_tools: 1
+  bed: true
+  sensors:
+    monitored_conditions:
+      - 'Current State'
+      - 'Temperatures'      
+      - 'Job Percentage'
+      - 'Time Elapsed'
+      - 'Time Remaining'
+  binary_sensors:
+    monitored_conditions:
+      - 'Printing'
+      - 'Printing Error'
+
+shell_command:
+  shutdown_octoprint: !secret octoprint_shutdown_ssh
+
+automation: !include_dir_merge_list automations/
+script: !include_dir_merge_named scripts/

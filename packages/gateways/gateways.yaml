@@ -1,0 +1,11 @@
+#hue:
+#  bridges:
+#  - host: 192.168.1.25
+
+mysensors:
+  gateways:
+    - device: '/dev/ttyACM0'
+      baud_rate: 38400
+      persistence_file: '/home/homeassistant/mysensors/persist.json'
+  persistence: true
+  version: '2.3'

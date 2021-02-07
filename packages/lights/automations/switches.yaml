@@ -1,0 +1,249 @@
+# Office
+- id: office_switch_turn_on_lights
+  alias: Switch turn on lights in the office
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: office_switch
+      event: 1002
+  action:
+    - service: light.turn_on
+      entity_id: light.office
+
+- id: office_switch_turn_off_lights
+  alias: Switch turn off lights in the office
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: office_switch
+      event: 2002
+  action:
+    - service: light.turn_off
+      entity_id: light.office
+
+- id: office_switch_brightness_up
+  alias: 'Increase brightness of lights in office'
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: office_switch
+      event: 1003
+  action:
+    - service: light.turn_on
+      data_template:
+        entity_id: light.office
+        brightness: >
+          {% set bri = state_attr('light.office', 'brightness') | int %}
+          {{ [bri+50, 249] | min }}
+
+- id: office_switch_brightness_down
+  alias: 'Decrease brightness of lights in office'
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: office_switch
+      event: 2003
+  action:
+    - service: light.turn_on
+      data_template:
+        entity_id: light.office
+        brightness: >
+          {% set bri = state_attr('light.office', 'brightness') | int %}
+          {{ [bri-50, 0] | max }}
+
+# Living room
+- id: living_room_switch_turn_on_lights
+  alias: Switch turn on lights in the living room
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: living_room_switch
+      event: 1002
+  action:
+    - service: light.turn_on
+      entity_id: light.living_room
+
+- id: living_room_switch_turn_off_lights
+  alias: Switch turn off lights in the living room
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: living_room_switch
+      event: 2002
+  action:
+    - service: light.turn_off
+      entity_id: light.living_room
+
+- id: living_room_switch_brightness_up
+  alias: 'Increase brightness of lights in living room'
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: living_room_switch
+      event: 1003
+  action:
+    - service: light.turn_on
+      data_template:
+        entity_id: light.living_room
+        brightness: >
+          {% set bri = state_attr('light.living_room', 'brightness') | int %}
+          {{ [bri+50, 249] | min }}
+
+- id: living_room_switch_brightness_down
+  alias: 'Decrease brightness of lights in living room'
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: living_room_switch
+      event: 2003
+  action:
+    - service: light.turn_on
+      data_template:
+        entity_id: light.living_room
+        brightness: >
+          {% set bri = state_attr('light.living_room', 'brightness') | int %}
+          {{ [bri-50, 0] | max }}
+
+# Kitchen
+- id: kitchen_switch_turn_on_lights
+  alias: Switch turn on lights in the kitchen
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: kitchen_switch
+      event: 1002
+  action:
+    - service: light.turn_on
+      entity_id: light.kitchen
+
+- id: kitchen_switch_turn_off_lights
+  alias: Switch turn off lights in the kitchen
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: kitchen_switch
+      event: 2002
+  action:
+    - service: light.turn_off
+      entity_id: light.kitchen
+
+# Hall
+- id: hall_switch_turn_on_lights
+  alias: Switch turn on lights in the hall
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: hall_switch
+      event: 1002
+  action:
+    - service: light.turn_on
+      entity_id: light.hall_main_light
+
+- id: hall_switch_turn_off_lights
+  alias: Switch turn off lights in the hall
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: hall_switch
+      event: 2002
+  action:
+    - service: light.turn_off
+      entity_id: light.hall_main_light
+
+- id: hall_switch_brightness_up
+  alias: 'Increase brightness of lights in the hall'
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: hall_switch
+      event: 1003
+  action:
+    - service: light.turn_on
+      data_template:
+        entity_id: light.hall_main_light
+        brightness: >
+          {% set bri = state_attr('light.hall_main_light', 'brightness') | int %}
+          {{ [bri+50, 249] | min }}
+
+- id: hall_switch_brightness_down
+  alias: 'Decrease brightness of lights in the hall'
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: hall_switch
+      event: 2003
+  action:
+    - service: light.turn_on
+      data_template:
+        entity_id: light.hall_main_light
+        brightness: >
+          {% set bri = state_attr('light.hall_main_light', 'brightness') | int %}
+          {{ [bri-50, 0] | max }}
+
+# Bedroom
+- id: bedroom_switch_turn_on_lights
+  alias: Switch turn on lights in the bedroom
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: bedroom_switch
+      event: 1002
+  action:
+    - service: light.turn_on
+      entity_id: light.bedroom
+
+- id: bedroom_switch_turn_off_lights
+  alias: Switch turn off lights in the bedroom
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: bedroom_switch
+      event: 2002
+  action:
+    - service: light.turn_off
+      entity_id: light.bedroom
+
+- id: sleep_mode
+  alias: 'Sets up sleeping mode'
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: bedroom_switch
+      event: 2003
+  action:
+    - service: script.turn_on
+      entity_id: script.sleep_mode

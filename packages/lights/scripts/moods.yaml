@@ -1,0 +1,457 @@
+#-------------------------------        
+#---------Light moods-----------        
+#-------------------------------
+
+concentrate_mood:
+  alias: Concentrate Mood
+  sequence:
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        brightness: 255
+        rgb_color: [255, 231, 194]
+
+deep_sea_mood:
+  alias: Deep Sea Mood
+  sequence:
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        brightness: 255
+        rgb_color: [103, 55, 255]
+
+reading_mood:
+  alias: Reading Mood
+  sequence:
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        brightness: 255
+        rgb_color: [255, 201, 117]
+
+relax_mood:
+  alias: Relax Mood
+  sequence:
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        brightness: 255
+        rgb_color: [255, 181, 79]
+
+slow_sunset_mood:
+  alias: Slow Sunset Mood
+  sequence:
+    - service: script.slow_brightness_dimmer
+      data_template:
+        entity_id: "{{ entity_id }}"
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        rgb_color: [255, 215, 88]
+    - delay:
+        minutes: 10
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        rgb_color: [255, 176, 70] 
+    - delay:
+        minutes: 10
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        rgb_color: [255, 141, 71]
+    - delay:
+        minutes: 10
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        rgb_color: [255, 106, 65]
+    - delay:
+        minutes: 10
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        rgb_color: [128, 22, 22]
+    - delay:
+        minutes: 10
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        rgb_color: [94, 17, 17]
+    - delay:
+        minutes: 10
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        rgb_color: [79, 0, 12]
+   
+#-------------------------------------
+#---------- Mood helpers -------------
+#-------------------------------------
+
+slow_brightness_dimmer:
+  alias: Slow Bightness Dimmer
+  sequence:
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        brightness: 120
+    - delay:
+        minutes: 1
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        brightness: 118
+    - delay:
+        minutes: 1
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        brightness: 116
+    - delay:
+        minutes: 1
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        brightness: 114
+    - delay:
+        minutes: 1
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        brightness: 112
+    - delay:
+        minutes: 1
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        brightness: 110
+    - delay:
+        minutes: 1
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        brightness: 108
+    - delay:
+        minutes: 1
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        brightness: 106
+    - delay:
+        minutes: 1
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        brightness: 104
+    - delay:
+        minutes: 1
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        brightness: 102
+    - delay:
+        minutes: 1
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        brightness: 100
+    - delay:
+        minutes: 1
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        brightness: 98
+    - delay:
+        minutes: 1
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        brightness: 96
+    - delay:
+        minutes: 1
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        brightness: 94
+    - delay:
+        minutes: 1
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        brightness: 92
+    - delay:
+        minutes: 1
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        brightness: 90
+    - delay:
+        minutes: 1
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        brightness: 88
+    - delay:
+        minutes: 1
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        brightness: 86
+    - delay:
+        minutes: 1
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        brightness: 84
+    - delay:
+        minutes: 1
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        brightness: 82
+    - delay:
+        minutes: 1
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        brightness: 80
+    - delay:
+        minutes: 1
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        brightness: 78
+    - delay:
+        minutes: 1
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        brightness: 76
+    - delay:
+        minutes: 1
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        brightness: 74
+    - delay:
+        minutes: 1
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        brightness: 72
+    - delay:
+        minutes: 1
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        brightness: 70
+    - delay:
+        minutes: 1
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        brightness: 68
+    - delay:
+        minutes: 1
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        brightness: 66
+    - delay:
+        minutes: 1
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        brightness: 64
+    - delay:
+        minutes: 1
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        brightness: 62
+    - delay:
+        minutes: 1
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        brightness: 60
+    - delay:
+        minutes: 1
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        brightness: 58
+    - delay:
+        minutes: 1
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        brightness: 56
+    - delay:
+        minutes: 1
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        brightness: 54
+    - delay:
+        minutes: 1
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        brightness: 52
+    - delay:
+        minutes: 1
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        brightness: 50
+    - delay:
+        minutes: 1
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        brightness: 48
+    - delay:
+        minutes: 1
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        brightness: 46
+    - delay:
+        minutes: 1
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        brightness: 44
+    - delay:
+        minutes: 1
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        brightness: 42
+    - delay:
+        minutes: 1
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        brightness: 40
+    - delay:
+        minutes: 1
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        brightness: 38
+    - delay:
+        minutes: 1
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        brightness: 36
+    - delay:
+        minutes: 1
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        brightness: 34
+    - delay:
+        minutes: 1
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        brightness: 32
+    - delay:
+        minutes: 1
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        brightness: 30
+    - delay:
+        minutes: 1
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        brightness: 28
+    - delay:
+        minutes: 1
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        brightness: 26
+    - delay:
+        minutes: 1
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        brightness: 24
+    - delay:
+        minutes: 1
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        brightness: 22
+    - delay:
+        minutes: 1
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        brightness: 20
+    - delay:
+        minutes: 1
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        brightness: 18
+    - delay:
+        minutes: 1
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        brightness: 16
+    - delay:
+        minutes: 1
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        brightness: 14
+    - delay:
+        minutes: 1
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        brightness: 12
+    - delay:
+        minutes: 1
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        brightness: 10
+    - delay:
+        minutes: 1
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        brightness: 8
+    - delay:
+        minutes: 1
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        brightness: 6
+    - delay:
+        minutes: 1
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        brightness: 4
+    - delay:
+        minutes: 1
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity_id }}"
+        brightness: 2
+    - delay:
+        minutes: 1
+    - service: light.turn_off
+      data_template:
+        entity_id: "{{ entity_id }}"

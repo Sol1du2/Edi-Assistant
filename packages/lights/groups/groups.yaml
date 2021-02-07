@@ -1,0 +1,51 @@
+living_room_lights:
+  name: Living Room
+  entities:
+    - light.living_room_main_light_1
+    - light.living_room_main_light_2
+    - light.fado_light
+    - light.tv_lamp
+    - light.corner_lamp
+kitchen_lights:
+  name: Kitchen
+  entities:
+    - light.kitchen_main_light
+    - switch.kitchen_stove_light
+
+hall_lights:
+  name: Hall
+  entities:
+    - light.hall_main_light
+
+bedroom_lights:
+  name: Bedroom
+  entities:
+    - light.bedroom_main_light
+    - light.bedroom_lamp
+
+office_lights:
+  name: Office
+  entities:
+    - light.office_main_light
+    - input_number.office_main_light_brightness_slider
+    - light.office_lamp
+    - input_number.office_lamp_brightness_slider
+
+office_light_moods:
+  name: Office Main Light Moods
+  entities:
+    - script.office_main_light_relax_mood
+    - script.office_main_light_concentrate_mood
+    - script.office_main_light_deep_sea_mood
+    - script.office_main_light_reading_mood
+    - script.office_main_light_slow_sunset_mood
+
+all_lights:
+  name: House Lights
+  entities:
+    - group.living_room_lights
+    - group.kitchen_lights
+    - group.hall_lights
+    - group.bedroom_lights
+    - group.office_lights
+    - group.office_light_moods

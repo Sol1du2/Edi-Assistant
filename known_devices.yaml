@@ -1,0 +1,16 @@
+
+itag_joao:
+  hide_if_away: false
+  icon:
+  mac: BLE_FF:FF:C4:0B:83:E1
+  name: 'João'
+  picture: /local/joao.JPG
+  track: true
+
+itag_jelena:
+  hide_if_away: false
+  icon:
+  mac: BLE_FF:FF:C4:00:1F:4C
+  name: 'Jelena'
+  picture: /local/jelena.jpg
+  track: true

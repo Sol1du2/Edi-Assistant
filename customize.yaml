@@ -1,0 +1,21 @@
+group.all_lights:
+  friendly_name: House Lights
+  hidden: false
+
+group.all_automations:
+  friendly_name: Automations
+  hidden: false
+
+group.all_scripts:
+  friendly_name: Scripts
+  hidden: false
+
+light.droopy:
+  friendly_name: Droopy
+  icon: mdi:printer-3d
+
+person.joao:
+  entity_picture: /local/joao.JPG
+  
+person.jelena:
+  entity_picture: /local/jelena.jpg

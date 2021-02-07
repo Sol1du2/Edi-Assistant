@@ -1,0 +1,88 @@
+title: EDI-Habitat
+views:
+  - path: default_view
+    title: "Home"
+    icon: mdi:home
+    badges:
+      - entity: person.joao
+      - entity: person.jelena
+    cards:
+      - type: weather-forecast
+        entity: weather.home
+        show_forecast: true
+      - type: history-graph
+        title: "Lux Graph"
+        entities:
+          - sensor.office_light_sensor
+          - sensor.living_room_light_sensor
+        hours_to_show: 24
+        refresh_interval: 10
+  - path: lights
+    title: House Lights
+    icon: mdi:lightbulb-on-outline
+    cards:
+      - type: entities
+        title: "Living Room"
+        entities:
+          - light.living_room_main_light_1
+          - light.living_room_main_light_2
+          - light.fado_light
+          - light.tv_lamp
+          - light.corner_lamp
+      - type: entities
+        title: "Kitchen"
+        entities:
+          - light.kitchen_main_light
+          - switch.kitchen_stove_light
+      - type: entities
+        title: "Hallway"
+        entities:
+          - light.hall_main_light
+      - type: entities
+        title: "Bedroom"
+        entities:
+          - light.bedroom_main_light
+          - light.bedroom_lamp
+      - type: entities
+        title: "Office"
+        entities:
+          - light.office_main_light
+          - light.office_lamp
+  - path: printer
+    name: 3D Printer
+    icon: mdi:printer-3d
+    cards:
+      - type: entities
+        title: "Droopy Power"
+        entities:
+          - type: buttons
+            entities:
+              - entity: script.power_cycle_droopy
+                name: "On/Off"
+                icon: mdi:power-cycle
+              - entity: script.emergency_power_off_droopy
+                name: "Emergency Off"
+                icon: mdi:flash-alert-outline
+      - type: entities
+        title: "Droopy Status"
+        entities:
+           - sensor.droopy_current_state
+           - sensor.droopy_actual_tool0_temp
+           - sensor.droopy_actual_bed_temp
+           - sensor.droopy_target_tool0_temp
+           - sensor.droopy_target_bed_temp
+           - sensor.droopy_job_percentage
+           - sensor.droopy_time_remaining
+           - sensor.droopy_time_elapsed
+  - path: settings
+    title: "Settings"
+    icon: mdi:application-cog
+    badges:
+      - entity: binary_sensor.updater
+    cards:
+      - type: entities
+        entities:
+          - entity: group.cpu_temp
+      - type: entities
+        entities:
+          - entity: group.battery_levels

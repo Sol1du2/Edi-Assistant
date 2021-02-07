@@ -1,0 +1,11 @@
+- id: notify_droopy_off
+  alias: Notify when droopy turns off
+  trigger:
+    - platform: state
+      entity_id: switch.droopy
+      from: 'on'
+      to: 'off'
+  action:
+    - service: notify.joao
+      data:
+        message: Droopy just went fully offline.        

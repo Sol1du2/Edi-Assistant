@@ -1,0 +1,25 @@
+sensor:
+  - platform: template
+    sensors:
+      office_main_light_brightness:
+        friendly_name: "Main Light Brightness"
+        value_template: "{{ states.light.office_main_light.attributes.brightness }}"
+      office_lamp_brightness:
+        friendly_name: "Lamp Brightness"
+        value_template: "{{ states.light.office_lamp.attributes.brightness }}"
+
+input_number:
+  office_main_light_brightness_slider:
+    name: Office Main Light Brightness
+    min: 1
+    max: 254
+    step: 1
+  office_lamp_brightness_slider:
+    name: Office Lamp Brightness
+    min: 1
+    max: 254
+    step: 1
+
+group: !include_dir_merge_named groups/
+automation: !include_dir_merge_list automations/
+script: !include_dir_merge_named scripts/

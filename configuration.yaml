@@ -1,0 +1,55 @@
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+homeassistant:
+  name: EDI-Habitat
+  latitude: !secret home_latitude
+  longitude: !secret home_longitude
+  elevation: 10
+  unit_system: metric
+  time_zone: !secret timezone
+  packages:
+    persons: !include packages/persons/persons.yaml
+    gateways: !include packages/gateways/gateways.yaml
+    lights: !include packages/lights/lights.yaml
+    octoprint: !include packages/octoprint/octoprint.yaml
+    telegram: !include packages/telegram/telegram.yaml
+    system_monitoring: !include packages/system_monitoring/system_monitoring.yaml
+  customize: !include customize.yaml
+
+lovelace:
+  mode: yaml
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Records states to the db
+recorder:
+
+weather:
+  - platform: buienradar
+    name: "Home"
+    latitude: !secret home_latitude
+    longitude: !secret home_longitude
+    forecast: true
+
+# Sensors
+sensor: 
+  - platform: buienradar
+    timeframe: 120
+    monitored_conditions:
+      - conditionexact
+      - humidity
+      - temperature
+      - windspeed
+      - winddirection
+      - precipitation_forecast_total
+      - rain_1d
+
+# Text to speech
+tts:
+  - platform: google_translate
+
+#group: !include groups.yaml
+#automation: !include automations.yaml
+#script: !include scripts.yaml

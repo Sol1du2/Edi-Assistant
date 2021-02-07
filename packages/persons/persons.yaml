@@ -1,0 +1,14 @@
+device_tracker:
+  - platform: bluetooth_le_tracker
+    interval_seconds: 20
+    track_new_devices: false
+
+person:
+  - name: João
+    id: !secret joao_id
+    device_trackers:
+      - device_tracker.itag_joao
+  - name: Jelena
+    id: !secret jelena_id
+    device_trackers:
+      - device_tracker.itag_jelena

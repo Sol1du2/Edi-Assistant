@@ -1,0 +1,16 @@
+cpu_temp:
+  name: CPU Temperature of House Pis
+  entities:
+    - sensor.edi_cpu_temperature
+    - sensor.pi_hole_cpu_temperature
+    - sensor.octopi_cpu_temperature
+
+battery_levels:
+  name: Sensor Batteries
+  entities:
+    - sensor.office_switch_battery_level
+    - sensor.living_room_switch_battery_level
+    - sensor.hall_switch_battery_level
+    - sensor.cuby_battery_level
+    - sensor.office_motion_light_sensor_battery_level
+    - sensor.living_room_motion_light_sensor_battery_level

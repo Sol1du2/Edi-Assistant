@@ -1,0 +1,38 @@
+#-------------------------------        
+# Set Light mood for main light        
+#-------------------------------
+
+office_main_light_concentrate_mood:
+  alias: Concentrate Mood
+  sequence:
+    - service: script.concentrate_mood
+      data:
+        entity_id: light.office_main_light 
+
+office_main_light_deep_sea_mood:
+  alias: Deep Sea Mood
+  sequence:
+    - service: script.deep_sea_mood
+      data:
+        entity_id: light.office_main_light 
+
+office_main_light_reading_mood:
+  alias: Reading Mood
+  sequence:
+    - service: script.reading_mood
+      data:
+        entity_id: light.office_main_light 
+
+office_main_light_relax_mood:
+  alias: Relax Mood
+  sequence:
+    - service: script.relax_mood
+      data:
+        entity_id: light.office_main_light 
+
+office_main_light_slow_sunset_mood:
+  alias: Main Light Slow Sunset Mood
+  sequence:
+    - service: script.slow_sunset_mood
+      data:
+        entity_id: light.office_main_light

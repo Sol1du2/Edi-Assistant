@@ -1,0 +1,10 @@
+- id: toggle_office_lights_telegram
+  alias: Toggle the office lights via Telegram command
+  trigger:
+    platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/toggle_office_lights'
+  action:
+    - service: light.toggle
+      entity_id: group.office_lights
