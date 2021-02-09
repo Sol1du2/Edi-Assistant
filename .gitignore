@@ -1,6 +1,7 @@
 .cloud
 .storage
 .HA_VERSION
+.vscode
 
 secrets.yaml
 home-assistant_v2.db
