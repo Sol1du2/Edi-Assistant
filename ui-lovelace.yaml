@@ -10,6 +10,17 @@ views:
       - type: weather-forecast
         entity: weather.home
         show_forecast: true
+      - type: grid
+        title: "Temperature and Humidity"
+        cards:
+          - type: sensor
+            entity: sensor.pla_container_temperature
+            name: "PLA Container"
+            graph: line
+          - type: sensor
+            entity: sensor.pla_container_humidity
+            name: "PLA Container"
+            graph: line
       - type: history-graph
         title: "Lux Graph"
         entities:

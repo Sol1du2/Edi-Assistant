@@ -14,3 +14,4 @@ battery_levels:
     - sensor.cuby_battery_level
     - sensor.office_motion_light_sensor_battery_level
     - sensor.living_room_motion_light_sensor_battery_level
+    - sensor.pla_container_temperature_battery_level
