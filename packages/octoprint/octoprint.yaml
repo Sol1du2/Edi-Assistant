@@ -19,11 +19,14 @@ octoprint:
 shell_command:
   shutdown_octoprint: !secret octoprint_shutdown_ssh
 
+# This input boolean should not be added to the UI and it's set to true via a
+# script when droopy is shutting down
 input_boolean:
   droopy_shutting_down:
     name: Droopy Shutting Down
     initial: false
 
+# This sensor display the 3 status of droopy. On, Off and Shutting down.
 sensor:
   - platform: template
     sensors:
