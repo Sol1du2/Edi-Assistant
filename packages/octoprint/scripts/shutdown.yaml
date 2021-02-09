@@ -14,12 +14,18 @@ safely_power_off_droopy:
     - condition: state
       entity_id: switch.droopy
       state: "on"
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.droopy_shutting_down
     - service: shell_command.shutdown_octoprint
     - delay:
         seconds: 30
     - service: switch.turn_off
       data:
         entity_id: switch.droopy
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.droopy_shutting_down
 
 emergency_power_off_droopy:
   alias: Power On Droopy

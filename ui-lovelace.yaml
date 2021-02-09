@@ -88,17 +88,31 @@ views:
     name: 3D Printer
     icon: mdi:printer-3d
     cards:
-      - type: entities
-        title: "Droopy Power"
-        entities:
-          - type: buttons
-            entities:
-              - entity: script.power_cycle_droopy
+      - type: vertical-stack
+        title: Droopy Power
+        cards:
+          - type: entity
+            name: Status
+            entity: sensor.droopy_power_status
+          - type: grid
+            columns: 2
+            cards:
+              - type: button
                 name: "On/Off"
                 icon: mdi:power-cycle
-              - entity: script.emergency_power_off_droopy
+                tap_action:
+                  action: call-service
+                  service: script.turn_on
+                  service_data:
+                    entity_id: script.power_cycle_droopy
+              - type: button
                 name: "Emergency Off"
                 icon: mdi:flash-alert-outline
+                tap_action:
+                  action: call-service
+                  service: script.turn_on
+                  service_data:
+                    entity_id: script.emergency_power_off_droopy
       - type: entities
         title: "Droopy Status"
         entities:
