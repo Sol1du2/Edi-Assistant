@@ -32,33 +32,58 @@ views:
     title: House Lights
     icon: mdi:lightbulb-on-outline
     cards:
-      - type: entities
+      - type: grid
         title: "Living Room"
-        entities:
-          - light.living_room_main_light_1
-          - light.living_room_main_light_2
-          - light.fado_light
-          - light.tv_lamp
-          - light.corner_lamp
-      - type: entities
+        cards:
+          - type: light
+            entity: light.living_room_main_light_1
+            name: "Ceiling Light 1"
+          - type: light
+            entity: light.living_room_main_light_2
+            name: "Ceiling Light 2"
+          - type: light
+            entity: light.fado_light
+            name: "Fado Light"
+          - type: light
+            entity: light.tv_lamp
+            name: "TV Lamp"
+          - type: light
+            entity: light.corner_lamp
+            name: "Corner Lamp"
+      - type: grid
         title: "Kitchen"
-        entities:
-          - light.kitchen_main_light
-          - switch.kitchen_stove_light
-      - type: entities
+        cards:
+          - type: light
+            entity: light.kitchen_main_light
+            name: "Ceiling Light"
+          - type: button
+            name: "Stove Light"
+            entity: switch.kitchen_stove_light
+            icon: mdi:lightbulb
+      - type: grid
         title: "Hallway"
-        entities:
-          - light.hall_main_light
-      - type: entities
+        cards:
+          - type: light
+            entity: light.hall_main_light
+            name: "Ceiling Light"
+      - type: grid
         title: "Bedroom"
-        entities:
-          - light.bedroom_main_light
-          - light.bedroom_lamp
-      - type: entities
+        cards:
+          - type: light
+            entity: light.bedroom_main_light
+            name: "Ceiling Light"
+          - type: light
+            entity: light.bedroom_lamp
+            name: "Lamp"
+      - type: grid
         title: "Office"
-        entities:
-          - light.office_main_light
-          - light.office_lamp
+        cards:
+          - type: light
+            entity: light.office_main_light
+            name: "Ceiling Light"
+          - type: light
+            entity: light.office_lamp
+            name: "Lamp"
   - path: printer
     name: 3D Printer
     icon: mdi:printer-3d
