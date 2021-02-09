@@ -85,7 +85,7 @@ views:
             entity: light.office_lamp
             name: "Lamp"
   - path: printer
-    name: 3D Printer
+    title: 3D Printer
     icon: mdi:printer-3d
     cards:
       - type: vertical-stack
