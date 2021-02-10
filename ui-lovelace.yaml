@@ -10,17 +10,56 @@ views:
       - type: weather-forecast
         entity: weather.home
         show_forecast: true
-      - type: grid
-        title: "Temperature and Humidity"
+      - type: vertical-stack
         cards:
-          - type: sensor
-            entity: sensor.pla_container_temperature
-            name: "PLA Container"
-            graph: line
-          - type: sensor
-            entity: sensor.pla_container_humidity
-            name: "PLA Container"
-            graph: line
+          - type: grid
+            title: "Living Room"
+            columns: 2
+            cards:
+              - type: sensor
+                entity: sensor.living_room_temperature
+                name: "Temperature"
+                graph: line
+              - type: sensor
+                entity: sensor.living_room_humidity
+                name: "Humidity"
+                graph: line
+          - type: grid
+            title: "Bedroom"
+            columns: 2
+            cards:
+              - type: sensor
+                entity: sensor.bedroom_temperature
+                name: "Temperature"
+                graph: line
+              - type: sensor
+                entity: sensor.bedroom_humidity
+                name: "Humidity"
+                graph: line
+          - type: grid
+            title: "Office"
+            columns: 2
+            cards:
+              - type: sensor
+                entity: sensor.office_temperature
+                name: "Temperature"
+                graph: line
+              - type: sensor
+                entity: sensor.office_humidity
+                name: "Humidity"
+                graph: line
+          - type: grid
+            title: "PLA Container"
+            columns: 2
+            cards:
+              - type: sensor
+                entity: sensor.pla_container_temperature
+                name: "Temperature"
+                graph: line
+              - type: sensor
+                entity: sensor.pla_container_humidity
+                name: "Humidity"
+                graph: line    
       - type: history-graph
         title: "Lux Graph"
         entities:
