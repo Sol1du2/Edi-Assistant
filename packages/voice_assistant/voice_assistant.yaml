@@ -1,0 +1,57 @@
+intent:
+
+intent_script:
+  GoodMorning:
+    speech:
+      text: Top of the morning to ya
+    action:
+      service: light.turn_off
+      entity_id: group.all_lights
+  SleepMode:
+    speech:
+      text: Have a great night
+    action:
+      service: script.sleep_mode
+  TvMode:
+    speech:
+      text: Setting up TV mode
+    action:
+      service: script.tv_mode
+  GetTemperature:
+    speech:
+      text: >
+        {% if location == "living room" %}
+          It's {{ states.sensor.living_room_temperature.state }} degrees in the living room
+        {% elif location == "bedroom" %}
+          It's {{ states.sensor.bedroom_temperature.state }} degrees in the bedroom
+        {% elif location == "office" %}
+          It's {{ states.sensor.office_temperature.state }} degrees in the office
+        {% elif location == "filament container" %}
+          It's {{ states.sensor.pla_container_temperature.state }} degrees in the filament container
+        {% else %}
+          I don't know where {{ location }} is
+        {% endif %}
+  GetHumidity:
+    speech:
+      text: >
+        {% if location == "living room" %}
+          It's {{ states.sensor.living_room_humidity.state }} percent in the living room
+        {% elif location == "bedroom" %}
+          It's {{ states.sensor.bedroom_humidity.state }} percent in the bedroom
+        {% elif location == "office" %}
+          It's {{ states.sensor.office_humidity.state }} percent in the office
+        {% elif location == "filament container" %}
+          It's {{ states.sensor.pla_container_humidity.state }} percent in the filament container
+        {% else %}
+          I don't know where {{ location }} is
+        {% endif %}
+  DroopyOn:
+    speech:
+      text: Turning droopy on
+    action:
+      service: script.power_on_droopy
+  DroopyOff:
+    speech:
+      text: Shutting down droopy
+    action:
+      service: script.safely_power_off_droopy
