@@ -1,7 +1,19 @@
+tile_joao:
+  hide_if_away: false
+  name: 'João'
+  mac: BLE_F7:85:CB:4D:29:AE
+  picture: /local/joao.JPG
+  track: true
+
+tile_jelena:
+  hide_if_away: false
+  name: 'Jelena'
+  mac: BLE_C8:55:AC:EF:C5:90
+  picture: /local/jelena.jpg
+  track: true
 
 itag_joao:
   hide_if_away: false
-  icon:
   mac: BLE_FF:FF:C4:0B:83:E1
   name: 'João'
   picture: /local/joao.JPG
@@ -9,7 +21,6 @@ itag_joao:
 
 itag_jelena:
   hide_if_away: false
-  icon:
   mac: BLE_FF:FF:C4:00:1F:4C
   name: 'Jelena'
   picture: /local/jelena.jpg

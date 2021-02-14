@@ -1,14 +1,18 @@
 device_tracker:
   - platform: bluetooth_le_tracker
     interval_seconds: 20
+    track_battery: false
+    consider_home: 240
     track_new_devices: false
 
 person:
   - name: João
     id: !secret joao_id
     device_trackers:
-      - device_tracker.itag_joao
+      - device_tracker.tile_joao
   - name: Jelena
     id: !secret jelena_id
     device_trackers:
-      - device_tracker.itag_jelena
+      - device_tracker.tile_jelena
+
+automation: !include_dir_merge_list automations/

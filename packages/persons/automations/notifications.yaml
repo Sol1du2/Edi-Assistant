@@ -1,0 +1,47 @@
+- id: notify_joao_home
+  alias: "Notify when João gets home"
+  trigger:
+    - platform: state
+      entity_id: person.joao
+      from: 'not_home'
+      to: 'home'
+  action:
+    - service: notify.joao
+      data:
+        message: "João just got home!"
+
+- id: notify_joao_away
+  alias: "Notify when João leaves the house"
+  trigger:
+    - platform: state
+      entity_id: person.joao
+      from: 'home'
+      to: 'not_home'
+  action:
+    - service: notify.joao
+      data:
+        message: "João just left the house!"
+
+- id: notify_jelena_home
+  alias: "Notify when Jelena gets home"
+  trigger:
+    - platform: state
+      entity_id: person.jelena
+      from: 'not_home'
+      to: 'home'
+  action:
+    - service: notify.joao
+      data:
+        message: "Jelena just got home!"
+
+- id: notify_jelena_away
+  alias: "Notify when Jelena leaves the house"
+  trigger:
+    - platform: state
+      entity_id: person.jelena
+      from: 'home'
+      to: 'not_home'
+  action:
+    - service: notify.joao
+      data:
+        message: "Jelena just left the house!"
