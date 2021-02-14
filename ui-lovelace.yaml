@@ -10,6 +10,8 @@ views:
       - type: weather-forecast
         entity: weather.home
         show_forecast: true
+      - type: shopping-list
+        title: Shopping List
       - type: vertical-stack
         cards:
           - type: grid

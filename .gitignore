@@ -2,6 +2,7 @@
 .storage
 .HA_VERSION
 .vscode
+.shopping_list.json
 
 secrets.yaml
 home-assistant_v2.db

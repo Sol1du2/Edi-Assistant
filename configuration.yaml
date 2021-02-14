@@ -50,6 +50,8 @@ sensor:
 tts:
   - platform: google_translate
 
+shopping_list:
+
 #group: !include groups.yaml
 #automation: !include automations.yaml
 #script: !include scripts.yaml
