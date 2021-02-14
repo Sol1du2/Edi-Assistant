@@ -11,9 +11,16 @@ power_on_droopy:
 safely_power_off_droopy:
   alias: Safely Power Off Droopy
   sequence:
-    - condition: state
-      entity_id: switch.droopy
-      state: "on"
+    - condition: and
+      conditions:
+        - condition: state
+          entity_id: switch.droopy
+          state: "on"
+        - condition: not
+          conditions:
+            - condition: state
+              entity_id: sensor.droopy_current_state
+              state: "Printing"
     - service: input_boolean.turn_on
       data:
         entity_id: input_boolean.droopy_shutting_down
