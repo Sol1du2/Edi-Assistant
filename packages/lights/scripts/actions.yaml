@@ -7,12 +7,12 @@ sleep_mode:
         brightness: 125
     - service: light.turn_on
       data:
-        entity_id: light.hall_main_light
+        entity_id: light.hall_ceiling_light
         brightness: 125
     - service: light.turn_off
       entity_id: light.kitchen
     - service: light.turn_off
-      entity_id: light.bedroom_main_light
+      entity_id: light.bedroom_ceiling_light
     - service: light.turn_off
       entity_id: light.office
     - service: light.turn_off
@@ -26,9 +26,9 @@ tv_mode:
     - service: light.turn_off
       entity_id: light.kitchen_lights
     - service: light.turn_off
-      entity_id: light.living_room_main_light_1
+      entity_id: light.living_room_ceiling_light_1
     - service: light.turn_off
-      entity_id: light.living_room_main_light_2
+      entity_id: light.living_room_ceiling_light_2
     - service: light.turn_off
       entity_id: light.tv_lamp
     - service: light.turn_on

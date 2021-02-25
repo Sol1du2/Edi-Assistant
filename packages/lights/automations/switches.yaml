@@ -159,7 +159,7 @@
       event: 1002
   action:
     - service: light.turn_on
-      entity_id: light.hall_main_light
+      entity_id: light.hall_ceiling_light
 
 - id: hall_switch_turn_off_lights
   alias: Switch turn off lights in the hall
@@ -172,7 +172,7 @@
       event: 2002
   action:
     - service: light.turn_off
-      entity_id: light.hall_main_light
+      entity_id: light.hall_ceiling_light
 
 - id: hall_switch_brightness_up
   alias: 'Increase brightness of lights in the hall'
@@ -186,9 +186,9 @@
   action:
     - service: light.turn_on
       data_template:
-        entity_id: light.hall_main_light
+        entity_id: light.hall_ceiling_light
         brightness: >
-          {% set bri = state_attr('light.hall_main_light', 'brightness') | int %}
+          {% set bri = state_attr('light.hall_ceiling_light', 'brightness') | int %}
           {{ [bri+50, 249] | min }}
 
 - id: hall_switch_brightness_down
@@ -203,9 +203,9 @@
   action:
     - service: light.turn_on
       data_template:
-        entity_id: light.hall_main_light
+        entity_id: light.hall_ceiling_light
         brightness: >
-          {% set bri = state_attr('light.hall_main_light', 'brightness') | int %}
+          {% set bri = state_attr('light.hall_ceiling_light', 'brightness') | int %}
           {{ [bri-50, 0] | max }}
 
 # Bedroom
