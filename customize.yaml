@@ -16,23 +16,3 @@ switch.droopy:
   friendly_name: Droopy
   icon: mdi:printer-3d
 
-light.living_room_main_light_1:
-  friendly_name: Living Room Ceiling Light 1
-
-light.living_room_main_light_2:
-  friendly_name: Living Room Ceiling Light 2
-
-light.kitchen_main_light:
-  friendly_name: Kitchen Ceiling Light
-
-light.kitchen_stove_light:
-  friendly_name: Stove Light
-
-light.hall_main_light:
-  friendly_name: Hall Ceiling Light
-
-light.bedroom_main_light:
-  friendly_name: Bedroom Ceiling Light
-
-light.office_main_light:
-  friendly_name: Office Ceiling Light
