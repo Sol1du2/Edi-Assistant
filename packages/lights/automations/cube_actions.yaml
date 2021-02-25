@@ -1,3 +1,4 @@
+# Double tap Cube
 - id: cuby_set_tv_mode
   alias: Set tv mode in the living room
   trigger:
@@ -5,14 +6,34 @@
       event_type: deconz_event
       event_data:
         id: cuby
-        gesture: 1
-  # The wake even has no gesture data, which triggers all of them
+        gesture: 6
+  # The wake event has no gesture data, which triggers all of them
   condition:
     - condition: template
       value_template: "{{ (trigger.event.data.gesture)|int != '' }}"
   action:
     - service: script.tv_mode
 
+# Shake Cube
+- id: cuby_turn_on_living_room_lamps
+  alias: Turn on living room lamps and turn off ceiling lights
+  trigger:
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: cuby
+        gesture: 1
+  # The wake event has no gesture data, which triggers all of them
+  condition:
+    - condition: template
+      value_template: "{{ (trigger.event.data.gesture)|int != '' }}"
+  action:
+    - service: light.turn_off
+      entity_id: light.living_room_ceiling_lights
+    - service: light.turn_on
+      entity_id: light.living_room_lamps
+
+# Rotate Cube 90 degrees
 - id: cuby_turn_on_living_room
   alias: Turn on all living room lights
   trigger:
@@ -20,8 +41,8 @@
       event_type: deconz_event
       event_data:
         id: cuby
-        gesture: 4
-  # The wake even has no gesture data, which triggers all of them
+        gesture: 3
+  # The wake event has no gesture data, which triggers all of them
   condition:
     - condition: template
       value_template: "{{ (trigger.event.data.gesture)|int != '' }}"
@@ -29,6 +50,7 @@
     - service: light.turn_on
       entity_id: light.living_room_lights
 
+# Rotate Cube 180 degrees
 - id: cuby_turn_off_living_room
   alias: Turn off all living room lights
   trigger:
@@ -36,8 +58,8 @@
       event_type: deconz_event
       event_data:
         id: cuby
-        gesture: 3
-  # The wake even has no gesture data, which triggers all of them
+        gesture: 4
+  # The wake event has no gesture data, which triggers all of them
   condition:
     - condition: template
       value_template: "{{ (trigger.event.data.gesture)|int != '' }}"
@@ -45,18 +67,36 @@
     - service: light.turn_off
       entity_id: light.living_room_lights
 
+# Throw Cube in the air
 - id: cuby_toggle_ceiling_lights_living_room
-  alias: Toggle main lights in the living room
+  alias: Toggle the ceiling lights in the living room
   trigger:
     - platform: event
       event_type: deconz_event
       event_data:
         id: cuby
-        gesture: 6
-  # The wake even has no gesture data, which triggers all of them
+        gesture: 2
+  # The wake event has no gesture data, which triggers all of them
   condition:
     - condition: template
       value_template: "{{ (trigger.event.data.gesture)|int != '' }}"
   action:
     - service: light.toggle
       entity_id: light.living_room_ceiling_lights
+
+# Push Cube on surface
+- id: cuby_toggle_kitchen_lights
+  alias: Toggle the kitchen lights
+  trigger:
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: cuby
+        gesture: 5
+  # The wake event has no gesture data, which triggers all of them
+  condition:
+    - condition: template
+      value_template: "{{ (trigger.event.data.gesture)|int != '' }}"
+  action:
+    - service: light.toggle
+      entity_id: light.kitchen_lights
