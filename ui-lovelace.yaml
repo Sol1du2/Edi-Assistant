@@ -165,15 +165,30 @@ views:
            - sensor.droopy_job_percentage
            - sensor.droopy_time_remaining
            - sensor.droopy_time_elapsed
-  - path: settings
-    title: "Settings"
-    icon: mdi:application-cog
+  - path: monitoring
+    title: "Monitoring"
+    icon: mdi:monitor-eye
     badges:
       - entity: binary_sensor.updater
     cards:
       - type: entities
+        title: "CPU Temperature of House Pis"
         entities:
-          - entity: group.cpu_temp
+          - sensor.edi_cpu_temperature
+          - sensor.pi_hole_cpu_temperature
+          - sensor.octopi_cpu_temperature
       - type: entities
+        title: "Sensor Batteries"
         entities:
-          - entity: group.battery_levels
+          - sensor.kitchen_switch_battery_level
+          - sensor.living_room_switch_battery_level
+          - sensor.cuby_battery_level
+          - sensor.hall_switch_battery_level
+          - sensor.office_switch_battery_level
+          - sensor.bedroom_switch_battery_level
+          - sensor.office_motion_light_sensor_battery_level
+          - sensor.living_room_motion_light_sensor_battery_level
+          - sensor.living_room_temperature_battery_level
+          - sensor.bedroom_temperature_battery_level
+          - sensor.office_temperature_battery_level
+          - sensor.pla_container_temperature_battery_level
