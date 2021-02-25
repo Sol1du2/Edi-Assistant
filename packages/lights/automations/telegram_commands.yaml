@@ -7,4 +7,4 @@
       command: '/toggle_office_lights'
   action:
     - service: light.toggle
-      entity_id: group.office_lights
+      entity_id: light.office_lights

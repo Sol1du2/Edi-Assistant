@@ -27,7 +27,7 @@
       value_template: "{{ (trigger.event.data.gesture)|int != '' }}"
   action:
     - service: light.turn_on
-      entity_id: group.living_room_lights
+      entity_id: light.living_room_lights
 
 - id: cuby_turn_off_living_room
   alias: Turn off all living room lights
@@ -43,7 +43,7 @@
       value_template: "{{ (trigger.event.data.gesture)|int != '' }}"
   action:
     - service: light.turn_off
-      entity_id: group.living_room_lights
+      entity_id: light.living_room_lights
 
 - id: cuby_toggle_main_lights_living_room
   alias: Toggle main lights in the living room
@@ -59,4 +59,4 @@
       value_template: "{{ (trigger.event.data.gesture)|int != '' }}"
   action:
     - service: light.toggle
-      entity_id: group.living_room_main_lights
+      entity_id: light.living_room_ceiling_lights
