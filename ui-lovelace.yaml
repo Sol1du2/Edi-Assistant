@@ -143,6 +143,12 @@ views:
           - type: light
             entity: light.office_lamp
             name: "Lamp"
+          - type: light
+            entity: light.office_droopy_lamp
+            name: "Droopy Lamp"
+          - type: light
+            entity: light.office_work_desk_lamp
+            name: "Work Desk Lamp"
   - path: printer
     title: 3D Printer
     icon: mdi:printer-3d
@@ -203,6 +209,8 @@ views:
           - sensor.balcony_switch_battery_level
           - sensor.cuby_battery_level
           - sensor.hall_switch_battery_level
+          - sensor.office_droopy_lamp_switch_battery_level
+          - sensor.office_work_desk_lamp_switch_battery_level
           - sensor.office_switch_battery_level
           - sensor.bedroom_switch_battery_level
           - sensor.office_motion_light_sensor_battery_level

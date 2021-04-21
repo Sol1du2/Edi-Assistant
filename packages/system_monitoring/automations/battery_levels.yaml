@@ -26,6 +26,12 @@
       entity_id: sensor.office_switch_battery_level
       below: 10
     - platform: numeric_state
+      entity_id: sensor.office_droopy_lamp_switch_battery_level
+      below: 10
+    - platform: numeric_state
+      entity_id: sensor.office_work_desk_lamp_switch_battery_level
+      below: 10
+    - platform: numeric_state
       entity_id: sensor.office_motion_light_sensor_battery_level
       below: 10
   action:
@@ -47,6 +53,10 @@
           {% elif trigger.entity_id == "sensor.bedroom_switch_battery_level" %}
             The battery on the bedroom switch has fallen below 10%.
           {% elif trigger.entity_id == "sensor.office_switch_battery_level" %}
+            The battery on the office switch has fallen below 10%.
+          {% elif trigger.entity_id == "sensor.office_droopy_lamp_switch_battery_level" %}
+            The battery on the office switch has fallen below 10%.
+          {% elif trigger.entity_id == "sensor.office_work_desk_lamp_switch_battery_level" %}
             The battery on the office switch has fallen below 10%.
           {% elif trigger.entity_id == "sensor.office_motion_light_sensor_battery_level" %}
             The battery on the office motion and light sensor has fallen below 10%.

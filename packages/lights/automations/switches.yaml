@@ -25,6 +25,58 @@
     - service: light.turn_off
       entity_id: light.office_lights
 
+- id: office_switch_turn_on_droopy_lamp
+  alias: Switch turn on droopy lamp in the office
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: office_droopy_lamp_switch
+      event: 1002
+  action:
+    - service: light.turn_on
+      entity_id: light.office_droopy_lamp
+
+- id: office_switch_turn_off_droopy_lamp
+  alias: Switch turn off droopy lamp in the office
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: office_droopy_lamp_switch
+      event: 2002
+  action:
+    - service: light.turn_off
+      entity_id: light.office_droopy_lamp
+
+- id: office_switch_turn_on_work_desk_lamp
+  alias: Switch turn on work desk lamp in the office
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: office_work_desk_lamp_switch
+      event: 1002
+  action:
+    - service: light.turn_on
+      entity_id: light.office_work_desk_lamp
+
+- id: office_switch_turn_off_work_desk_lamp
+  alias: Switch turn off work desk lamp in the office
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: office_work_desk_lamp_switch
+      event: 2002
+  action:
+    - service: light.turn_off
+      entity_id: light.office_work_desk_lamp
+
 - id: office_switch_brightness_up
   alias: 'Increase brightness of lights in office'
   initial_state: 'on'
