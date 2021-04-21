@@ -45,7 +45,9 @@ sensor:
       - windspeed
       - winddirection
       - precipitation_forecast_total
+      - temperature_1d
       - rain_1d
+      - rainchance_1d
 
 # Text to speech
 tts:
