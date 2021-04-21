@@ -16,3 +16,47 @@ switch.droopy:
   friendly_name: Droopy
   icon: mdi:printer-3d
 
+sensor.living_room_temperature:
+  friendly_name: Living Room Temperature Sensor
+
+sensor.living_room_humidity:
+  friendly_name: Living Room Humidity Sensor
+
+sensor.living_room_pressure:
+  friendly_name: Living Room Pressure Sensor
+
+sensor.balcony_temperature:
+  friendly_name: Balcony Temperature Sensor
+
+sensor.balcony_humidity:
+  friendly_name: Balcony Humidity Sensor
+
+sensor.balcony_pressure:
+  friendly_name: Balcony Pressure Sensor
+
+sensor.bedroom_temperature:
+  friendly_name: Bedroom Temperature Sensor
+
+sensor.bedroom_humidity:
+  friendly_name: Bedroom Humidity Sensor
+
+sensor.bedroom_pressure:
+  friendly_name: Bedroom Pressure Sensor
+
+sensor.office_temperature:
+  friendly_name: Office Temperature Sensor
+
+sensor.office_humidity:
+  friendly_name: Office Humidity Sensor
+
+sensor.office_pressure:
+  friendly_name: Office Pressure Sensor
+
+sensor.filament_box_temperature:
+  friendly_name: Filament Container Temperature Sensor
+
+sensor.filament_box_humidity:
+  friendly_name: Filament Container Humidity Sensor
+
+sensor.filament_box_pressure:
+  friendly_name: Filament Container Pressure Sensor
