@@ -51,17 +51,29 @@ views:
                 name: "Humidity"
                 graph: line
           - type: grid
-            title: "PLA Container"
+            title: "Filament Box"
             columns: 2
             cards:
               - type: sensor
-                entity: sensor.pla_container_temperature
+                entity: sensor.filament_box_temperature
                 name: "Temperature"
                 graph: line
               - type: sensor
-                entity: sensor.pla_container_humidity
+                entity: sensor.filament_box_humidity
                 name: "Humidity"
-                graph: line    
+                graph: line
+          - type: grid
+            title: "Balcony"
+            columns: 2
+            cards:
+              - type: sensor
+                entity: sensor.balcony_temperature
+                name: "Temperature"
+                graph: line
+              - type: sensor
+                entity: sensor.balcony_humidity
+                name: "Humidity"
+                graph: line
       - type: history-graph
         title: "Lux Graph"
         entities:
@@ -189,6 +201,7 @@ views:
           - sensor.office_motion_light_sensor_battery_level
           - sensor.living_room_motion_light_sensor_battery_level
           - sensor.living_room_temperature_battery_level
+          - sensor.balcony_temperature_battery_level
           - sensor.bedroom_temperature_battery_level
           - sensor.office_temperature_battery_level
-          - sensor.pla_container_temperature_battery_level
+          - sensor.filament_box_temperature_battery_level
