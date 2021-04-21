@@ -114,6 +114,12 @@ views:
             entity: switch.kitchen_stove_light
             icon: mdi:lightbulb
       - type: grid
+        title: "Balcony"
+        cards:
+          - type: light
+            entity: light.balcony_ceiling_light
+            name: "Ceiling Light"
+      - type: grid
         title: "Hallway"
         cards:
           - type: light
@@ -194,6 +200,7 @@ views:
         entities:
           - sensor.kitchen_switch_battery_level
           - sensor.living_room_switch_battery_level
+          - sensor.balcony_switch_battery_level
           - sensor.cuby_battery_level
           - sensor.hall_switch_battery_level
           - sensor.office_switch_battery_level

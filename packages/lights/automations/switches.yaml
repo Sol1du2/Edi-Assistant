@@ -147,6 +147,33 @@
     - service: light.turn_off
       entity_id: light.kitchen_lights
 
+# Balcony
+- id: balcony_switch_turn_on_lights
+  alias: Switch turn on lights in the balcony
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: balcony_switch
+      event: 1002
+  action:
+    - service: light.turn_on
+      entity_id: light.balcony_lights
+
+- id: balcony_switch_turn_off_lights
+  alias: Switch turn off lights in the balcony
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: balcony_switch
+      event: 2002
+  action:
+    - service: light.turn_off
+      entity_id: light.balcony_lights
+
 # Hall
 - id: hall_switch_turn_on_lights
   alias: Switch turn on lights in the hall
