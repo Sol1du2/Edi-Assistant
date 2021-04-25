@@ -126,14 +126,17 @@ views:
             entity: light.hall_ceiling_light
             name: "Ceiling Light"
       - type: grid
-        title: "Bedroom"
+        title: "Toilet"
         cards:
           - type: light
-            entity: light.bedroom_ceiling_light
-            name: "Ceiling Light"
+            entity: light.toilet_ceiling_light
+            name: "Toilet Light"
+      - type: grid
+        title: "Bathroom"
+        cards:
           - type: light
-            entity: light.bedroom_lamp
-            name: "Lamp"
+            entity: light.bathroom_ceiling_light
+            name: "Bathroom Light"
       - type: grid
         title: "Office"
         cards:
@@ -149,6 +152,15 @@ views:
           - type: light
             entity: light.office_work_desk_lamp
             name: "Work Desk Lamp"
+      - type: grid
+        title: "Bedroom"
+        cards:
+          - type: light
+            entity: light.bedroom_ceiling_light
+            name: "Ceiling Light"
+          - type: light
+            entity: light.bedroom_lamp
+            name: "Lamp"
   - path: printer
     title: 3D Printer
     icon: mdi:printer-3d
@@ -204,19 +216,21 @@ views:
       - type: entities
         title: "Sensor Batteries"
         entities:
-          - sensor.kitchen_switch_battery_level
           - sensor.living_room_switch_battery_level
-          - sensor.balcony_switch_battery_level
           - sensor.cuby_battery_level
+          - sensor.living_room_motion_light_sensor_battery_level
+          - sensor.living_room_temperature_battery_level
+          - sensor.kitchen_switch_battery_level
+          - sensor.balcony_switch_battery_level
+          - sensor.balcony_temperature_battery_level
           - sensor.hall_switch_battery_level
+          - sensor.toilet_switch_battery_level
+          - sensor.bathroom_switch_battery_level
           - sensor.office_droopy_lamp_switch_battery_level
           - sensor.office_work_desk_lamp_switch_battery_level
           - sensor.office_switch_battery_level
-          - sensor.bedroom_switch_battery_level
           - sensor.office_motion_light_sensor_battery_level
-          - sensor.living_room_motion_light_sensor_battery_level
-          - sensor.living_room_temperature_battery_level
-          - sensor.balcony_temperature_battery_level
-          - sensor.bedroom_temperature_battery_level
           - sensor.office_temperature_battery_level
           - sensor.filament_box_temperature_battery_level
+          - sensor.bedroom_switch_battery_level
+          - sensor.bedroom_temperature_battery_level

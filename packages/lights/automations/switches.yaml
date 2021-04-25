@@ -287,6 +287,60 @@
           {% set bri = state_attr('light.hall_ceiling_light', 'brightness') | int %}
           {{ [bri-50, 0] | max }}
 
+# Toilet
+- id: toilet_switch_turn_on_lights
+  alias: Switch turn on lights in the toilet
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: toilet_switch
+      event: 1002
+  action:
+    - service: light.turn_on
+      entity_id: light.toilet_ceiling_light
+
+- id: toilet_switch_turn_off_lights
+  alias: Switch turn off lights in the toilet
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: toilet_switch
+      event: 2002
+  action:
+    - service: light.turn_off
+      entity_id: light.toilet_ceiling_light
+
+# Bathroom
+- id: bathroom_switch_turn_on_lights
+  alias: Switch turn on lights in the bathroom
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: bathroom_switch
+      event: 1002
+  action:
+    - service: light.turn_on
+      entity_id: light.bathroom_ceiling_light
+
+- id: bathroom_switch_turn_off_lights
+  alias: Switch turn off lights in the bathroom
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: bathroom_switch
+      event: 2002
+  action:
+    - service: light.turn_off
+      entity_id: light.bathroom_ceiling_light
+
 # Bedroom
 - id: bedroom_switch_turn_on_lights
   alias: Switch turn on lights in the bedroom
