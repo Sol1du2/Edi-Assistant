@@ -1,10 +1,66 @@
-- id: toggle_office_lights_telegram
-  alias: Toggle the office lights via Telegram command
+- id: get_light_status_telegram
+  alias: Returns the status of all house lights
   trigger:
     platform: event
     event_type: telegram_command
     event_data:
-      command: '/toggle_office_lights'
+      command: '/lights'
   action:
-    - service: light.toggle
-      entity_id: light.office_lights
+    - service: notify.joao
+      data_template:
+        message: |
+          *Living Room:*
+            Ceiling Light 1: {{ states.light.living_room_ceiling_light_1.state }}
+            Ceiling Light 2: {{ states.light.living_room_ceiling_light_2.state }}
+            Fado Lamp: {{ states.light.fado_light.state }}
+            Corner Lamp: {{ states.light.corner_lamp.state }}
+            TV Lamp: {{ states.light.tv_lamp.state }}
+          *Kitchen:* 
+            Ceiling Light: {{ states.light.kitchen_ceiling_light.state }}
+            Stove Light: {{ states.switch.kitchen_stove_light.state }}
+          *Balcony:*
+            Ceiling Light: {{ states.light.balcony_ceiling_light.state }}
+            Pretty Lights: NOT ADDED YET
+          *Hallway:*
+            Ceiling Light: {{ states.light.hall_ceiling_light.state }}
+          *Toilet:*
+            Ceiling Light: {{ states.light.toilet_ceiling_light.state }}
+          *Bathroom:*
+            Ceiling Light: {{ states.light.bathroom_ceiling_light.state }}
+          *Office:*
+            Ceiling Light: {{ states.light.office_ceiling_light.state }}
+            Lamp: {{ states.light.office_lamp.state }}
+            Droopy Lamp: {{ states.light.office_droopy_lamp.state }}
+            Work Desk Lamp: {{ states.light.office_work_desk_lamp.state }}
+          *Bedroom:*
+            Ceiling Light: {{ states.light.bedroom_ceiling_light.state }}
+            Lamp: {{ states.light.bedroom_lamp.state }}
+            Night Stand Light: NOT ADDED YET
+
+- id: house_lights_on_telegram
+  alias: Turn off all lights
+  trigger:
+    platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/lights_on'
+  action:
+    - service: light.turn_on
+      entity_id: light.house_lights
+    - service: notify.joao
+      data:
+        message: All lights on! It's a party!
+
+- id: house_lights_off_telegram
+  alias: Turn off all lights
+  trigger:
+    platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/lights_off'
+  action:
+    - service: light.turn_off
+      entity_id: light.house_lights
+    - service: notify.joao
+      data:
+        message: All lights off! Party's over!
