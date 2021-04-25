@@ -48,6 +48,42 @@ sensor:
           {% else %}
             Off
           {% endif %}
+      droopy_elapsed_pretty:
+        friendly_name: "Time Elapsed"
+        icon_template: mdi:clock-start
+        value_template: >-
+          {% set time = states.sensor.droopy_time_elapsed.state | int %}
+          {% set seconds = (time % 60) | int %}
+          {% set minutes = ((time % 3600) / 60) | int %}
+          {% set hours = ((time % 86400) / 3600) | int %}
+          {% set days = (time / 86400) | int %}
+          {%- if days > 0 -%}
+            {{ days }} days, {{ hours }} hours, {{ minutes }} minutes, {{ seconds }} seconds
+          {%- elif hours > 0 -%}
+            {{ hours }} hours, {{ minutes }} minutes, {{ seconds }} seconds
+          {%- elif minutes > 0 -%}
+            {{ minutes }} minutes, {{ seconds }} seconds
+          {%- else -%}
+            {{ seconds }} seconds
+          {%- endif -%}
+      droopy_remaining_pretty:
+        friendly_name: "Time Remaining"
+        icon_template: mdi:clock-end
+        value_template: >-
+          {% set time = states.sensor.droopy_time_remaining.state | int %}
+          {% set seconds = (time % 60) | int %}
+          {% set minutes = ((time % 3600) / 60) | int %}
+          {% set hours = ((time % 86400) / 3600) | int %}
+          {% set days = (time / 86400) | int %}
+          {%- if days > 0 -%}
+            {{ days }} days, {{ hours }} hours, {{ minutes }} minutes, {{ seconds }} seconds
+          {%- elif hours > 0 -%}
+            {{ hours }} hours, {{ minutes }} minutes, {{ seconds }} seconds
+          {%- elif minutes > 0 -%}
+            {{ minutes }} minutes, {{ seconds }} seconds
+          {%- else -%}
+            {{ seconds }} seconds
+          {%- endif -%}
 
 automation: !include_dir_merge_list automations/
 script: !include_dir_merge_named scripts/

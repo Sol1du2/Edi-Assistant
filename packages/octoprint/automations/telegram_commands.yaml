@@ -11,8 +11,8 @@
         message: |
           *State:* {{ states.sensor.droopy_current_state.state }}
           *Job Percentage:* {{ states.sensor.droopy_job_percentage.state }}%
-          *Remaining Time:* {{ states.sensor.droopy_time_remaining.state }}s
-          *Elapsed Time:* {{ states.sensor.droopy_time_elapsed.state }}s
+          *Remaining Time:* {{ states.sensor.droopy_remaining_pretty.state }}
+          *Elapsed Time:* {{ states.sensor.droopy_elapsed_pretty.state }}
 
           *Tool Temp:* {{ states.sensor.droopy_actual_tool0_temp.state }}°C
           *Bed Temp:* {{ states.sensor.droopy_actual_bed_temp.state }}°C

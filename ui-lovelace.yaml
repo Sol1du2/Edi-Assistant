@@ -199,8 +199,8 @@ views:
            - sensor.droopy_target_tool0_temp
            - sensor.droopy_target_bed_temp
            - sensor.droopy_job_percentage
-           - sensor.droopy_time_remaining
-           - sensor.droopy_time_elapsed
+           - sensor.droopy_remaining_pretty
+           - sensor.droopy_elapsed_pretty
   - path: monitoring
     title: "Monitoring"
     icon: mdi:monitor-eye
