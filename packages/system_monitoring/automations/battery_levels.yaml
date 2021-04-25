@@ -3,43 +3,43 @@
   trigger:
     - platform: numeric_state
       entity_id: sensor.living_room_switch_battery_level
-      below: 10
+      below: 5
     - platform: numeric_state
       entity_id: sensor.living_room_motion_light_sensor_battery_level
-      below: 10
+      below: 5
     - platform: numeric_state
       entity_id: sensor.cuby_battery_level
-      below: 10
+      below: 5
     - platform: numeric_state
       entity_id: sensor.kitchen_switch_battery_level
-      below: 10
+      below: 5
     - platform: numeric_state
       entity_id: sensor.balcony_switch_battery_level
-      below: 10
+      below: 5
     - platform: numeric_state
       entity_id: sensor.hall_switch_battery_level
-      below: 10
+      below: 5
     - platform: numeric_state
       entity_id: sensor.toilet_switch_battery_level
-      below: 10
+      below: 5
     - platform: numeric_state
       entity_id: sensor.bathroom_switch_battery_level
-      below: 10
+      below: 5
     - platform: numeric_state
       entity_id: sensor.office_switch_battery_level
-      below: 10
+      below: 5
     - platform: numeric_state
       entity_id: sensor.office_droopy_lamp_switch_battery_level
-      below: 10
+      below: 5
     - platform: numeric_state
       entity_id: sensor.office_work_desk_lamp_switch_battery_level
-      below: 10
+      below: 5
     - platform: numeric_state
       entity_id: sensor.office_motion_light_sensor_battery_level
-      below: 10
+      below: 5
     - platform: numeric_state
       entity_id: sensor.bedroom_switch_battery_level
-      below: 10
+      below: 5
   action:
     - service: notify.joao
       data_template:
