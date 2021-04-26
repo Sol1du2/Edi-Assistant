@@ -32,7 +32,7 @@
       data:
         target: "{{ trigger.event.data.chat_id }}"
         caption: 'Droopy''s snapshot!'
-        url: !secret octoprint_url_webcam
+        url: !secret octoprint_url_webcam_snapshot
 
 - id: turn_off_droopy_telegram
   alias: Turn off droopy with telegram

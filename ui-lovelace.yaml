@@ -213,6 +213,8 @@ views:
            - sensor.droopy_job_percentage
            - sensor.droopy_remaining_pretty
            - sensor.droopy_elapsed_pretty
+      - type: picture-entity
+        entity: camera.droopy_cam
   - path: monitoring
     title: "Monitoring"
     icon: mdi:monitor-eye
@@ -238,9 +240,9 @@ views:
           - sensor.hall_switch_battery_level
           - sensor.toilet_switch_battery_level
           - sensor.bathroom_switch_battery_level
+          - sensor.office_switch_battery_level
           - sensor.office_droopy_lamp_switch_battery_level
           - sensor.office_work_desk_lamp_switch_battery_level
-          - sensor.office_switch_battery_level
           - sensor.office_motion_light_sensor_battery_level
           - sensor.office_temperature_battery_level
           - sensor.filament_box_temperature_battery_level
