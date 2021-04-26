@@ -59,3 +59,12 @@ intent_script:
       text: Shutting down droopy
     action:
       service: script.safely_power_off_droopy
+  WantToDo:
+    speech:
+      text: What I'd really love to do is lick Harshit's balls
+  Dummy:
+    speech:
+      text: Sorry I don't understand what you're talking about
+  NotYou:
+    speech:
+      text: Sorry I thought you called me
