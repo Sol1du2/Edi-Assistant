@@ -12,13 +12,6 @@ views:
         show_forecast: true
       - type: shopping-list
         title: Shopping List
-      - type: history-graph
-        title: "Lux Graph"
-        entities:
-          - sensor.office_light_sensor
-          - sensor.living_room_light_sensor
-        hours_to_show: 24
-        refresh_interval: 10
   - path: lights
     title: House Lights
     icon: mdi:lightbulb-on-outline
@@ -215,6 +208,31 @@ views:
            - sensor.droopy_elapsed_pretty
       - type: picture-entity
         entity: camera.droopy_cam
+  - path: analytics
+    title: "Analytics"
+    icon: mdi:home-analytics
+    cards:
+      - type: history-graph
+        title: "Device Current Power Drain"
+        entities:
+          - sensor.droopy_power
+          - sensor.humidifier_power
+        hours_to_show: 24
+        refresh_interval: 60
+      - type: history-graph
+        title: "Device Power Consumption"
+        entities:
+          - sensor.droopy_consumption
+          - sensor.humidifier_consumption
+        hours_to_show: 24
+        refresh_interval: 60
+      - type: history-graph
+        title: "Lux Graph"
+        entities:
+          - sensor.office_light_sensor
+          - sensor.living_room_light_sensor
+        hours_to_show: 24
+        refresh_interval: 60
   - path: monitoring
     title: "Monitoring"
     icon: mdi:monitor-eye
