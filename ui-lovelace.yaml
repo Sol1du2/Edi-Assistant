@@ -12,68 +12,6 @@ views:
         show_forecast: true
       - type: shopping-list
         title: Shopping List
-      - type: vertical-stack
-        cards:
-          - type: grid
-            title: "Living Room"
-            columns: 2
-            cards:
-              - type: sensor
-                entity: sensor.living_room_temperature
-                name: "Temperature"
-                graph: line
-              - type: sensor
-                entity: sensor.living_room_humidity
-                name: "Humidity"
-                graph: line
-          - type: grid
-            title: "Bedroom"
-            columns: 2
-            cards:
-              - type: sensor
-                entity: sensor.bedroom_temperature
-                name: "Temperature"
-                graph: line
-              - type: sensor
-                entity: sensor.bedroom_humidity
-                name: "Humidity"
-                graph: line
-          - type: grid
-            title: "Office"
-            columns: 2
-            cards:
-              - type: sensor
-                entity: sensor.office_temperature
-                name: "Temperature"
-                graph: line
-              - type: sensor
-                entity: sensor.office_humidity
-                name: "Humidity"
-                graph: line
-          - type: grid
-            title: "Filament Box"
-            columns: 2
-            cards:
-              - type: sensor
-                entity: sensor.filament_box_temperature
-                name: "Temperature"
-                graph: line
-              - type: sensor
-                entity: sensor.filament_box_humidity
-                name: "Humidity"
-                graph: line
-          - type: grid
-            title: "Balcony"
-            columns: 2
-            cards:
-              - type: sensor
-                entity: sensor.balcony_temperature
-                name: "Temperature"
-                graph: line
-              - type: sensor
-                entity: sensor.balcony_humidity
-                name: "Humidity"
-                graph: line
       - type: history-graph
         title: "Lux Graph"
         entities:
@@ -161,6 +99,80 @@ views:
           - type: light
             entity: light.bedroom_lamp
             name: "Lamp"
+  - path: hvac
+    title: HVAC
+    icon: mdi:home-thermometer-outline
+    cards:
+      - type: vertical-stack
+        title: "Controllers"
+        cards:
+          - type: button
+            name: "Humidifier"
+            entity: switch.humidifier
+            icon: mdi:air-humidifier
+      - type: vertical-stack
+        title: "Sensors"
+        cards:
+          - type: grid
+            title: "Living Room"
+            columns: 2
+            cards:
+              - type: sensor
+                entity: sensor.living_room_temperature
+                name: "Temperature"
+                graph: line
+              - type: sensor
+                entity: sensor.living_room_humidity
+                name: "Humidity"
+                graph: line
+          - type: grid
+            title: "Bedroom"
+            columns: 2
+            cards:
+              - type: sensor
+                entity: sensor.bedroom_temperature
+                name: "Temperature"
+                graph: line
+              - type: sensor
+                entity: sensor.bedroom_humidity
+                name: "Humidity"
+                graph: line
+          - type: grid
+            title: "Office"
+            columns: 2
+            cards:
+              - type: sensor
+                entity: sensor.office_temperature
+                name: "Temperature"
+                graph: line
+              - type: sensor
+                entity: sensor.office_humidity
+                name: "Humidity"
+                graph: line
+          - type: grid
+            title: "Filament Box"
+            columns: 2
+            cards:
+              - type: sensor
+                entity: sensor.filament_box_temperature
+                name: "Temperature"
+                graph: line
+              - type: sensor
+                entity: sensor.filament_box_humidity
+                name: "Humidity"
+                graph: line
+          - type: grid
+            title: "Balcony"
+            columns: 2
+            cards:
+              - type: sensor
+                entity: sensor.balcony_temperature
+                name: "Temperature"
+                graph: line
+              - type: sensor
+                entity: sensor.balcony_humidity
+                name: "Humidity"
+                graph: line
   - path: printer
     title: 3D Printer
     icon: mdi:printer-3d
