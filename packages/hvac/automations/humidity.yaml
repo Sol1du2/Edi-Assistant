@@ -1,16 +1,19 @@
-- id: humidity_too_low
+- id: turn_on_humidifier_automation
   alias: Humidity too low notify and turn on humidifier
   trigger:
     - platform: numeric_state
-      entity_id: sensor.living_room_humidity
-      below: 43
-    - platform: numeric_state
-      entity_id: sensor.office_humidity
-      below: 43
-    - platform: numeric_state
-      entity_id: sensor.bedroom_humidity
-      below: 43
+      entity_id: 
+        - sensor.living_room_humidity
+        - sensor.office_humidity
+        - sensor.bedroom_humidity
+      below: 45
+  condition:
+    - condition: state
+      entity_id: switch.humidifier
+      state: "off"
   action:
+    - service: switch.turn_on
+      entity_id: switch.humidifier
     - service: notify.joao
       data_template:
         message: >
@@ -35,3 +38,35 @@
           {% else %}
             Strange entidy received in humidity trigger: {{ trigger.entity_id }}
           {% endif %}
+
+- id: turn_off_humidifier_automation
+  alias: Humidity at a good level turn off humidifier
+  trigger:
+    - platform: numeric_state
+      entity_id: 
+        - sensor.living_room_humidity
+        - sensor.office_humidity
+        - sensor.bedroom_humidity
+      above: 55
+  condition:
+    - condition: numeric_state
+      entity_id: sensor.living_room_humidity
+      above: 45
+    - condition: numeric_state
+      entity_id: sensor.office_humidity
+      above: 45
+    - condition: numeric_state
+      entity_id: sensor.bedroom_humidity
+      above: 45
+    - condition: state
+      entity_id: switch.humidifier
+      state: "off"
+  action:
+    - service: switch.turn_off
+      entity_id: switch.humidifier
+    - service: notify.joao
+      data:
+        message: Humidity's at a good level... Shutting down humidifier!
+    - service: notify.jelena
+      data:
+        message: Humidity's at a good level... Shutting down humidifier!
