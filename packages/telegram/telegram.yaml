@@ -12,3 +12,5 @@ notify:
   - name: jelena
     platform: telegram
     chat_id: !secret jelena_telegram_chat_id
+
+automation: !include_dir_merge_list automations/
