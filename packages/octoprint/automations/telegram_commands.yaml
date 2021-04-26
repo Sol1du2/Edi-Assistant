@@ -43,7 +43,7 @@
       command: '/droopy_off'
   action:
     - service: script.turn_on
-      entity_id: script.power_off_droopy
+      entity_id: script.safely_power_off_droopy
     - service: notify.joao
       data:
         message: 'Droopy shutdown initiated!'
