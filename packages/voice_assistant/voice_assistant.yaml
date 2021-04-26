@@ -3,7 +3,7 @@ intent:
 intent_script:
   GoodMorning:
     speech:
-      text: Top of the morning to ya
+      text: Good morning. Today you can expect an average temperature of {{ states.sensor.br_temperature_1d.state }} degrees and a chance of rain of {{ states.sensor.br_rainchance_1d.state }} percent
     action:
       service: light.turn_off
       entity_id: light.house_lights
