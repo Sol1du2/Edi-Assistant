@@ -15,5 +15,4 @@ sensor:
     unit_of_measurement: "ºC"
     value_template: '{{ value | multiply(0.001) }}'
 
-group: !include_dir_merge_named groups/
 automation: !include_dir_merge_list automations/
