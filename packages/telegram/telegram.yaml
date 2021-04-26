@@ -2,9 +2,13 @@ telegram_bot:
   - platform: polling
     api_key: !secret telegram_api_key
     allowed_chat_ids:
-      - !secret telegram_chat_id
+      - !secret joao_telegram_chat_id
+      - !secret jelena_telegram_chat_id
 
 notify:
   - name: joao
     platform: telegram
-    chat_id: !secret telegram_chat_id
+    chat_id: !secret joao_telegram_chat_id
+  - name: jelena
+    platform: telegram
+    chat_id: !secret jelena_telegram_chat_id

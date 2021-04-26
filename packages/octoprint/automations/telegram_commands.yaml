@@ -6,8 +6,9 @@
     event_data:
       command: '/droopy_status'
   action:
-    - service: notify.joao
+    - service: telegram_bot.send_message
       data_template:
+        target: "{{ trigger.event.data.chat_id }}"
         message: |
           *State:* {{ states.sensor.droopy_current_state.state }}
           *Job Percentage:* {{ states.sensor.droopy_job_percentage.state }}%
@@ -27,12 +28,11 @@
     event_data:
       command: '/droopy_snap'
   action:
-    - service: notify.joao
+    - service: telegram_bot.send_photo
       data:
-        message: 'Droopy''s snapshot!'
-        data:
-          photo:
-            - url: !secret octoprint_url_webcam
+        target: "{{ trigger.event.data.chat_id }}"
+        caption: 'Droopy''s snapshot!'
+        url: !secret octoprint_url_webcam
 
 - id: turn_off_droopy_telegram
   alias: Turn off droopy with telegram
@@ -44,8 +44,9 @@
   action:
     - service: script.turn_on
       entity_id: script.safely_power_off_droopy
-    - service: notify.joao
+    - service: telegram_bot.send_message
       data:
+        target: "{{ trigger.event.data.chat_id }}"
         message: 'Droopy shutdown initiated!'
 
 - id: emergency_droopy_telegram

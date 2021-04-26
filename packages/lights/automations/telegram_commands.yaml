@@ -6,8 +6,9 @@
     event_data:
       command: '/lights'
   action:
-    - service: notify.joao
+    - service: telegram_bot.send_message
       data_template:
+        target: "{{ trigger.event.data.chat_id }}"
         message: |
           *Living Room:*
             Ceiling Light 1: {{ states.light.living_room_ceiling_light_1.state }}
@@ -47,8 +48,9 @@
   action:
     - service: light.turn_on
       entity_id: light.house_lights
-    - service: notify.joao
+    - service: telegram_bot.send_message
       data:
+        target: "{{ trigger.event.data.chat_id }}"
         message: All lights on! It's a party!
 
 - id: house_lights_off_telegram
@@ -61,6 +63,7 @@
   action:
     - service: light.turn_off
       entity_id: light.house_lights
-    - service: notify.joao
+    - service: telegram_bot.send_message
       data:
+        target: "{{ trigger.event.data.chat_id }}"
         message: All lights off! Party's over!
