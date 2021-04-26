@@ -1,0 +1,37 @@
+- id: humidity_too_low
+  alias: Humidity too low notify and turn on humidifier
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.living_room_humidity
+      below: 43
+    - platform: numeric_state
+      entity_id: sensor.office_humidity
+      below: 43
+    - platform: numeric_state
+      entity_id: sensor.bedroom_humidity
+      below: 43
+  action:
+    - service: notify.joao
+      data_template:
+        message: >
+          {% if trigger.entity_id == "sensor.living_room_humidity" %}
+            The humidity in the living room is too low, starting humidifier... Please check if it has enough water.
+          {% elif trigger.entity_id == "sensor.office_humidity" %}
+            The humidity in the office is too low, starting humidifier... Please check if it has enough water.
+          {% elif trigger.entity_id == "sensor.bedroom_humidity" %}
+            The humidity in the bedroom is too low, starting humidifier... Please check if it has enough water.
+          {% else %}
+            Strange entity received in humidity trigger: {{ trigger.entity_id }}
+          {% endif %}
+    - service: notify.jelena
+      data_template:
+        message: >
+          {% if trigger.entity_id == "sensor.living_room_humidity" %}
+            The humidity in the living room is too low, starting humidifier... Please check if it has enough water.
+          {% elif trigger.entity_id == "sensor.office_humidity" %}
+            The humidity in the office is too low, starting humidifier... Please check if it has enough water.
+          {% elif trigger.entity_id == "sensor.bedroom_humidity" %}
+            The humidity in the kitchen is too low, starting humidifier... Please check if it has enough water.
+          {% else %}
+            Strange entidy received in humidity trigger: {{ trigger.entity_id }}
+          {% endif %}
