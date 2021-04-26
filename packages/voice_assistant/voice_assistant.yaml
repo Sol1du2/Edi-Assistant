@@ -26,10 +26,12 @@ intent_script:
           It's {{ states.sensor.bedroom_temperature.state }} degrees in the bedroom
         {% elif location == "office" %}
           It's {{ states.sensor.office_temperature.state }} degrees in the office
-        {% elif location == "filament container" %}
-          It's {{ states.sensor.pla_container_temperature.state }} degrees in the filament container
+        {% elif location == "balcony" %}
+          It's {{ states.sensor.balcony_temperature.state }} degrees outside
+        {% elif location == "filament box" %}
+          It's {{ states.sensor.filament_box_temperature.state }} degrees in the filament container
         {% else %}
-          I don't know where {{ location }} is
+          There is no temperature sensor in {{ location }}
         {% endif %}
   GetHumidity:
     speech:
@@ -40,10 +42,12 @@ intent_script:
           It's {{ states.sensor.bedroom_humidity.state }} percent in the bedroom
         {% elif location == "office" %}
           It's {{ states.sensor.office_humidity.state }} percent in the office
+        {% elif location == "balcony" %}
+          It's {{ states.sensor.balcony_humidity.state }} percent outside
         {% elif location == "filament container" %}
-          It's {{ states.sensor.pla_container_humidity.state }} percent in the filament container
+          It's {{ states.sensor.filament_box_humidity.state }} percent in the filament container
         {% else %}
-          I don't know where {{ location }} is
+          There is no humidity sensor in {{ location }}
         {% endif %}
   DroopyOn:
     speech:
