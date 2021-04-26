@@ -1,0 +1,14 @@
+- id: get_shopping_list_telegram
+  alias: Retrieve all shopping list items
+  trigger:
+    platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/shop'
+  action:
+    - service: telegram_bot.send_message
+      data_template:
+        target: "{{ trigger.event.data.chat_id }}"
+        message: |
+          Here's the items in your shopping list:
+          {{ states.sensor.shopping_list.state }}

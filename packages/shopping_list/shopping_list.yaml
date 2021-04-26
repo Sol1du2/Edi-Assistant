@@ -1,0 +1,6 @@
+sensor:    
+  - platform: command_line
+    name: shopping_list
+    command: /home/homeassistant/.homeassistant/python_scripts/shopping_list.py
+
+automation: !include_dir_merge_list automations/

@@ -12,4 +12,5 @@
         message: "Here's a list of commands you can use"
         keyboard:
           - "/lights, /lights_on, /lights_off"
+          - "/shop"
           - "/droopy_status, /droopy_snap, /droopy_off, /droopy_emergency"

@@ -15,6 +15,7 @@ homeassistant:
     lights: !include packages/lights/lights.yaml
     hvac: !include packages/hvac/hvac.yaml
     octoprint: !include packages/octoprint/octoprint.yaml
+    shopping_list: !include packages/shopping_list/shopping_list.yaml
     telegram: !include packages/telegram/telegram.yaml
     system_monitoring: !include packages/system_monitoring/system_monitoring.yaml
   customize: !include customize.yaml
