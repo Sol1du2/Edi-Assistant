@@ -5,9 +5,9 @@ import json
 with open('/home/homeassistant/.homeassistant/.shopping_list.json') as data_file:
     shoppingListData = json.load(data_file)
 
-content = u""
+result = u""
 for entry in shoppingListData:
     if not entry['complete']:
-        content += u"- %s\n" % entry['name']
+        result += u"- %s\n" % entry['name']
 
-print(content)
+print(result)
