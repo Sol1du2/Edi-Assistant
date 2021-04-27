@@ -92,6 +92,10 @@ views:
           - type: light
             entity: light.bedroom_lamp
             name: "Lamp"
+          - type: button
+            entity: switch.bedroom_nightstand_light
+            name: "Nightstand Lamp"
+            icon: mdi:lightbulb
   - path: hvac
     title: HVAC
     icon: mdi:home-thermometer-outline
