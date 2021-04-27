@@ -1,6 +1,8 @@
 sleep_mode:
   alias: Sleep Mode
   sequence:
+    - service: light.turn_off
+      entity_id: light.house_lights
     - service: light.turn_on
       data:
         entity_id: light.bedroom_lamp
@@ -9,16 +11,6 @@ sleep_mode:
       data:
         entity_id: light.hall_ceiling_light
         brightness: 125
-    - service: light.turn_off
-      entity_id: light.living_room_lights
-    - service: light.turn_off
-      entity_id: light.kitchen_lights
-    - service: light.turn_off
-      entity_id: light.balcony_lights
-    - service: light.turn_off
-      entity_id: light.office_lights
-    - service: light.turn_off
-      entity_id: light.bedroom_ceiling_light
 
 tv_mode:
   alias: TV Mode
