@@ -6,7 +6,7 @@
         - sensor.living_room_humidity
         - sensor.office_humidity
         - sensor.bedroom_humidity
-      below: 45
+      below: 40
   condition:
     - condition: state
       entity_id: switch.humidifier
@@ -47,17 +47,17 @@
         - sensor.living_room_humidity
         - sensor.office_humidity
         - sensor.bedroom_humidity
-      above: 55
+      above: 50
   condition:
     - condition: numeric_state
       entity_id: sensor.living_room_humidity
-      above: 45
+      above: 40
     - condition: numeric_state
       entity_id: sensor.office_humidity
-      above: 45
+      above: 40
     - condition: numeric_state
       entity_id: sensor.bedroom_humidity
-      above: 45
+      above: 40
     - condition: state
       entity_id: switch.humidifier
       state: "off"
