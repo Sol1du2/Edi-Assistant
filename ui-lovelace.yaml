@@ -57,6 +57,10 @@ views:
             entity: light.balcony_ceiling_light
             name: "Ceiling Light"
             icon: mdi:outdoor-lamp
+          - type: button
+            entity: switch.balcony_string_lights
+            name: "String Lights"
+            icon: mdi:string-lights
       - type: grid
         title: "Hallway"
         cards:

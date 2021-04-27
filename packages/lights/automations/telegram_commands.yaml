@@ -21,7 +21,7 @@
             Stove Light: {{ states.switch.kitchen_stove_light.state }}
           *Balcony:*
             Ceiling Light: {{ states.light.balcony_ceiling_light.state }}
-            Pretty Lights: NOT ADDED YET
+            String Lights: {{ states.light.balcony_string_lights.state }}
           *Hallway:*
             Ceiling Light: {{ states.light.hall_ceiling_light.state }}
           *Toilet:*
