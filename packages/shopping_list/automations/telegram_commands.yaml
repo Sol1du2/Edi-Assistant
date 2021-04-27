@@ -1,4 +1,4 @@
-- id: get_shopping_list_telegram
+- id: get_shopping_list_unchecked_telegram
   alias: Retrieve all shopping list items
   trigger:
     platform: event
@@ -10,5 +10,10 @@
       data_template:
         target: "{{ trigger.event.data.chat_id }}"
         message: |
-          Here's the items in your shopping list:
-          {{ states.sensor.shopping_list.state }}
+          {% set items = states.sensor.shopping_list_unchecked_items.state | string %}
+          {% if items == "" %}
+            The shopping list is empty 😔
+          {% else %}
+            Here's the items in your shopping list:
+            {{ states.sensor.shopping_list_unchecked_items.state }}
+          {% endif %}
