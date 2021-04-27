@@ -96,6 +96,14 @@ views:
             entity: switch.bedroom_nightstand_light
             name: "Nightstand Lamp"
             icon: mdi:lightbulb
+          - type: button
+            name: "Sleep Mode"
+            icon: mdi:bed-king-outline
+            tap_action:
+              action: call-service
+              service: script.turn_on
+              service_data:
+                entity_id: script.sleep_mode
   - path: hvac
     title: HVAC
     icon: mdi:home-thermometer-outline
