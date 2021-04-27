@@ -22,80 +22,96 @@ views:
           - type: light
             entity: light.living_room_ceiling_light_1
             name: "Ceiling Light 1"
+            icon: mdi:ceiling-light
           - type: light
             entity: light.living_room_ceiling_light_2
             name: "Ceiling Light 2"
+            icon: mdi:ceiling-light
           - type: light
             entity: light.fado_light
             name: "Fado Light"
+            icon: mdi:lamp
           - type: light
             entity: light.tv_lamp
             name: "TV Lamp"
+            icon: mdi:floor-lamp
           - type: light
             entity: light.corner_lamp
             name: "Corner Lamp"
+            icon: mdi:floor-lamp
       - type: grid
         title: "Kitchen"
         cards:
           - type: light
             entity: light.kitchen_ceiling_light
             name: "Ceiling Light"
+            icon: mdi:ceiling-light
           - type: button
             name: "Stove Light"
             entity: switch.kitchen_stove_light
-            icon: mdi:lightbulb
+            icon: mdi:stove
       - type: grid
         title: "Balcony"
         cards:
           - type: light
             entity: light.balcony_ceiling_light
             name: "Ceiling Light"
+            icon: mdi:outdoor-lamp
       - type: grid
         title: "Hallway"
         cards:
           - type: light
             entity: light.hall_ceiling_light
             name: "Ceiling Light"
+            icon: mdi:ceiling-light
       - type: grid
         title: "Toilet"
         cards:
           - type: light
             entity: light.toilet_ceiling_light
             name: "Toilet Light"
+            icon: mdi:ceiling-light
       - type: grid
         title: "Bathroom"
         cards:
           - type: light
             entity: light.bathroom_ceiling_light
             name: "Bathroom Light"
+            icon: mdi:ceiling-light
       - type: grid
         title: "Office"
         cards:
           - type: light
             entity: light.office_ceiling_light
             name: "Ceiling Light"
+            icon: mdi:ceiling-light
           - type: light
             entity: light.office_lamp
             name: "Lamp"
+            icon: mdi:floor-lamp
           - type: light
             entity: light.office_droopy_lamp
             name: "Droopy Lamp"
+            icon: mdi:desk-lamp
           - type: light
             entity: light.office_work_desk_lamp
             name: "Work Desk Lamp"
+            icon: mdi:desk-lamp
       - type: grid
         title: "Bedroom"
         cards:
           - type: light
             entity: light.bedroom_ceiling_light
             name: "Ceiling Light"
+            icon: mdi:ceiling-light
           - type: light
             entity: light.bedroom_lamp
             name: "Lamp"
+            icon: mdi:floor-lamp
           - type: button
             entity: switch.bedroom_nightstand_light
             name: "Nightstand Lamp"
-            icon: mdi:lightbulb
+            icon: mdi:lamp
           - type: button
             name: "Sleep Mode"
             icon: mdi:bed-king-outline
