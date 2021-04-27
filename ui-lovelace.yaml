@@ -294,3 +294,19 @@ views:
           - sensor.filament_box_temperature_battery_level
           - sensor.bedroom_switch_battery_level
           - sensor.bedroom_temperature_battery_level
+      - type: grid
+        title: "Battery Chargers"
+        columns: 3
+        cards:
+          - type: button
+            name: "Hota D6 Pro 1"
+            entity: switch.hota_d6_pro_1
+            icon: mdi:battery-heart-outline
+          - type: button
+            name: "Hota D6 Pro 2"
+            entity: switch.hota_d6_pro_2
+            icon: mdi:battery-heart-outline
+          - type: button
+            name: "Hota D6 Pro 3"
+            entity: switch.hota_d6_pro_3
+            icon: mdi:battery-heart-outline
