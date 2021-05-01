@@ -283,10 +283,10 @@ views:
           - sensor.living_room_switch_battery_level
           - sensor.cuby_battery_level
           - sensor.living_room_motion_light_sensor_battery_level
-          - sensor.living_room_temperature_battery_level
+          - sensor.living_room_climate_sensor_battery_level
           - sensor.kitchen_switch_battery_level
           - sensor.balcony_switch_battery_level
-          - sensor.balcony_temperature_battery_level
+          - sensor.balcony_climate_sensor_battery_level
           - sensor.hall_switch_battery_level
           - sensor.toilet_switch_battery_level
           - sensor.bathroom_switch_battery_level
@@ -294,10 +294,10 @@ views:
           - sensor.office_droopy_lamp_switch_battery_level
           - sensor.office_work_desk_lamp_switch_battery_level
           - sensor.office_motion_light_sensor_battery_level
-          - sensor.office_temperature_battery_level
-          - sensor.filament_box_temperature_battery_level
+          - sensor.office_climate_sensor_battery_level
+          - sensor.filament_box_climate_sensor_battery_level
           - sensor.bedroom_switch_battery_level
-          - sensor.bedroom_temperature_battery_level
+          - sensor.bedroom_climate_sensor_battery_level
       - type: grid
         title: "Battery Chargers"
         columns: 3
