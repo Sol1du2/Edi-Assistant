@@ -13,7 +13,7 @@
           *Living Room:*
             Ceiling Light 1: {{ states.light.living_room_ceiling_light_1.state }}
             Ceiling Light 2: {{ states.light.living_room_ceiling_light_2.state }}
-            Fado Lamp: {{ states.light.fado_light.state }}
+            Fado Lamp: {{ states.light.fado_lamp.state }}
             Corner Lamp: {{ states.light.corner_lamp.state }}
             TV Lamp: {{ states.light.tv_lamp.state }}
           *Kitchen:* 

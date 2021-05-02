@@ -29,7 +29,7 @@ views:
             icon: mdi:ceiling-light
           - type: light
             entity: light.fado_lamp
-            name: "Fado Light"
+            name: "Fado Lamp"
             icon: mdi:lamp
           - type: light
             entity: light.tv_lamp
