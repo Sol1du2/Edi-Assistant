@@ -1,0 +1,43 @@
+- id: closet_light_on_door_open
+  alias: Turn on Light when closet door opens
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.closet_door_sensor
+      from: "off"
+      to: "on"
+  action:
+    - service: light.turn_on
+      entity_id: light.closet_ceiling_light
+
+- id: closet_light_off_door_closed
+  alias: Turn off Light when closet door closes
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.closet_door_sensor
+      from: "on"
+      to: "off"
+  action:
+    - service: light.turn_off
+      entity_id: light.closet_ceiling_light
+
+- id: boiler_room_light_on_door_open
+  alias: Turn on Light when boilet room door opens
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.boiler_room_door_sensor
+      from: "off"
+      to: "on"
+  action:
+    - service: light.turn_on
+      entity_id: light.boiler_room_ceiling_light
+
+- id: boiler_room_light_off_door_closed
+  alias: Turn off Light when boiler room door closes
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.boiler_room_door_sensor
+      from: "on"
+      to: "off"
+  action:
+    - service: light.turn_off
+      entity_id: light.boiler_room_ceiling_light
