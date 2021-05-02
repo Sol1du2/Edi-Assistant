@@ -28,7 +28,7 @@ views:
             name: "Ceiling Light 2"
             icon: mdi:ceiling-light
           - type: light
-            entity: light.fado_light
+            entity: light.fado_lamp
             name: "Fado Light"
             icon: mdi:lamp
           - type: light
@@ -74,6 +74,20 @@ views:
           - type: light
             entity: light.toilet_ceiling_light
             name: "Toilet Light"
+            icon: mdi:ceiling-light
+      - type: grid
+        title: "Closet"
+        cards:
+          - type: light
+            entity: light.closet_ceiling_light
+            name: "Closet Light"
+            icon: mdi:ceiling-light
+      - type: grid
+        title: "Boiler Room"
+        cards:
+          - type: light
+            entity: light.boiler_room_ceiling_light
+            name: "Boiler Room Light"
             icon: mdi:ceiling-light
       - type: grid
         title: "Bathroom"
