@@ -60,7 +60,7 @@
       above: 40
     - condition: state
       entity_id: switch.humidifier
-      state: "off"
+      state: "on"
   action:
     - service: switch.turn_off
       entity_id: switch.humidifier
