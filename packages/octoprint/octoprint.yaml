@@ -88,7 +88,7 @@ sensor:
     name: OctoPi CPU Temperature
     command: !secret octoprint_cpu_temp_ssh
     unit_of_measurement: "ºC"
-    value_template: '{{ value | multiply(0.001) }}'
+    value_template: '{{ value | multiply(0.001) | round(1) }}'
 
 camera:
   - platform: mjpeg
