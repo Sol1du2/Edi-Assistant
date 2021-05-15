@@ -31,7 +31,7 @@ sensor:
   - platform: template
     sensors:
       droopy_power_status:
-        friendly_name: "Droopy Power"
+        friendly_name: "Droopy Power Status"
         icon_template: >-
           {% if is_state('input_boolean.droopy_shutting_down', 'on') %}
             mdi:power-plug-outline
