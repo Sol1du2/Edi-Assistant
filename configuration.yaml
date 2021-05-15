@@ -10,7 +10,6 @@ homeassistant:
   time_zone: !secret timezone
   packages:
     persons: !include packages/persons/persons.yaml
-    gateways: !include packages/gateways/gateways.yaml
     voice_assistant: !include packages/voice_assistant/voice_assistant.yaml
     lights: !include packages/lights/lights.yaml
     hvac: !include packages/hvac/hvac.yaml
