@@ -4,10 +4,5 @@ sensor:
       - type: processor_use
       - type: processor_temperature
       - type: memory_use_percent
-  - platform: command_line
-    name: Pi-hole CPU Temperature
-    command: !secret pi_hole_cpu_temp_ssh
-    unit_of_measurement: "ºC"
-    value_template: '{{ value | multiply(0.001) }}'
 
 automation: !include_dir_merge_list automations/
