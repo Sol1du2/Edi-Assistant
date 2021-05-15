@@ -241,10 +241,13 @@ views:
                   service: script.turn_on
                   service_data:
                     entity_id: script.emergency_power_off_droopy
+      - type: sensor
+        entity: sensor.octopi_cpu_temperature
+        name: "CPU Temperature"
+        graph: line
       - type: entities
         title: "Droopy Status"
         entities:
-           - sensor.octopi_cpu_temperature
            - sensor.droopy_current_state
            - sensor.droopy_actual_tool0_temp
            - sensor.droopy_actual_bed_temp
@@ -283,18 +286,28 @@ views:
   - path: monitoring
     title: "Monitoring"
     icon: mdi:monitor-eye
-    badges:
-      - entity: binary_sensor.updater
     cards:
-      - type: gauge
-        entity: sensor.processor_use_percent
-      - type: gauge
-        entity: sensor.memory_use_percent
-      - type: entities
-        title: "CPU Temperature of House Pis"
-        entities:
-          - sensor.processor_temperature
-          - sensor.pi_hole_cpu_temperature
+      - type: vertical-stack
+        cards:
+          - type: markdown
+            content: |
+              {% if is_state('binary_sensor.updater', 'on') %}
+                Version {{ state_attr('binary_sensor.updater', 'newest_version') }} is available. Release Notes: {{ state_attr('binary_sensor.updater', 'release_notes') }}
+              {% else %}
+                ## Edi is up-to-date <ha-icon icon="mdi:robot-happy-outline"></ha-icon>
+              {% endif %}
+          - type: grid
+            columns: 2
+            square: false
+            cards:
+              - type: gauge
+                entity: sensor.processor_use_percent
+              - type: gauge
+                entity: sensor.memory_use_percent
+          - type: sensor
+            entity: sensor.processor_temperature
+            name: "CPU Temperature"
+            graph: line
       - type: entities
         title: "Sensor Batteries"
         entities:
