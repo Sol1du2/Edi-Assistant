@@ -244,6 +244,7 @@ views:
       - type: entities
         title: "Droopy Status"
         entities:
+           - sensor.octopi_cpu_temperature
            - sensor.droopy_current_state
            - sensor.droopy_actual_tool0_temp
            - sensor.droopy_actual_bed_temp
@@ -294,7 +295,6 @@ views:
         entities:
           - sensor.processor_temperature
           - sensor.pi_hole_cpu_temperature
-          - sensor.octopi_cpu_temperature
       - type: entities
         title: "Sensor Batteries"
         entities:

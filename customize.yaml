@@ -60,3 +60,9 @@ sensor.filament_box_humidity:
 
 sensor.filament_box_pressure:
   friendly_name: Filament Container Pressure Sensor
+
+sensor.octopi_cpu_temperature:
+  icon: mdi:cpu-64-bit
+
+sensor.processor_temperature:
+  icon: mdi:cpu-64-bit

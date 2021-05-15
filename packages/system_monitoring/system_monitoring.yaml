@@ -9,10 +9,5 @@ sensor:
     command: !secret pi_hole_cpu_temp_ssh
     unit_of_measurement: "ºC"
     value_template: '{{ value | multiply(0.001) }}'
-  - platform: command_line
-    name: OctoPi CPU Temperature
-    command: !secret octoprint_cpu_temp_ssh
-    unit_of_measurement: "ºC"
-    value_template: '{{ value | multiply(0.001) }}'
 
 automation: !include_dir_merge_list automations/

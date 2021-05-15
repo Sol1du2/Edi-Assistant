@@ -84,6 +84,11 @@ sensor:
           {%- else -%}
             {{ seconds }} seconds
           {%- endif -%}
+  - platform: command_line
+    name: OctoPi CPU Temperature
+    command: !secret octoprint_cpu_temp_ssh
+    unit_of_measurement: "ºC"
+    value_template: '{{ value | multiply(0.001) }}'
 
 camera:
   - platform: mjpeg
