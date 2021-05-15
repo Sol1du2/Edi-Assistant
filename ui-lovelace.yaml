@@ -285,10 +285,14 @@ views:
     badges:
       - entity: binary_sensor.updater
     cards:
+      - type: gauge
+        entity: sensor.processor_use_percent
+      - type: gauge
+        entity: sensor.memory_use_percent
       - type: entities
         title: "CPU Temperature of House Pis"
         entities:
-          - sensor.edi_cpu_temperature
+          - sensor.processor_temperature
           - sensor.pi_hole_cpu_temperature
           - sensor.octopi_cpu_temperature
       - type: entities

@@ -1,9 +1,9 @@
 sensor:
-  - platform: command_line
-    name: EDI CPU Temperature
-    command: "/bin/cat /sys/class/thermal/thermal_zone0/temp"
-    unit_of_measurement: "ºC"
-    value_template: '{{ value | multiply(0.001) }}'  
+  - platform: systemmonitor
+    resources:
+      - type: processor_use
+      - type: processor_temperature
+      - type: memory_use_percent
   - platform: command_line
     name: Pi-hole CPU Temperature
     command: !secret pi_hole_cpu_temp_ssh
