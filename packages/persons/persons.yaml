@@ -1,10 +1,3 @@
-device_tracker:
-  - platform: bluetooth_le_tracker
-    interval_seconds: 20
-    track_battery: false
-    consider_home: 240
-    track_new_devices: false
-
 person:
   - name: João
     id: !secret joao_id
@@ -14,5 +7,18 @@ person:
     id: !secret jelena_id
     device_trackers:
       - device_tracker.tile_jelena
+
+sensor:        
+  - platform: mqtt
+    state_topic: 'monitor/presence/tile_joao'
+    value_template: '{{ value_json.confidence }}'
+    unit_of_measurement: '%'
+    name: 'Joao Occupancy Confidence'
+
+  - platform: mqtt
+    state_topic: 'monitor/presence/tile_jelena'
+    value_template: '{{ value_json.confidence }}'
+    unit_of_measurement: '%'
+    name: 'Jelena Occupancy Confidence'
 
 automation: !include_dir_merge_list automations/

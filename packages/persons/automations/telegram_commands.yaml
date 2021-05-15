@@ -1,0 +1,14 @@
+- id: send_occupancy_status
+  alias: Send the current occupancy status
+  trigger:
+    platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/occupancy'
+  action:
+    - service: telegram_bot.send_message
+      data_template:
+        target: "{{ trigger.event.data.chat_id }}"
+        message: |
+          *João:* {{ states.person.joao.state }}
+          *Jelena:* {{ states.person.jelena.state }}
