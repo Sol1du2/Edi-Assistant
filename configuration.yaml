@@ -28,6 +28,24 @@ conversation:
 # Records states to the db
 recorder:
 
+# Record some of our data to influxdb so it can be visualized in grafana
+influxdb:
+  host: !secret influxdb_host
+  port: !secret influxdb_port
+  username: !secret influxdb_username
+  password: !secret influxdb_password
+  precision: ms
+  include:
+    entities:
+      - sensor.droopy_power
+      - sensor.humidifier_power
+      - sensor.droopy_consumption
+      - sensor.humidifier_consumption
+      - sensor.office_light_sensor
+      - sensor.living_room_light_sensor
+      - binary_sensor.living_room_motion_sensor
+      - binary_sensor.office_motion_sensor
+
 weather:
   - platform: buienradar
     name: "Home"
