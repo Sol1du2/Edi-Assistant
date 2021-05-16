@@ -34,7 +34,6 @@ influxdb:
   port: !secret influxdb_port
   username: !secret influxdb_username
   password: !secret influxdb_password
-  precision: ms
   include:
     entities:
       - sensor.droopy_power
@@ -55,6 +54,27 @@ influxdb:
       - sensor.filament_box_humidity
       - sensor.balcony_temperature
       - sensor.balcony_humidity
+      - light.living_room_ceiling_light_1
+      - light.living_room_ceiling_light_2
+      - light.fado_lamp
+      - light.corner_lamp
+      - light.tv_lamp
+      - light.kitchen_ceiling_light
+      - light.balcony_ceiling_light
+      - light.hall_ceiling_light
+      - light.boiler_room_ceiling_light
+      - light.closet_ceiling_light
+      - light.toilet_ceiling_light
+      - light.bathroom_ceiling_light
+      - light.office_ceiling_light
+      - light.office_lamp
+      - light.office_droopy_lamp
+      - light.office_work_desk_lamp
+      - light.bedroom_ceiling_light
+      - light.bedroom_lamp
+      - switch.kitchen_stove_light
+      - switch.balcony_string_lights
+      - switch.bedroom_nightstand_light
 
 weather:
   - platform: buienradar
