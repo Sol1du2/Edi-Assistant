@@ -1,0 +1,21 @@
+- id: filament_box_humidity_too_high
+  alias: Humidity in the filament box is too high
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.filament_box_humidity
+      above: 45
+  action:
+    - service: notify.joao
+      data:
+        message: Warning! Humidity in the filament box is above 45%!
+
+- id: filament_box_humidity_very_high
+  alias: Humidity in the filament box is very high
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.filament_box_humidity
+      above: 50
+  action:
+    - service: notify.joao
+      data:
+        message: Warning! Humidity in the filament box is above 50%!
