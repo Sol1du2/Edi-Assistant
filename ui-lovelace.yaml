@@ -55,6 +55,26 @@ views:
             style:
               top: 74%
               left: 15%
+          - type: state-icon
+            entity: sensor.living_room_temperature
+            style:
+              top: 33%
+              left: 14%
+          - type: state-label
+            entity: sensor.living_room_temperature
+            style:
+              top: 33%
+              left: 20%
+          - type: state-icon
+            entity: sensor.living_room_humidity
+            style:
+              top: 39%
+              left: 14%
+          - type: state-label
+            entity: sensor.living_room_humidity
+            style:
+              top: 39%
+              left: 20%
           
           # Kitchen
           - type: state-icon
@@ -91,6 +111,26 @@ views:
             style:
               top: 83.5%
               left: 43%
+          - type: state-icon
+            entity: sensor.balcony_temperature
+            style:
+              top: 91%
+              left: 20%
+          - type: state-label
+            entity: sensor.balcony_temperature
+            style:
+              top: 91%
+              left: 26%
+          - type: state-icon
+            entity: sensor.balcony_humidity
+            style:
+              top: 97%
+              left: 20%
+          - type: state-label
+            entity: sensor.balcony_humidity
+            style:
+              top: 97%
+              left: 26%
           
           # Hallway
           - type: state-icon
@@ -175,6 +215,26 @@ views:
             style:
               top: 36%
               left: 74%
+          - type: state-icon
+            entity: sensor.office_temperature
+            style:
+              top: 7%
+              left: 70%
+          - type: state-label
+            entity: sensor.office_temperature
+            style:
+              top: 7%
+              left: 76%
+          - type: state-icon
+            entity: sensor.office_humidity
+            style:
+              top: 13%
+              left: 70%
+          - type: state-label
+            entity: sensor.office_humidity
+            style:
+              top: 13%
+              left: 76%
 
           # Bedroom
           - type: state-icon
@@ -201,6 +261,26 @@ views:
             style:
               top: 74%
               left: 77%
+          - type: state-icon
+            entity: sensor.bedroom_temperature
+            style:
+              top: 87%
+              left: 75%
+          - type: state-label
+            entity: sensor.bedroom_temperature
+            style:
+              top: 87%
+              left: 81%
+          - type: state-icon
+            entity: sensor.bedroom_humidity
+            style:
+              top: 93%
+              left: 75%
+          - type: state-label
+            entity: sensor.bedroom_humidity
+            style:
+              top: 93%
+              left: 81%
 
       - type: shopping-list
         title: Shopping List
