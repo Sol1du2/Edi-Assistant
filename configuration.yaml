@@ -45,6 +45,16 @@ influxdb:
       - sensor.living_room_light_sensor
       - binary_sensor.living_room_motion_sensor
       - binary_sensor.office_motion_sensor
+      - sensor.living_room_temperature
+      - sensor.living_room_humidity
+      - sensor.bedroom_temperature
+      - sensor.bedroom_humidity
+      - sensor.office_temperature
+      - sensor.office_humidity
+      - sensor.filament_box_temperature
+      - sensor.filament_box_humidity
+      - sensor.balcony_temperature
+      - sensor.balcony_humidity
 
 weather:
   - platform: buienradar
