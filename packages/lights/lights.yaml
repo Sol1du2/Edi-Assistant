@@ -1,3 +1,85 @@
+light:
+  - platform: switch
+    name: Kitchen Stove Light
+    entity_id: switch.kitchen_stove_light
+  - platform: switch
+    name: Balcony String Lights
+    entity_id: switch.balcony_string_lights
+  - platform: switch
+    name: Bedroom Nightstand Light
+    entity_id: switch.bedroom_nightstand_light
+
+  - platform: group
+    name: Living Room Lights
+    entities:
+      - light.living_room_ceiling_light_1
+      - light.living_room_ceiling_light_2
+      - light.fado_lamp
+      - light.corner_lamp
+      - light.tv_lamp
+  - platform: group
+    name: Living Room Lamps
+    entities:
+      - light.fado_lamp
+      - light.corner_lamp
+      - light.tv_lamp
+  - platform: group
+    name: Kitchen Lights
+    entities:
+      - light.kitchen_ceiling_light
+      - light.kitchen_stove_light
+  - platform: group
+    name: Balcony Lights
+    entities:
+      - light.balcony_ceiling_light
+      - light.balcony_string_lights
+  - platform: group
+    name: Hall Lights
+    entities:
+      - light.hall_ceiling_light
+  - platform: group
+    name: Boiler Room Lights
+    entities:
+      - light.boiler_room_ceiling_light
+  - platform: group
+    name: Closet Lights
+    entities:
+      - light.closet_ceiling_light
+  - platform: group
+    name: Toilet Lights
+    entities:
+      - light.toilet_ceiling_light
+  - platform: group
+    name: Bathroom Lights
+    entities:
+      - light.bathroom_ceiling_light
+  - platform: group
+    name: Office Lights
+    entities:
+      - light.office_ceiling_light
+      - light.office_lamp
+      - light.office_droopy_lamp
+      - light.office_work_desk_lamp
+  - platform: group
+    name: Bedroom Lights
+    entities:
+      - light.bedroom_ceiling_light
+      - light.bedroom_lamp
+      - light.bedroom_nightstand_light
+  - platform: group
+    name: House Lights
+    entities:
+      - light.living_room_lights
+      - light.kitchen_lights
+      - light.balcony_lights
+      - light.hall_lights
+      - light.boiler_room_lights
+      - light.closet_lights
+      - light.toilet_lights
+      - light.bathroom_lights
+      - light.office_lights
+      - light.bedroom_lights
+
 group: !include_dir_merge_named groups/
 automation: !include_dir_merge_list automations/
 script: !include_dir_merge_named scripts/
