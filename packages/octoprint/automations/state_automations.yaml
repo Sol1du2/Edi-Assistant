@@ -32,3 +32,17 @@
     - service: notify.joao
       data:
         message: Droopy has been idle for 14 minutes and will shutdown in 1 minute.
+
+- id: notify_job_finished
+  alias: Notifies when a print job is finished
+  trigger:
+    - platform: state
+      entity_id: sensor.droopy_current_state
+      from: "Printing"
+  action:
+    - service: notify.joao
+      data:
+        message: Droopy's job has finished!
+        data:
+          photo:
+            - url: !secret octoprint_url_webcam_snapshot
