@@ -43,7 +43,7 @@
   action:
     - service: notify.joao
       data:
-        message: Droopy's job has finished!
         data:
           photo:
             - url: !secret octoprint_url_webcam_snapshot
+              caption: "Droopy's job has finished!"
