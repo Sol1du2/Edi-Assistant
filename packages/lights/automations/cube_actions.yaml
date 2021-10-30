@@ -1,6 +1,6 @@
 # Double tap Cube
-- id: cuby_set_tv_mode
-  alias: Set tv mode in the living room
+- id: cuby_toggle_kitchen_lights
+  alias: Toggle kitchen lights on double tap cuby
   trigger:
     - platform: event
       event_type: deconz_event
@@ -12,11 +12,12 @@
     - condition: template
       value_template: "{{ (trigger.event.data.gesture)|int != '' }}"
   action:
-    - service: script.tv_mode
+    - service: light.toggle
+      entity_id: light.kitchen_lights
 
 # Shake Cube
-- id: cuby_turn_on_living_room_lamps
-  alias: Turn on living room lamps and turn off ceiling lights
+- id: cuby_set_tv_mode
+  alias: Set tv mode in the living room
   trigger:
     - platform: event
       event_type: deconz_event
@@ -28,8 +29,7 @@
     - condition: template
       value_template: "{{ (trigger.event.data.gesture)|int != '' }}"
   action:
-    - service: light.toggle
-      entity_id: light.kitchen_lights
+    - service: script.tv_mode
 
 # Rotate Cube 90 degrees
 - id: cuby_turn_on_living_room
