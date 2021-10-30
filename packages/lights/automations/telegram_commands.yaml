@@ -15,7 +15,6 @@
             Ceiling Light 2: {{ states.light.living_room_ceiling_light_2.state }}
             Fado Lamp: {{ states.light.fado_lamp.state }}
             Corner Lamp: {{ states.light.corner_lamp.state }}
-            TV Lamp: {{ states.light.tv_lamp.state }}
           *Kitchen:* 
             Ceiling Light: {{ states.light.kitchen_ceiling_light.state }}
             Stove Light: {{ states.switch.kitchen_stove_light.state }}

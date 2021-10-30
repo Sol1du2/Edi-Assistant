@@ -48,14 +48,6 @@ views:
               top: 50%
               left: 14%
           - type: state-icon
-            icon: mdi:floor-lamp
-            tap_action:
-              action: toggle
-            entity: light.tv_lamp
-            style:
-              top: 74%
-              left: 15%
-          - type: state-icon
             entity: sensor.living_room_temperature
             style:
               top: 33%
@@ -303,10 +295,6 @@ views:
             entity: light.fado_lamp
             name: "Fado Lamp"
             icon: mdi:lamp
-          - type: light
-            entity: light.tv_lamp
-            name: "TV Lamp"
-            icon: mdi:floor-lamp
           - type: light
             entity: light.corner_lamp
             name: "Corner Lamp"

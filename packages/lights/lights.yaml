@@ -16,7 +16,6 @@ light:
       - light.living_room_ceiling_light_2
       - light.fado_lamp
       - light.corner_lamp
-      - light.tv_lamp
   - platform: group
     name: Living Room Ceiling Lights
     entities:
@@ -27,7 +26,6 @@ light:
     entities:
       - light.fado_lamp
       - light.corner_lamp
-      - light.tv_lamp
   - platform: group
     name: Kitchen Lights
     entities:

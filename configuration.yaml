@@ -58,7 +58,6 @@ influxdb:
       - light.living_room_ceiling_light_2
       - light.fado_lamp
       - light.corner_lamp
-      - light.tv_lamp
       - light.kitchen_ceiling_light
       - light.balcony_ceiling_light
       - light.hall_ceiling_light
