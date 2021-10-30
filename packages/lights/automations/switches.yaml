@@ -77,40 +77,6 @@
     - service: light.turn_off
       entity_id: light.office_work_desk_lamp
 
-- id: office_switch_brightness_up
-  alias: 'Increase brightness of lights in office'
-  initial_state: 'on'
-  trigger:
-    platform: event
-    event_type: deconz_event
-    event_data:
-      id: office_switch
-      event: 1003
-  action:
-    - service: light.turn_on
-      data_template:
-        entity_id: light.office_lights
-        brightness: >
-          {% set bri = state_attr('light.office_lights', 'brightness') | int %}
-          {{ [bri+50, 249] | min }}
-
-- id: office_switch_brightness_down
-  alias: 'Decrease brightness of lights in office'
-  initial_state: 'on'
-  trigger:
-    platform: event
-    event_type: deconz_event
-    event_data:
-      id: office_switch
-      event: 2003
-  action:
-    - service: light.turn_on
-      data_template:
-        entity_id: light.office_lights
-        brightness: >
-          {% set bri = state_attr('light.office_lights', 'brightness') | int %}
-          {{ [bri-50, 0] | max }}
-
 # Living room
 - id: living_room_switch_turn_on_lights
   alias: Switch turn on lights in the living room
@@ -137,40 +103,6 @@
   action:
     - service: light.turn_off
       entity_id: light.living_room_lights
-
-- id: living_room_switch_brightness_up
-  alias: 'Increase brightness of lights in living room'
-  initial_state: 'on'
-  trigger:
-    platform: event
-    event_type: deconz_event
-    event_data:
-      id: living_room_switch
-      event: 1003
-  action:
-    - service: light.turn_on
-      data_template:
-        entity_id: light.living_room_lights
-        brightness: >
-          {% set bri = state_attr('light.living_room_lights', 'brightness') | int %}
-          {{ [bri+50, 249] | min }}
-
-- id: living_room_switch_brightness_down
-  alias: 'Decrease brightness of lights in living room'
-  initial_state: 'on'
-  trigger:
-    platform: event
-    event_type: deconz_event
-    event_data:
-      id: living_room_switch
-      event: 2003
-  action:
-    - service: light.turn_on
-      data_template:
-        entity_id: light.living_room_lights
-        brightness: >
-          {% set bri = state_attr('light.living_room_lights', 'brightness') | int %}
-          {{ [bri-50, 0] | max }}
 
 # Kitchen
 - id: kitchen_switch_turn_on_lights
@@ -252,40 +184,6 @@
   action:
     - service: light.turn_off
       entity_id: light.hall_ceiling_light
-
-- id: hall_switch_brightness_up
-  alias: 'Increase brightness of lights in the hall'
-  initial_state: 'on'
-  trigger:
-    platform: event
-    event_type: deconz_event
-    event_data:
-      id: hall_switch
-      event: 1003
-  action:
-    - service: light.turn_on
-      data_template:
-        entity_id: light.hall_ceiling_light
-        brightness: >
-          {% set bri = state_attr('light.hall_ceiling_light', 'brightness') | int %}
-          {{ [bri+50, 249] | min }}
-
-- id: hall_switch_brightness_down
-  alias: 'Decrease brightness of lights in the hall'
-  initial_state: 'on'
-  trigger:
-    platform: event
-    event_type: deconz_event
-    event_data:
-      id: hall_switch
-      event: 2003
-  action:
-    - service: light.turn_on
-      data_template:
-        entity_id: light.hall_ceiling_light
-        brightness: >
-          {% set bri = state_attr('light.hall_ceiling_light', 'brightness') | int %}
-          {{ [bri-50, 0] | max }}
 
 # Toilet
 - id: toilet_switch_turn_on_lights
