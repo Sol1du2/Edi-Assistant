@@ -18,6 +18,11 @@ light:
       - light.corner_lamp
       - light.tv_lamp
   - platform: group
+    name: Living Room Ceiling Lights
+    entities:
+      - light.living_room_ceiling_light_1
+      - light.living_room_ceiling_light_2
+  - platform: group
     name: Living Room Lamps
     entities:
       - light.fado_lamp
