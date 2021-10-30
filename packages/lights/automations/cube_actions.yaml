@@ -28,10 +28,8 @@
     - condition: template
       value_template: "{{ (trigger.event.data.gesture)|int != '' }}"
   action:
-    - service: light.turn_off
-      entity_id: light.living_room_ceiling_lights
-    - service: light.turn_on
-      entity_id: light.living_room_lamps
+    - service: light.toggle
+      entity_id: light.kitchen_lights
 
 # Rotate Cube 90 degrees
 - id: cuby_turn_on_living_room
@@ -83,20 +81,3 @@
   action:
     - service: light.toggle
       entity_id: light.living_room_ceiling_lights
-
-# Push Cube on surface
-- id: cuby_toggle_kitchen_lights
-  alias: Toggle the kitchen lights
-  trigger:
-    - platform: event
-      event_type: deconz_event
-      event_data:
-        id: cuby
-        gesture: 5
-  # The wake event has no gesture data, which triggers all of them
-  condition:
-    - condition: template
-      value_template: "{{ (trigger.event.data.gesture)|int != '' }}"
-  action:
-    - service: light.toggle
-      entity_id: light.kitchen_lights
