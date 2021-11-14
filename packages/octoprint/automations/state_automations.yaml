@@ -2,7 +2,7 @@
   alias: Automatically shutdown droopy when inactive for a while
   trigger:
     - platform: state
-      entity_id: sensor.droopy_current_state
+      entity_id: sensor.octoprint_current_state
       to: "Operational"
       for: "00:15:00"
   action:

@@ -19,7 +19,7 @@ safely_power_off_droopy:
         - condition: not
           conditions:
             - condition: state
-              entity_id: sensor.droopy_current_state
+              entity_id: sensor.octoprint_current_state
               state: "Printing"
     - service: input_boolean.turn_on
       data:

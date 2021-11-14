@@ -508,14 +508,15 @@ views:
       - type: entities
         title: "Droopy Status"
         entities:
-           - sensor.droopy_current_state
-           - sensor.droopy_actual_tool0_temp
-           - sensor.droopy_actual_bed_temp
-           - sensor.droopy_target_tool0_temp
-           - sensor.droopy_target_bed_temp
-           - sensor.droopy_job_percentage
-           - sensor.droopy_remaining_pretty
-           - sensor.droopy_elapsed_pretty
+           - sensor.octoprint_current_state
+           - sensor.octoprint_actual_tool0_temp
+           - sensor.octoprint_actual_bed_temp
+           - sensor.octoprint_target_tool0_temp
+           - sensor.octoprint_target_bed_temp
+           - sensor.octoprint_job_percentage
+           - sensor.droopy_est_total_time
+           - sensor.droopy_est_remaining_time
+           - sensor.droopy_est_finish_time_local
       - type: picture-entity
         entity: camera.droopy_cam
   - path: analytics

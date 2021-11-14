@@ -10,15 +10,16 @@
       data_template:
         target: "{{ trigger.event.data.chat_id }}"
         message: |
-          *State:* {{ states.sensor.droopy_current_state.state }}
-          *Job Percentage:* {{ states.sensor.droopy_job_percentage.state }}%
-          *Remaining Time:* {{ states.sensor.droopy_remaining_pretty.state }}
-          *Elapsed Time:* {{ states.sensor.droopy_elapsed_pretty.state }}
+          *State:* {{ states.sensor.octoprint_current_state.state }}
+          *Job Percentage:* {{ states.sensor.octoprint_job_percentage.state }}%
+          *Total Time (Estimated):* {{ states.sensor.droopy_est_total_time.state }}
+          *Remaining Time (Estimated):* {{ states.sensor.droopy_est_remaining_time.state }}
+          *Finish Time (Estimated):* {{ states.sensor.droopy_est_finish_time_local.state }}
 
-          *Tool Temp:* {{ states.sensor.droopy_actual_tool0_temp.state }}°C
-          *Bed Temp:* {{ states.sensor.droopy_actual_bed_temp.state }}°C
-          *Target Tool Temp:* {{ states.sensor.droopy_target_tool0_temp.state }}°C
-          *Target Bed Temp:* {{ states.sensor.droopy_target_bed_temp.state }}°C
+          *Tool Temp:* {{ states.sensor.octoprint_actual_tool0_temp.state }}°C
+          *Bed Temp:* {{ states.sensor.octoprint_actual_bed_temp.state }}°C
+          *Target Tool Temp:* {{ states.sensor.octoprint_target_tool0_temp.state }}°C
+          *Target Bed Temp:* {{ states.sensor.octoprint_target_bed_temp.state }}°C
 
 - id: send_droopy_snapshot_telegram
   alias: Send a snapshot of droopy's camera

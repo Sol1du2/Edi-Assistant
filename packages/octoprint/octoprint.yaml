@@ -1,21 +1,3 @@
-octoprint:
-  host: !secret octoprint_host
-  api_key: !secret octoprint_api_key
-  name: Droopy
-  number_of_tools: 1
-  bed: true
-  sensors:
-    monitored_conditions:
-      - 'Current State'
-      - 'Temperatures'      
-      - 'Job Percentage'
-      - 'Time Elapsed'
-      - 'Time Remaining'
-  binary_sensors:
-    monitored_conditions:
-      - 'Printing'
-      - 'Printing Error'
-
 shell_command:
   shutdown_octoprint: !secret octoprint_shutdown_ssh
 
@@ -48,42 +30,25 @@ sensor:
           {% else %}
             Off
           {% endif %}
-      droopy_elapsed_pretty:
-        friendly_name: "Time Elapsed"
-        icon_template: mdi:clock-start
-        value_template: >-
-          {% set time = states.sensor.droopy_time_elapsed.state | int %}
-          {% set seconds = (time % 60) | int %}
-          {% set minutes = ((time % 3600) / 60) | int %}
-          {% set hours = ((time % 86400) / 3600) | int %}
-          {% set days = (time / 86400) | int %}
-          {%- if days > 0 -%}
-            {{ days }} days, {{ hours }} hours, {{ minutes }} minutes, {{ seconds }} seconds
-          {%- elif hours > 0 -%}
-            {{ hours }} hours, {{ minutes }} minutes, {{ seconds }} seconds
-          {%- elif minutes > 0 -%}
-            {{ minutes }} minutes, {{ seconds }} seconds
-          {%- else -%}
-            {{ seconds }} seconds
-          {%- endif -%}
-      droopy_remaining_pretty:
-        friendly_name: "Time Remaining"
+      droopy_est_total_time:
+        friendly_name: "Total Time (Estimated)"
         icon_template: mdi:clock-end
         value_template: >-
-          {% set time = states.sensor.droopy_time_remaining.state | int %}
-          {% set seconds = (time % 60) | int %}
-          {% set minutes = ((time % 3600) / 60) | int %}
-          {% set hours = ((time % 86400) / 3600) | int %}
-          {% set days = (time / 86400) | int %}
-          {%- if days > 0 -%}
-            {{ days }} days, {{ hours }} hours, {{ minutes }} minutes, {{ seconds }} seconds
-          {%- elif hours > 0 -%}
-            {{ hours }} hours, {{ minutes }} minutes, {{ seconds }} seconds
-          {%- elif minutes > 0 -%}
-            {{ minutes }} minutes, {{ seconds }} seconds
-          {%- else -%}
-            {{ seconds }} seconds
-          {%- endif -%}
+          {% set start = as_datetime(states.sensor.octoprint_start_time.state) %}
+          {% set finish = as_datetime(states.sensor.octoprint_estimated_finish_time.state) %}
+          {{ finish - start }}
+      droopy_est_finish_time_local:
+        friendly_name: "Finish Time (Estimated)"
+        icon_template: mdi:clock-end
+        value_template: >-
+          {% set finish = as_datetime(states.sensor.octoprint_estimated_finish_time.state) %}
+          {{ as_local(finish) }}
+      droopy_est_remaining_time:
+        friendly_name: "Remaining Time (Estimated)"
+        icon_template: mdi:clock-end
+        value_template: >-
+          {% set finish = as_datetime(states.sensor.octoprint_estimated_finish_time.state) %}
+          {{ finish - now() }}
   - platform: command_line
     name: OctoPi CPU Temperature
     command: !secret octoprint_cpu_temp_ssh

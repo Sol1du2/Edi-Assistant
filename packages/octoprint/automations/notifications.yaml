@@ -14,7 +14,7 @@
   alias: Warn when droopy is idle for 10 minutes
   trigger:
     - platform: state
-      entity_id: sensor.droopy_current_state
+      entity_id: sensor.octoprint_current_state
       to: "Operational"
       for: "00:10:00"
   action:
@@ -26,7 +26,7 @@
   alias: Warn when droopy is idle for 14 minutes
   trigger:
     - platform: state
-      entity_id: sensor.droopy_current_state
+      entity_id: sensor.octoprint_current_state
       to: "Operational"
       for: "00:14:00"
   action:
@@ -38,7 +38,7 @@
   alias: Notifies when a print job is finished
   trigger:
     - platform: state
-      entity_id: sensor.droopy_current_state
+      entity_id: sensor.octoprint_current_state
       from: "Printing"
   action:
     - service: notify.joao
