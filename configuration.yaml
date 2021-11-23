@@ -75,28 +75,6 @@ influxdb:
       - switch.balcony_string_lights
       - switch.bedroom_nightstand_light
 
-weather:
-  - platform: buienradar
-    name: "Home"
-    latitude: !secret home_latitude
-    longitude: !secret home_longitude
-    forecast: true
-
-# Sensors
-sensor: 
-  - platform: buienradar
-    timeframe: 120
-    monitored_conditions:
-      - conditionexact
-      - humidity
-      - temperature
-      - windspeed
-      - winddirection
-      - precipitation_forecast_total
-      - temperature_1d
-      - rain_1d
-      - rainchance_1d
-
 # Text to speech
 tts:
   - platform: google_translate
