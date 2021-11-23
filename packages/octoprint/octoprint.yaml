@@ -34,21 +34,33 @@ sensor:
         friendly_name: "Total Time (Estimated)"
         icon_template: mdi:clock-end
         value_template: >-
-          {% set start = as_datetime(states.sensor.octoprint_start_time.state) %}
-          {% set finish = as_datetime(states.sensor.octoprint_estimated_finish_time.state) %}
-          {{ finish - start }}
+          {% if not is_state('sensor.octoprint_start_time', 'unavailable') %}
+            {% set start = as_datetime(states.sensor.octoprint_start_time.state) %}
+            {% set finish = as_datetime(states.sensor.octoprint_estimated_finish_time.state) %}
+            {{ finish - start }}
+          {% else %}
+            unavailable
+          {% endif %}
       droopy_est_finish_time_local:
         friendly_name: "Finish Time (Estimated)"
         icon_template: mdi:clock-end
         value_template: >-
-          {% set finish = as_datetime(states.sensor.octoprint_estimated_finish_time.state) %}
-          {{ as_local(finish) }}
+          {% if not is_state('sensor.octoprint_estimated_finish_time', 'unavailable') %}
+            {% set finish = as_datetime(states.sensor.octoprint_estimated_finish_time.state) %}
+            {{ as_local(finish) }}
+          {% else %}
+            unavailable
+          {% endif %}
       droopy_est_remaining_time:
         friendly_name: "Remaining Time (Estimated)"
         icon_template: mdi:clock-end
         value_template: >-
-          {% set finish = as_datetime(states.sensor.octoprint_estimated_finish_time.state) %}
-          {{ finish - now() }}
+          {% if not is_state('sensor.octoprint_estimated_finish_time', 'unavailable') %}
+            {% set finish = as_datetime(states.sensor.octoprint_estimated_finish_time.state) %}
+            {{ finish - now() }}
+          {% else %}
+            unavailable
+          {% endif %}
   - platform: command_line
     name: OctoPi CPU Temperature
     command: !secret octoprint_cpu_temp_ssh
