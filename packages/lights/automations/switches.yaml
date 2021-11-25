@@ -1,280 +1,610 @@
-# Office
-- id: office_switch_turn_on_lights
-  alias: Switch turn on lights in the office
+# ------------------ OPPLE Switches ---------------------
+- id: switch_turn_on_lights_opple
   initial_state: 'on'
   trigger:
-    platform: event
-    event_type: deconz_event
-    event_data:
-      id: office_switch
-      event: 1002
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: office_opple_switch
+        event: 2002
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: living_room_opple_switch
+        event: 2002
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: kitchen_opple_switch
+        event: 2002
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: balcony_opple_switch
+        event: 2002
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: hall_opple_switch
+        event: 2002
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: toilet_opple_switch
+        event: 2002
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: bathroom_opple_switch
+        event: 2002
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: bedroom_opple_switch
+        event: 2002
   action:
     - service: light.turn_on
-      entity_id: light.office_lights
+      data_template:
+        entity_id: > 
+          {% if trigger.event.data.id == 'office_opple_switch' %} 
+            light.office_lights
+          {% elif trigger.event.data.id == 'living_room_opple_switch' %}
+            light.living_room_lights
+          {% elif trigger.event.data.id == 'kitchen_opple_switch' %}
+            light.kitchen_lights
+          {% elif trigger.event.data.id == 'balcony_opple_switch' %}
+            light.balcony_lights
+          {% elif trigger.event.data.id == 'hall_opple_switch' %}
+            light.hall_lights
+          {% elif trigger.event.data.id == 'toilet_opple_switch' %}
+            light.toilet_lights
+          {% elif trigger.event.data.id == 'bathroom_opple_switch' %}
+            light.bathroom_lights
+          {% elif trigger.event.data.id == 'bedroom_opple_switch' %}
+            light.bedroom_lights
+          {% endif %}
 
-- id: office_switch_turn_off_lights
-  alias: Switch turn off lights in the office
+- id: switch_turn_off_lights_opple
   initial_state: 'on'
   trigger:
-    platform: event
-    event_type: deconz_event
-    event_data:
-      id: office_switch
-      event: 2002
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: office_opple_switch
+        event: 1002
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: living_room_opple_switch
+        event: 1002
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: kitchen_opple_switch
+        event: 1002
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: balcony_opple_switch
+        event: 1002
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: hall_opple_switch
+        event: 1002
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: toilet_opple_switch
+        event: 1002
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: bathroom_opple_switch
+        event: 1002
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: bedroom_opple_switch
+        event: 1002
   action:
     - service: light.turn_off
-      entity_id: light.office_lights
+      data_template:
+        entity_id: > 
+          {% if trigger.event.data.id == 'office_opple_switch' %} 
+            light.office_lights
+          {% elif trigger.event.data.id == 'living_room_opple_switch' %}
+            light.living_room_lights
+          {% elif trigger.event.data.id == 'kitchen_opple_switch' %}
+            light.kitchen_lights
+          {% elif trigger.event.data.id == 'balcony_opple_switch' %}
+            light.balcony_lights
+          {% elif trigger.event.data.id == 'hall_opple_switch' %}
+            light.hall_lights
+          {% elif trigger.event.data.id == 'toilet_opple_switch' %}
+            light.toilet_lights
+          {% elif trigger.event.data.id == 'bathroom_opple_switch' %}
+            light.bathroom_lights
+          {% elif trigger.event.data.id == 'bedroom_opple_switch' %}
+            light.bedroom_lights
+          {% endif %}
 
-- id: office_switch_turn_on_droopy_lamp
-  alias: Switch turn on droopy lamp in the office
+- id: office_switch_brightness_up_lights_opple
   initial_state: 'on'
   trigger:
-    platform: event
-    event_type: deconz_event
-    event_data:
-      id: office_droopy_lamp_switch
-      event: 1002
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: office_opple_switch
+        event: 4002
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: living_room_opple_switch
+        event: 4002
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: kitchen_opple_switch
+        event: 4002
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: balcony_opple_switch
+        event: 4002
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: hall_opple_switch
+        event: 4002
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: toilet_opple_switch
+        event: 4002
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: bathroom_opple_switch
+        event: 4002
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: bedroom_opple_switch
+        event: 4002
   action:
     - service: light.turn_on
-      entity_id: light.office_droopy_lamp
+      data:
+        entity_id: > 
+          {% if trigger.event.data.id == 'office_opple_switch' %} 
+            light.office_lights
+          {% elif trigger.event.data.id == 'living_room_opple_switch' %}
+            light.living_room_lights
+          {% elif trigger.event.data.id == 'kitchen_opple_switch' %}
+            light.kitchen_lights
+          {% elif trigger.event.data.id == 'balcony_opple_switch' %}
+            light.balcony_lights
+          {% elif trigger.event.data.id == 'hall_opple_switch' %}
+            light.hall_lights
+          {% elif trigger.event.data.id == 'toilet_opple_switch' %}
+            light.toilet_lights
+          {% elif trigger.event.data.id == 'bathroom_opple_switch' %}
+            light.bathroom_lights
+          {% elif trigger.event.data.id == 'bedroom_opple_switch' %}
+            light.bedroom_lights
+          {% endif %}
+        brightness: >
+          {% if trigger.event.data.id == 'office_opple_switch' %}
+            {% set light = 'light.office_lights' %}
+          {% elif trigger.event.data.id == 'living_room_opple_switch' %}
+            {% set light = 'light.living_room_lights' %}
+          {% elif trigger.event.data.id == 'kitchen_opple_switch' %}
+            {% set light = 'light.kitchen_lights' %}
+          {% elif trigger.event.data.id == 'balcony_opple_switch' %}
+            {% set light = 'light.balcony_lights' %}
+          {% elif trigger.event.data.id == 'hall_opple_switch' %}
+            {% set light = 'light.hall_lights' %}
+          {% elif trigger.event.data.id == 'toilet_opple_switch' %}
+            {% set light = 'light.toilet_lights' %}
+          {% elif trigger.event.data.id == 'bathroom_opple_switch' %}
+            {% set light = 'light.bathroom_lights' %}
+          {% elif trigger.event.data.id == 'bedroom_opple_switch' %}
+            {% set light = 'light.bedroom_lights' %}
+          {% endif %}
+          {% set bri = state_attr(light, 'brightness') | int %}
+          {{ [bri+30, 249] | min }}
 
-- id: office_switch_turn_off_droopy_lamp
-  alias: Switch turn off droopy lamp in the office
+- id: switch_brightness_down_lights_opple
   initial_state: 'on'
   trigger:
-    platform: event
-    event_type: deconz_event
-    event_data:
-      id: office_droopy_lamp_switch
-      event: 2002
-  action:
-    - service: light.turn_off
-      entity_id: light.office_droopy_lamp
-
-- id: office_switch_turn_on_work_desk_lamp
-  alias: Switch turn on work desk lamp in the office
-  initial_state: 'on'
-  trigger:
-    platform: event
-    event_type: deconz_event
-    event_data:
-      id: office_work_desk_lamp_switch
-      event: 1002
-  action:
-    - service: light.turn_on
-      entity_id: light.office_work_desk_lamp
-
-- id: office_switch_turn_off_work_desk_lamp
-  alias: Switch turn off work desk lamp in the office
-  initial_state: 'on'
-  trigger:
-    platform: event
-    event_type: deconz_event
-    event_data:
-      id: office_work_desk_lamp_switch
-      event: 2002
-  action:
-    - service: light.turn_off
-      entity_id: light.office_work_desk_lamp
-
-# Living room
-- id: living_room_switch_turn_on_lights
-  alias: Switch turn on lights in the living room
-  initial_state: 'on'
-  trigger:
-    platform: event
-    event_type: deconz_event
-    event_data:
-      id: living_room_switch
-      event: 1002
-  action:
-    - service: light.turn_on
-      entity_id: light.living_room_lights
-
-- id: living_room_switch_turn_off_lights
-  alias: Switch turn off lights in the living room
-  initial_state: 'on'
-  trigger:
-    platform: event
-    event_type: deconz_event
-    event_data:
-      id: living_room_switch
-      event: 2002
-  action:
-    - service: light.turn_off
-      entity_id: light.living_room_lights
-
-# Kitchen
-- id: kitchen_switch_turn_on_lights
-  alias: Switch turn on lights in the kitchen
-  initial_state: 'on'
-  trigger:
-    platform: event
-    event_type: deconz_event
-    event_data:
-      id: kitchen_switch
-      event: 1002
-  action:
-    - service: light.turn_on
-      entity_id: light.kitchen_lights
-
-- id: kitchen_switch_turn_off_lights
-  alias: Switch turn off lights in the kitchen
-  initial_state: 'on'
-  trigger:
-    platform: event
-    event_type: deconz_event
-    event_data:
-      id: kitchen_switch
-      event: 2002
-  action:
-    - service: light.turn_off
-      entity_id: light.kitchen_lights
-
-# Balcony
-- id: balcony_switch_turn_on_lights
-  alias: Switch turn on lights in the balcony
-  initial_state: 'on'
-  trigger:
-    platform: event
-    event_type: deconz_event
-    event_data:
-      id: balcony_switch
-      event: 1002
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: office_opple_switch
+        event: 3002
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: living_room_opple_switch
+        event: 3002
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: kitchen_opple_switch
+        event: 3002
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: balcony_opple_switch
+        event: 3002
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: hall_opple_switch
+        event: 3002
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: toilet_opple_switch
+        event: 3002
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: bathroom_opple_switch
+        event: 3002
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: bedroom_opple_switch
+        event: 3002
   action:
     - service: light.turn_on
-      entity_id: light.balcony_lights
+      data_template:
+        entity_id: >
+          {% if trigger.event.data.id == 'office_opple_switch' %} 
+            light.office_lights
+          {% elif trigger.event.data.id == 'living_room_opple_switch' %}
+            light.living_room_lights
+          {% elif trigger.event.data.id == 'kitchen_opple_switch' %}
+            light.kitchen_lights
+          {% elif trigger.event.data.id == 'balcony_opple_switch' %}
+            light.balcony_lights
+          {% elif trigger.event.data.id == 'hall_opple_switch' %}
+            light.hall_lights
+          {% elif trigger.event.data.id == 'toilet_opple_switch' %}
+            light.toilet_lights
+          {% elif trigger.event.data.id == 'bathroom_opple_switch' %}
+            light.bathroom_lights
+          {% elif trigger.event.data.id == 'bedroom_opple_switch' %}
+            light.bedroom_lights
+          {% endif %}
+        brightness: >
+          {% if trigger.event.data.id == 'office_opple_switch' %}
+            {% set light = 'light.office_lights' %}
+          {% elif trigger.event.data.id == 'living_room_opple_switch' %}
+            {% set light = 'light.living_room_lights' %}
+          {% elif trigger.event.data.id == 'kitchen_opple_switch' %}
+            {% set light = 'light.kitchen_lights' %}
+          {% elif trigger.event.data.id == 'balcony_opple_switch' %}
+            {% set light = 'light.balcony_lights' %}
+          {% elif trigger.event.data.id == 'hall_opple_switch' %}
+            {% set light = 'light.hall_lights' %}
+          {% elif trigger.event.data.id == 'toilet_opple_switch' %}
+            {% set light = 'light.toilet_lights' %}
+          {% elif trigger.event.data.id == 'bathroom_opple_switch' %}
+            {% set light = 'light.bathroom_lights' %}
+          {% elif trigger.event.data.id == 'bedroom_opple_switch' %}
+            {% set light = 'light.bedroom_lights' %}
+          {% endif %}
+          {% set bri = state_attr(light, 'brightness') | int %}
+          {{ [bri-30, 0] | max }}
 
-- id: balcony_switch_turn_off_lights
-  alias: Switch turn off lights in the balcony
+- id: switch_brightness_maximum_opple
   initial_state: 'on'
   trigger:
-    platform: event
-    event_type: deconz_event
-    event_data:
-      id: balcony_switch
-      event: 2002
-  action:
-    - service: light.turn_off
-      entity_id: light.balcony_lights
-
-# Hall
-- id: hall_switch_turn_on_lights
-  alias: Switch turn on lights in the hall
-  initial_state: 'on'
-  trigger:
-    platform: event
-    event_type: deconz_event
-    event_data:
-      id: hall_switch
-      event: 1002
-  action:
-    - service: light.turn_on
-      entity_id: light.hall_ceiling_light
-
-- id: hall_switch_turn_off_lights
-  alias: Switch turn off lights in the hall
-  initial_state: 'on'
-  trigger:
-    platform: event
-    event_type: deconz_event
-    event_data:
-      id: hall_switch
-      event: 2002
-  action:
-    - service: light.turn_off
-      entity_id: light.hall_ceiling_light
-
-# Toilet
-- id: toilet_switch_turn_on_lights
-  alias: Switch turn on lights in the toilet
-  initial_state: 'on'
-  trigger:
-    platform: event
-    event_type: deconz_event
-    event_data:
-      id: toilet_switch
-      event: 1002
-  action:
-    - service: light.turn_on
-      entity_id: light.toilet_ceiling_light
-
-- id: toilet_switch_turn_off_lights
-  alias: Switch turn off lights in the toilet
-  initial_state: 'on'
-  trigger:
-    platform: event
-    event_type: deconz_event
-    event_data:
-      id: toilet_switch
-      event: 2002
-  action:
-    - service: light.turn_off
-      entity_id: light.toilet_ceiling_light
-
-# Bathroom
-- id: bathroom_switch_turn_on_lights
-  alias: Switch turn on lights in the bathroom
-  initial_state: 'on'
-  trigger:
-    platform: event
-    event_type: deconz_event
-    event_data:
-      id: bathroom_switch
-      event: 1002
-  action:
-    - service: light.turn_on
-      entity_id: light.bathroom_ceiling_light
-
-- id: bathroom_switch_turn_off_lights
-  alias: Switch turn off lights in the bathroom
-  initial_state: 'on'
-  trigger:
-    platform: event
-    event_type: deconz_event
-    event_data:
-      id: bathroom_switch
-      event: 2002
-  action:
-    - service: light.turn_off
-      entity_id: light.bathroom_ceiling_light
-
-# Bedroom
-- id: bedroom_switch_turn_on_lights
-  alias: Switch turn on lights in the bedroom
-  initial_state: 'on'
-  trigger:
-    platform: event
-    event_type: deconz_event
-    event_data:
-      id: bedroom_switch
-      event: 1002
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: office_opple_switch
+        event: 4001
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: living_room_opple_switch
+        event: 4001
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: kitchen_opple_switch
+        event: 4001
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: balcony_opple_switch
+        event: 4001
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: hall_opple_switch
+        event: 4001
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: toilet_opple_switch
+        event: 4001
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: bathroom_opple_switch
+        event: 4001
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: bedroom_opple_switch
+        event: 4001
   action:
     - service: light.turn_on
-      entity_id: light.bedroom_lights
+      data_template:
+        entity_id: > 
+          {% if trigger.event.data.id == 'office_opple_switch' %} 
+            light.office_lights
+          {% elif trigger.event.data.id == 'living_room_opple_switch' %}
+            light.living_room_lights
+          {% elif trigger.event.data.id == 'kitchen_opple_switch' %}
+            light.kitchen_lights
+          {% elif trigger.event.data.id == 'balcony_opple_switch' %}
+            light.balcony_lights
+          {% elif trigger.event.data.id == 'hall_opple_switch' %}
+            light.hall_lights
+          {% elif trigger.event.data.id == 'toilet_opple_switch' %}
+            light.toilet_lights
+          {% elif trigger.event.data.id == 'bathroom_opple_switch' %}
+            light.bathroom_lights
+          {% elif trigger.event.data.id == 'bedroom_opple_switch' %}
+            light.bedroom_lights
+          {% endif %}
+        brightness: 250
 
-- id: bedroom_switch_turn_off_lights
-  alias: Switch turn off lights in the bedroom
+- id: switch_brightness_minium_opple
   initial_state: 'on'
   trigger:
-    platform: event
-    event_type: deconz_event
-    event_data:
-      id: bedroom_switch
-      event: 2002
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: office_opple_switch
+        event: 3001
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: living_room_opple_switch
+        event: 3001
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: kitchen_opple_switch
+        event: 3001
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: balcony_opple_switch
+        event: 3001
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: hall_opple_switch
+        event: 3001
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: toilet_opple_switch
+        event: 3001
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: bathroom_opple_switch
+        event: 3001
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: bedroom_opple_switch
+        event: 3001
   action:
-    - service: light.turn_off
-      entity_id: light.bedroom_lights
+    - service: light.turn_on
+      data_template:
+        entity_id: > 
+          {% if trigger.event.data.id == 'office_opple_switch' %} 
+            light.office_lights
+          {% elif trigger.event.data.id == 'living_room_opple_switch' %}
+            light.living_room_lights
+          {% elif trigger.event.data.id == 'kitchen_opple_switch' %}
+            light.kitchen_lights
+          {% elif trigger.event.data.id == 'balcony_opple_switch' %}
+            light.balcony_lights
+          {% elif trigger.event.data.id == 'hall_opple_switch' %}
+            light.hall_lights
+          {% elif trigger.event.data.id == 'toilet_opple_switch' %}
+            light.toilet_lights
+          {% elif trigger.event.data.id == 'bathroom_opple_switch' %}
+            light.bathroom_lights
+          {% elif trigger.event.data.id == 'bedroom_opple_switch' %}
+            light.bedroom_lights
+          {% endif %}
+        brightness: 1
 
-- id: switch_sleep_mode
-  alias: Switch activate sleep mode
+- id: switch_color_temp_up_opple
+  initial_state: 'on'
+  trigger:
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: office_opple_switch
+        event: 6002
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: living_room_opple_switch
+        event: 6002
+  action:
+    - service: light.turn_on
+      data_template:
+        entity_id: > 
+          {% if trigger.event.data.id == 'office_opple_switch' %} 
+            light.office_lights
+          {% elif trigger.event.data.id == 'living_room_opple_switch' %}
+            light.living_room_lights
+          {% endif %}
+        color_temp: >
+          {% if trigger.event.data.id == 'office_opple_switch' %}
+            {% set temp = state_attr('light.office_lights', 'color_temp') | int %}
+          {% elif trigger.event.data.id == 'living_room_opple_switch' %}
+            {% set temp = state_attr('light.living_room_lights', 'color_temp') | int %}
+          {% endif %}
+          {{ [temp+30, 500] | min }}
+
+- id: switch_color_temp_down_opple
+  initial_state: 'on'
+  trigger:
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: office_opple_switch
+        event: 5002
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: living_room_opple_switch
+        event: 5002
+  action:
+    - service: light.turn_on
+      data_template:
+        entity_id: > 
+          {% if trigger.event.data.id == 'office_opple_switch' %} 
+            light.office_lights
+          {% elif trigger.event.data.id == 'living_room_opple_switch' %}
+            light.living_room_lights
+          {% endif %}
+        color_temp: >
+          {% if trigger.event.data.id == 'office_opple_switch' %}
+            {% set temp = state_attr('light.office_lights', 'color_temp') | int %}
+          {% elif trigger.event.data.id == 'living_room_opple_switch' %}
+            {% set temp = state_attr('light.living_room_lights', 'color_temp') | int %}
+          {% endif %}
+          {{ [temp-30, 153] | max }}
+
+- id: opple_bedroom_switch_house_sleep_mode
   initial_state: 'on'
   trigger:
     platform: event
     event_type: deconz_event
     event_data:
-      id: bedroom_switch
-      event: 2003
+      id: bedroom_opple_switch
+      event: 1001
   action:
     - service: script.turn_on
       entity_id: script.sleep_mode
+
+- id: opple_bedroom_switch_bed_sleep_mode
+  initial_state: 'on'
+  trigger:
+    platform: event
+    event_type: deconz_event
+    event_data:
+      id: bedroom_opple_switch
+      event: 2001
+  action:
+    - service: light.turn_off
+      entity_id: light.bedroom_lights
+    - service: light.turn_on
+      data:
+        entity_id: light.bedroom_lamp
+        brightness: 1
+
+# ------------------ IKEA Switches ---------------------
+
+- id: ikea_switch_turn_on_lights
+  initial_state: 'on'
+  trigger:
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: office_ikea_switch
+        event: 1002
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: office_droopy_lamp_switch
+        event: 1002
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: office_work_desk_lamp_switch
+        event: 1002
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: kitchen_ikea_switch
+        event: 1002
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: bedroom_ikea_switch
+        event: 1002
+  action:
+    - service: light.turn_on
+      data_template:
+        entity_id: >
+          {% if trigger.event.data.id == 'office_ikea_switch' %} 
+            light.office_lights
+          {% elif trigger.event.data.id == 'office_droopy_lamp_switch' %}
+            light.office_droopy_lamp
+          {% elif trigger.event.data.id == 'office_work_desk_lamp_switch' %}
+            light.office_work_desk_lamp
+          {% elif trigger.event.data.id == 'kitchen_ikea_switch' %}
+            light.kitchen_stove_light
+          {% elif trigger.event.data.id == 'bedroom_ikea_switch' %}
+            light.bedroom_lights
+          {% endif %}
+
+- id: ikea_switch_turn_off_lights
+  initial_state: 'on'
+  trigger:
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: office_ikea_switch
+        event: 2002
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: office_droopy_lamp_switch
+        event: 2002
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: office_work_desk_lamp_switch
+        event: 2002
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: kitchen_ikea_switch
+        event: 2002
+    - platform: event
+      event_type: deconz_event
+      event_data:
+        id: bedroom_ikea_switch
+        event: 2002
+  action:
+    - service: light.turn_off
+      data_template:
+        entity_id: >
+          {% if trigger.event.data.id == 'office_ikea_switch' %} 
+            light.office_lights
+          {% elif trigger.event.data.id == 'office_droopy_lamp_switch' %}
+            light.office_droopy_lamp
+          {% elif trigger.event.data.id == 'office_work_desk_lamp_switch' %}
+            light.office_work_desk_lamp
+          {% elif trigger.event.data.id == 'kitchen_ikea_switch' %}
+            light.kitchen_stove_light
+          {% elif trigger.event.data.id == 'bedroom_ikea_switch' %}
+            light.bedroom_lights
+          {% endif %}
