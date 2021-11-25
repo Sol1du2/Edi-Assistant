@@ -1,47 +1,63 @@
-- id: notify_joao_home
-  alias: "Notify when João gets home"
+- id: notify_person_home
   trigger:
     - platform: state
       entity_id: person.joao
       from: 'not_home'
       to: 'home'
+    - platform: state
+      entity_id: person.jelena
+      from: 'not_home'
+      to: 'home'
+    - platform: state
+      entity_id: person.guest1
+      from: 'not_home'
+      to: 'home'
+    - platform: state
+      entity_id: person.guest2
+      from: 'not_home'
+      to: 'home'
   action:
     - service: notify.joao
-      data:
-        message: "João just got home!"
+      data_template:
+        message: >
+          {% if trigger.entity_id == "person.joao" %}
+            João just got home!
+          {% elif trigger.entity_id == "person.jelena" %}
+            Jelena just got home!
+          {% elif trigger.entity_id == "person.guest1" %}
+            Guest 1 just got home!
+          {% elif trigger.entity_id == "person.guest2" %}
+            Guest 2 just got home!
+          {% endif %}
 
-- id: notify_joao_away
-  alias: "Notify when João leaves the house"
+- id: notify_person_away
   trigger:
     - platform: state
       entity_id: person.joao
       from: 'home'
       to: 'not_home'
-  action:
-    - service: notify.joao
-      data:
-        message: "João just left the house!"
-
-- id: notify_jelena_home
-  alias: "Notify when Jelena gets home"
-  trigger:
-    - platform: state
-      entity_id: person.jelena
-      from: 'not_home'
-      to: 'home'
-  action:
-    - service: notify.joao
-      data:
-        message: "Jelena just got home!"
-
-- id: notify_jelena_away
-  alias: "Notify when Jelena leaves the house"
-  trigger:
     - platform: state
       entity_id: person.jelena
       from: 'home'
       to: 'not_home'
+    - platform: state
+      entity_id: person.guest1
+      from: 'home'
+      to: 'not_home'
+    - platform: state
+      entity_id: person.guest2
+      from: 'home'
+      to: 'not_home'
   action:
     - service: notify.joao
-      data:
-        message: "Jelena just left the house!"
+      data_template:
+        message: >
+          {% if trigger.entity_id == "person.joao" %}
+            João just left the house!
+          {% elif trigger.entity_id == "person.jelena" %}
+            Jelena just left the house!
+          {% elif trigger.entity_id == "person.guest1" %}
+            Guest 1 just left the house!
+          {% elif trigger.entity_id == "person.guest2" %}
+            Guest 2 just left the house!
+          {% endif %}

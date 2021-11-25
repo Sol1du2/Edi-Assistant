@@ -1,3 +1,14 @@
+device_tracker:
+  - platform: mqtt
+    devices:
+      tile_joao: "bouncer/presence/tile_joao"
+      tile_jelena: "bouncer/presence/tile_jelena"
+      tile_guest1: "bouncer/presence/tile_guest1"
+      tile_guest2: "bouncer/presence/tile_guest2"
+    qos: 0
+    payload_home: "home"
+    payload_not_home: "not_home"
+
 person:
   - name: João
     id: !secret joao_id
@@ -7,18 +18,13 @@ person:
     id: !secret jelena_id
     device_trackers:
       - device_tracker.tile_jelena
-
-sensor:        
-  - platform: mqtt
-    state_topic: 'monitor/presence/tile_joao'
-    value_template: '{{ value_json.confidence }}'
-    unit_of_measurement: '%'
-    name: 'Joao Occupancy Confidence'
-
-  - platform: mqtt
-    state_topic: 'monitor/presence/tile_jelena'
-    value_template: '{{ value_json.confidence }}'
-    unit_of_measurement: '%'
-    name: 'Jelena Occupancy Confidence'
+  - name: Guest1
+    id: guest1id1234
+    device_trackers:
+      - device_tracker.tile_guest1
+  - name: Guest2
+    id: guest2id1234
+    device_trackers:
+      - device_tracker.tile_guest2
 
 automation: !include_dir_merge_list automations/

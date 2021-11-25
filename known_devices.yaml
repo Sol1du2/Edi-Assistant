@@ -12,16 +12,31 @@ tile_jelena:
   picture: /local/jelena.jpg
   track: true
 
+tile_guest1:
+  hide_if_away: false
+  mac: 'BLE_EB:2B:B5:EE:62:D9'
+  name: 'Guest1'
+  picture: /local/gender-neutral-user.png
+  track: true
+
+tile_guest2:
+  hide_if_away: false
+  mac: 'BLE_D5:68:49:4B:43:E4'
+  name: 'Guest2'
+  picture: /local/gender-neutral-user.png
+  track: true
+
+# Legacy tags, leave for recording purposes only
 itag_joao:
   hide_if_away: false
   mac: BLE_FF:FF:C4:0B:83:E1
   name: 'João'
   picture: /local/joao.JPG
-  track: true
+  track: false
 
 itag_jelena:
   hide_if_away: false
   mac: BLE_FF:FF:C4:00:1F:4C
   name: 'Jelena'
   picture: /local/jelena.jpg
-  track: true
+  track: false

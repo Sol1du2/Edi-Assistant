@@ -1,5 +1,4 @@
 - id: send_occupancy_status
-  alias: Send the current occupancy status
   trigger:
     platform: event
     event_type: telegram_command
@@ -10,5 +9,7 @@
       data_template:
         target: "{{ trigger.event.data.chat_id }}"
         message: |
-          *João:* {{ states.person.joao.state }}
-          *Jelena:* {{ states.person.jelena.state }}
+          *João:* {{ states('person.joao') | regex_replace(find='_', replace=' ')}}
+          *Jelena:* {{ states('person.jelena') | regex_replace(find='_', replace=' ') }}
+          *Guest1:* {{ states('person.guest1') | regex_replace(find='_', replace=' ') }}
+          *Guest2:* {{ states('person.guest2') | regex_replace(find='_', replace=' ') }}
