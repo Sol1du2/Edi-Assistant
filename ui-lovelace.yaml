@@ -1,15 +1,19 @@
 title: EDI-Habitat
 views:
   - path: default_view
+    type: sidebar
     title: "Home"
     icon: mdi:home
-    badges:
-      - entity: person.joao
-      - entity: person.jelena
     cards:
-      - type: weather-forecast
-        entity: weather.home
-        show_forecast: true
+      - type: glance
+        title: Human Presence
+        entities:
+          - person.joao
+          - person.jelena
+          - person.guest1
+          - person.guest2
+        view_layout:
+          position: sidebar
 
       - type: picture-elements
         image: http://192.168.1.20:8123/local/floor-plan.svg
@@ -274,8 +278,16 @@ views:
               top: 93%
               left: 81%
 
+      - type: weather-forecast
+        entity: weather.home
+        show_forecast: true
+        view_layout:
+          position: sidebar
+
       - type: shopping-list
         title: Shopping List
+        view_layout:
+          position: sidebar
   - path: lights
     title: House Lights
     icon: mdi:lightbulb-on-outline
