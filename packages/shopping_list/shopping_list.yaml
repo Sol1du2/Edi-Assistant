@@ -1,6 +1,6 @@
 sensor:    
   - platform: command_line
     name: shopping_list_unchecked_items
-    command: /config/python_scripts/print_unchecked_shopping_list_items.py
+    command: /config/external_scripts/print_unchecked_shopping_list_items.py
 
 automation: !include_dir_merge_list automations/
