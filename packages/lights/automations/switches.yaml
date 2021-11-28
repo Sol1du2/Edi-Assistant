@@ -211,7 +211,7 @@
           {% elif trigger.event.data.id == 'bedroom_opple_switch' %}
             {% set light = 'light.bedroom_lights' %}
           {% endif %}
-          {% set bri = state_attr(light, 'brightness') | int %}
+          {% set bri = state_attr(light, 'brightness') | int(0) %}
           {{ [bri+30, 249] | min }}
 
 - id: switch_brightness_down_lights_opple
@@ -296,7 +296,7 @@
           {% elif trigger.event.data.id == 'bedroom_opple_switch' %}
             {% set light = 'light.bedroom_lights' %}
           {% endif %}
-          {% set bri = state_attr(light, 'brightness') | int %}
+          {% set bri = state_attr(light, 'brightness') | int(0) %}
           {{ [bri-30, 0] | max }}
 
 - id: switch_brightness_maximum_opple
@@ -455,9 +455,9 @@
           {% endif %}
         color_temp: >
           {% if trigger.event.data.id == 'office_opple_switch' %}
-            {% set temp = state_attr('light.office_lights', 'color_temp') | int %}
+            {% set temp = state_attr('light.office_lights', 'color_temp') | int(0) %}
           {% elif trigger.event.data.id == 'living_room_opple_switch' %}
-            {% set temp = state_attr('light.living_room_lights', 'color_temp') | int %}
+            {% set temp = state_attr('light.living_room_lights', 'color_temp') | int(0) %}
           {% endif %}
           {{ [temp+30, 500] | min }}
 
@@ -485,9 +485,9 @@
           {% endif %}
         color_temp: >
           {% if trigger.event.data.id == 'office_opple_switch' %}
-            {% set temp = state_attr('light.office_lights', 'color_temp') | int %}
+            {% set temp = state_attr('light.office_lights', 'color_temp') | int(0) %}
           {% elif trigger.event.data.id == 'living_room_opple_switch' %}
-            {% set temp = state_attr('light.living_room_lights', 'color_temp') | int %}
+            {% set temp = state_attr('light.living_room_lights', 'color_temp') | int(0) %}
           {% endif %}
           {{ [temp-30, 153] | max }}
 
