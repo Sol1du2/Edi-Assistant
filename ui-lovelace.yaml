@@ -417,6 +417,8 @@ views:
       - type: vertical-stack
         title: "Controllers"
         cards:
+          - type: thermostat
+            entity: climate.warmy
           - type: button
             name: "Humidifier"
             entity: switch.humidifier
