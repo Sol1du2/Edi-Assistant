@@ -584,26 +584,35 @@ views:
             name: "CPU Temperature"
             graph: line
       - type: entities
-        title: "Sensor Batteries"
+        title: "Switch Batteries"
         entities:
-          - sensor.living_room_switch_battery_level
+          - sensor.living_room_opple_switch_battery_level
           - sensor.cuby_battery_level
-          - sensor.living_room_motion_light_sensor_battery_level
-          - sensor.living_room_climate_sensor_battery_level
+          - sensor.kitchen_opple_switch_battery_level
           - sensor.kitchen_switch_battery_level
-          - sensor.balcony_switch_battery_level
-          - sensor.balcony_climate_sensor_battery_level
-          - sensor.hall_switch_battery_level
-          - sensor.toilet_switch_battery_level
-          - sensor.bathroom_switch_battery_level
+          - sensor.balcony_opple_switch_battery_level
+          - sensor.hall_opple_switch_battery_level
+          - sensor.toilet_opple_switch_battery_level
+          - sensor.bathroom_opple_switch_battery_level
+          - sensor.office_opple_switch_battery_level
           - sensor.office_switch_battery_level
           - sensor.office_droopy_lamp_switch_battery_level
           - sensor.office_work_desk_lamp_switch_battery_level
-          - sensor.office_motion_light_sensor_battery_level
+          - sensor.bedroom_opple_switch_battery_level
+          - sensor.bedroom_switch_battery_level
+      - type: entities
+        title: "Climate Sensor Batteries"
+        entities:
+          - sensor.living_room_climate_sensor_battery_level
+          - sensor.balcony_climate_sensor_battery_level
           - sensor.office_climate_sensor_battery_level
           - sensor.filament_box_climate_sensor_battery_level
-          - sensor.bedroom_switch_battery_level
           - sensor.bedroom_climate_sensor_battery_level
+      - type: entities
+        title: "Motion Sensor Batteries"
+        entities:
+          - sensor.living_room_motion_light_sensor_battery_level
+          - sensor.office_motion_light_sensor_battery_level
       - type: grid
         title: "Battery Chargers"
         columns: 3
