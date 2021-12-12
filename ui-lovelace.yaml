@@ -583,6 +583,19 @@ views:
             entity: sensor.processor_temperature
             name: "CPU Temperature"
             graph: line
+          - type: grid
+            title: "Pi Hole"
+            columns: 3
+            cards:
+              - type: button
+                name: Disable pi-hole (1 minute)
+                icon: mdi:pi-hole
+                tap_action:
+                  action: call-service
+                  service: pi_hole.disable
+                  service_data:
+                    duration: '00:01'
+                    entity_id: all
       - type: entities
         title: "Switch Batteries"
         entities:
