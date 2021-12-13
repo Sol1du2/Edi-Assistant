@@ -1,0 +1,8 @@
+- id: on_start_request_persons_presence
+  trigger:
+    - platform: homeassistant
+      event: start
+  action:
+    - service: mqtt.publish
+      data:
+        topic: bouncer/request/presence
