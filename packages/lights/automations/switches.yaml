@@ -212,7 +212,11 @@
             {% set light = 'light.bedroom_lights' %}
           {% endif %}
           {% set bri = state_attr(light, 'brightness') | int(0) %}
-          {{ [bri+30, 249] | min }}
+          {% if is_state(light, 'on') %}
+            {{ [bri+30, 249] | min }}
+          {% else %}
+            {{ 249 }}
+          {% endif %}
 
 - id: switch_brightness_down_lights_opple
   initial_state: 'on'
@@ -297,7 +301,11 @@
             {% set light = 'light.bedroom_lights' %}
           {% endif %}
           {% set bri = state_attr(light, 'brightness') | int(0) %}
-          {{ [bri-30, 0] | max }}
+          {% if is_state(light, 'on') %}
+            {{ [bri-30, 0] | max }}
+          {% else %}
+            {{ 249 }}
+          {% endif %}
 
 - id: switch_brightness_maximum_opple
   initial_state: 'on'
