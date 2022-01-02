@@ -3,6 +3,8 @@
     - platform: homeassistant
       event: start
   action:
+    - delay:
+        seconds: 30
     - service: mqtt.publish
       data:
         topic: bouncer/request/presence
