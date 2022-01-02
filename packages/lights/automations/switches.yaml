@@ -1,5 +1,6 @@
-# ------------------ OPPLE Switches ---------------------
+# ------------------ opple switcheseses ---------------------
 - id: switch_turn_on_lights_opple
+  alias: Turn on lights with opple switches
   initial_state: 'on'
   trigger:
     - platform: event
@@ -65,6 +66,7 @@
           {% endif %}
 
 - id: switch_turn_off_lights_opple
+  alias: Turn off lights with opple switches
   initial_state: 'on'
   trigger:
     - platform: event
@@ -129,7 +131,8 @@
             light.bedroom_lights
           {% endif %}
 
-- id: office_switch_brightness_up_lights_opple
+- id: switch_brightness_up_lights_opple
+  alias: Increase brightness with opple switches
   initial_state: 'on'
   trigger:
     - platform: event
@@ -219,6 +222,7 @@
           {% endif %}
 
 - id: switch_brightness_down_lights_opple
+  alias: Decrease brightness with opple switches
   initial_state: 'on'
   trigger:
     - platform: event
@@ -308,6 +312,7 @@
           {% endif %}
 
 - id: switch_brightness_maximum_opple
+  alias: Set brightness to maximum with opple switches
   initial_state: 'on'
   trigger:
     - platform: event
@@ -374,6 +379,7 @@
         brightness: 250
 
 - id: switch_brightness_minium_opple
+  alias: Set brightness to minimum with opple switches
   initial_state: 'on'
   trigger:
     - platform: event
@@ -440,6 +446,7 @@
         brightness: 1
 
 - id: switch_color_temp_up_opple
+  alias: Switch color temperature up with opple switches
   initial_state: 'on'
   trigger:
     - platform: event
@@ -470,6 +477,7 @@
           {{ [temp+30, 500] | min }}
 
 - id: switch_color_temp_down_opple
+  alias: Switch color temperature down with opple switches
   initial_state: 'on'
   trigger:
     - platform: event
@@ -500,6 +508,7 @@
           {{ [temp-30, 153] | max }}
 
 - id: opple_bedroom_switch_house_sleep_mode
+  alias: Set house sleep mode with opple switches
   initial_state: 'on'
   trigger:
     platform: event
@@ -512,6 +521,7 @@
       entity_id: script.sleep_mode
 
 - id: opple_bedroom_switch_bed_sleep_mode
+  alias: Set bedroom sleep mode with opple switches
   initial_state: 'on'
   trigger:
     platform: event
@@ -530,6 +540,7 @@
 # ------------------ IKEA Switches ---------------------
 
 - id: ikea_switch_turn_on_lights
+  alias: Turn on lights with ikea switches
   initial_state: 'on'
   trigger:
     - platform: event
@@ -574,6 +585,7 @@
           {% endif %}
 
 - id: ikea_switch_turn_off_lights
+  alias: Turn off lights with ikea switches
   initial_state: 'on'
   trigger:
     - platform: event

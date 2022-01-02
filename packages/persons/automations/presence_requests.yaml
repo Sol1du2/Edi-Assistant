@@ -1,4 +1,5 @@
 - id: on_start_request_persons_presence
+  alias: On start request presence of people
   trigger:
     - platform: homeassistant
       event: start

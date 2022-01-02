@@ -1,5 +1,5 @@
 - id: get_shopping_list_unchecked_telegram
-  alias: Retrieve all shopping list items
+  alias: Retrieve all shopping list items telegram command
   trigger:
     platform: event
     event_type: telegram_command
@@ -19,6 +19,7 @@
           {% endif %}
 
 - id: clear_shopping_list_command
+  alias: Clear the shopping list telegram command
   trigger:
     platform: event
     event_type: telegram_command

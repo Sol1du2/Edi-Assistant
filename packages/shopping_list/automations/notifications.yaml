@@ -1,4 +1,5 @@
 - id: send_shopping_list_away
+  alias: Send the shopping list when a person leaves the house
   trigger:
     - platform: state
       entity_id: person.joao
@@ -21,6 +22,7 @@
           {{ states('sensor.shopping_list_unchecked_items') }}
 
 - id: clear_shopping_list_home
+  alias: Ask to clear the shopping list when someone arrives home
   trigger:
     - platform: state
       entity_id: person.joao

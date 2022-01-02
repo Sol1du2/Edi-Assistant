@@ -1,4 +1,5 @@
 - id: add_item_shopping_list_text
+  alias: Add an item to the shopping list text command
   trigger:
     platform: event
     event_type: telegram_text
@@ -18,6 +19,7 @@
         message: "{{ item }} added to the shopping list"
 
 - id: remove_item_shopping_list_text
+  alias: Remove an item from the shopping list text command
   trigger:
     platform: event
     event_type: telegram_text

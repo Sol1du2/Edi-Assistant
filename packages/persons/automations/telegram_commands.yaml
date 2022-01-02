@@ -1,4 +1,5 @@
 - id: send_occupancy_status
+  alias: Send occupancy status via telegram
   trigger:
     platform: event
     event_type: telegram_command

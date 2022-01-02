@@ -1,4 +1,5 @@
 - id: notify_person_home
+  alias: Notify when a person arrives home
   trigger:
     - platform: state
       entity_id: person.joao
@@ -31,6 +32,7 @@
           {% endif %}
 
 - id: notify_person_away
+  alias: Notify when a person leaves the house
   trigger:
     - platform: state
       entity_id: person.joao
