@@ -13,5 +13,5 @@
         keyboard:
           - "/lights, /lights_on, /lights_off"
           - "/occupancy"
-          - "/shop"
+          - "/shop, /clear_shop"
           - "/droopy_status, /droopy_snap, /droopy_off, /droopy_emergency"

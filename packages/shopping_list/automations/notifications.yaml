@@ -1,0 +1,46 @@
+- id: send_shopping_list_away
+  trigger:
+    - platform: state
+      entity_id: person.joao
+      from: 'home'
+      to: 'not_home'
+    - platform: state
+      entity_id: person.jelena
+      from: 'home'
+      to: 'not_home'
+  condition:
+    condition: template
+    value_template: "{{ states('sensor.shopping_list_unchecked_items') != '' }}"
+  action:
+    - service: >
+        notify.{{ trigger.entity_id.split('.')[1] }}
+      data_template:
+        message: >
+          Hey, I saw you're leaving the house. Friendly reminder, you guys have these in the shopping list:
+
+          {{ states('sensor.shopping_list_unchecked_items') }}
+
+- id: clear_shopping_list_home
+  trigger:
+    - platform: state
+      entity_id: person.joao
+      from: 'not_home'
+      to: 'home'
+    - platform: state
+      entity_id: person.jelena
+      from: 'not_home'
+      to: 'home'
+  condition:
+    condition: template
+    value_template: "{{ states('sensor.shopping_list_unchecked_items') != '' }}"
+  action:
+    - service: >
+        notify.{{ trigger.entity_id.split('.')[1] }}
+      data_template:
+        message: >
+          Welcome home, do you want me to clear the following items on the shopping list?
+
+          {{ states('sensor.shopping_list_unchecked_items') }}
+        data:
+          inline_keyboard:
+            - "Yes:/clear_shop, No:/shop_do_nothing"

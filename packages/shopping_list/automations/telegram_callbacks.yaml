@@ -1,0 +1,26 @@
+- id: clear_shopping_list_callback
+  trigger:
+    platform: event
+    event_type: telegram_callback
+    event_data:
+      command: '/clear_shop'
+  action:
+    - service: shopping_list.complete_all
+    - service: telegram_bot.answer_callback_query
+      data:
+        callback_query_id: "{{ trigger.event.data.id }}"
+        message: The shopping list has been cleared
+        show_alert: true
+  
+- id: do_nothing_to_shopping_list
+  trigger:
+    platform: event
+    event_type: telegram_callback
+    event_data:
+      command: '/shop_do_nothing'
+  action:
+    - service: telegram_bot.answer_callback_query
+      data:
+        callback_query_id: "{{ trigger.event.data.id }}"
+        message: Ok, I will leave the items on the list 😄
+        show_alert: true
