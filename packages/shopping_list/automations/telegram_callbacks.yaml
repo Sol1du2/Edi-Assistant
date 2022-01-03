@@ -6,7 +6,7 @@
     event_data:
       command: '/clear_shop'
   action:
-    - service: shopping_list.complete_all
+    - service: script.complete_shopping_list
     - service: telegram_bot.answer_callback_query
       data:
         callback_query_id: "{{ trigger.event.data.id }}"

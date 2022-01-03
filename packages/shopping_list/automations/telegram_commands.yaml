@@ -26,7 +26,7 @@
     event_data:
       command: '/clear_shop'
   action:
-    - service: shopping_list.complete_all
+    - service: script.complete_shopping_list
     - service: telegram_bot.send_message
       data:
         target: "{{ trigger.event.data.chat_id }}"

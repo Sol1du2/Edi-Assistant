@@ -10,9 +10,9 @@
     text: "{{ trigger.event.data.text.split(' ') }}"
     item: "{% for word in text %}{% if not loop.first %}{{ word }} {% endif %}{% endfor %}"
   action:
-    - service: shopping_list.add_item
+    - service: script.add_item_shopping_list
       data:
-        name: "{{ item }}"
+        item: "{{ item }}"
     - service: telegram_bot.send_message
       data_template:
         target: "{{ trigger.event.data.chat_id }}"
@@ -30,9 +30,9 @@
     text: "{{ trigger.event.data.text.split(' ') }}"
     item: "{% for word in text %}{% if not loop.first %}{{ word }} {% endif %}{% endfor %}"
   action:
-    - service: shopping_list.complete_item
+    - service: script.complete_item_shopping_list
       data:
-        name: "{{ item }}"
+        item: "{{ item }}"
     - service: telegram_bot.send_message
       data_template:
         target: "{{ trigger.event.data.chat_id }}"
