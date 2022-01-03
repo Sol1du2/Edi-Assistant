@@ -25,3 +25,10 @@ tv_mode:
       entity_id: light.fado_lamp
     - service: light.turn_on
       entity_id: light.corner_lamp
+
+# Useful for android tiles
+all_lights_off:
+  alias: All Lights Off
+  sequence:
+    - service: light.turn_off
+      entity_id: light.house_lights
