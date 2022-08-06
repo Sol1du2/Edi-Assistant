@@ -78,11 +78,5 @@ sensor:
         {{ value }}
       {% endif %}
 
-camera:
-  - platform: mjpeg
-    name: Droopy Cam
-    still_image_url: !secret octoprint_url_webcam_snapshot
-    mjpeg_url: !secret octoprint_url_webcam_stream
-
 automation: !include_dir_merge_list automations/
 script: !include_dir_merge_named scripts/
