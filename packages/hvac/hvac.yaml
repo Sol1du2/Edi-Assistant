@@ -1,5 +1,1 @@
-lyric:
-  client_id: !secret honeywell_client_id
-  client_secret: !secret honeywell_client_secret
-
 automation: !include_dir_merge_list automations/
