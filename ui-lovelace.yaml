@@ -602,17 +602,17 @@ views:
           - sensor.living_room_opple_switch_battery_level
           - sensor.cuby_battery_level
           - sensor.kitchen_opple_switch_battery_level
-          - sensor.kitchen_switch_battery_level
+          - sensor.kitchen_ikea_switch_battery_level
           - sensor.balcony_opple_switch_battery_level
           - sensor.hall_opple_switch_battery_level
           - sensor.toilet_opple_switch_battery_level
           - sensor.bathroom_opple_switch_battery_level
           - sensor.office_opple_switch_battery_level
-          - sensor.office_switch_battery_level
+          - sensor.office_ikea_switch_battery_level
           - sensor.office_droopy_lamp_switch_battery_level
           - sensor.office_work_desk_lamp_switch_battery_level
           - sensor.bedroom_opple_switch_battery_level
-          - sensor.bedroom_switch_battery_level
+          - sensor.bedroom_ikea_switch_battery_level
       - type: entities
         title: "Climate Sensor Batteries"
         entities:

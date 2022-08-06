@@ -1,8 +1,8 @@
 - id: warn_battery_low
-  alias: Warns the user that the battery on a certain sensor is low
+  alias: Warn the battery on a sensor is low
   trigger:
     - platform: numeric_state
-      entity_id: sensor.living_room_switch_battery_level
+      entity_id: sensor.living_room_opple_switch_battery_level
       below: 5
     - platform: numeric_state
       entity_id: sensor.living_room_motion_light_sensor_battery_level
@@ -11,22 +11,28 @@
       entity_id: sensor.cuby_battery_level
       below: 5
     - platform: numeric_state
-      entity_id: sensor.kitchen_switch_battery_level
+      entity_id: sensor.kitchen_opple_switch_battery_level
       below: 5
     - platform: numeric_state
-      entity_id: sensor.balcony_switch_battery_level
+      entity_id: sensor.kitchen_ikea_switch_battery_level
       below: 5
     - platform: numeric_state
-      entity_id: sensor.hall_switch_battery_level
+      entity_id: sensor.balcony_opple_switch_battery_level
       below: 5
     - platform: numeric_state
-      entity_id: sensor.toilet_switch_battery_level
+      entity_id: sensor.hall_opple_switch_battery_level
       below: 5
     - platform: numeric_state
-      entity_id: sensor.bathroom_switch_battery_level
+      entity_id: sensor.toilet_opple_switch_battery_level
       below: 5
     - platform: numeric_state
-      entity_id: sensor.office_switch_battery_level
+      entity_id: sensor.bathroom_opple_switch_battery_level
+      below: 5
+    - platform: numeric_state
+      entity_id: sensor.office_opple_switch_battery_level
+      below: 5
+    - platform: numeric_state
+      entity_id: sensor.office_ikea_switch_battery_level
       below: 5
     - platform: numeric_state
       entity_id: sensor.office_droopy_lamp_switch_battery_level
@@ -38,36 +44,15 @@
       entity_id: sensor.office_motion_light_sensor_battery_level
       below: 5
     - platform: numeric_state
-      entity_id: sensor.bedroom_switch_battery_level
+      entity_id: sensor.bedroom_opple_switch_battery_level
+      below: 5
+    - platform: numeric_state
+      entity_id: sensor.bedroom_ikea_switch_battery_level
       below: 5
   action:
     - service: notify.joao
       data_template:
         message: >
-          {% if trigger.entity_id == "sensor.living_room_switch_battery_level" %}
-            The battery on the living room switch has fallen below 5%.
-          {% elif trigger.entity_id == "sensor.living_room_motion_light_sensor_battery_level" %}
-            The battery on the living room montion and light sensor has fallen below 5%.
-          {% elif trigger.entity_id == "sensor.cuby_battery_level" %}
-            The battery on cuby has fallen below 5%.
-          {% elif trigger.entity_id == "sensor.kitchen_switch_battery_level" %}
-            The battery on the kitchen switch has fallen below 5%.
-          {% elif trigger.entity_id == "sensor.balcony_switch_battery_level" %}
-            The battery on the balcony switch has fallen below 5%.
-          {% elif trigger.entity_id == "sensor.hall_switch_battery_level" %}
-            The battery on the hall switch has fallen below 5%.
-          {% elif trigger.entity_id == "sensor.toilet_switch_battery_level" %}
-            The battery on the toilet switch has fallen below 5%.
-          {% elif trigger.entity_id == "sensor.bathroom_switch_battery_level" %}
-            The battery on the bathroom switch has fallen below 5%.
-          {% elif trigger.entity_id == "sensor.office_switch_battery_level" %}
-            The battery on the office switch has fallen below 5%.
-          {% elif trigger.entity_id == "sensor.office_droopy_lamp_switch_battery_level" %}
-            The battery on the office switch has fallen below 5%.
-          {% elif trigger.entity_id == "sensor.office_work_desk_lamp_switch_battery_level" %}
-            The battery on the office switch has fallen below 5%.
-          {% elif trigger.entity_id == "sensor.office_motion_light_sensor_battery_level" %}
-            The battery on the office motion and light sensor has fallen below 5%.
-          {% elif trigger.entity_id == "sensor.bedroom_switch_battery_level" %}
-            The battery on the bedroom switch has fallen below 5%.
-          {% endif %}
+          The battery on the {{ state_attr('trigger.entity_id', 'friendly_name') }} has
+          fallen below {{ trigger.below }}
+          
