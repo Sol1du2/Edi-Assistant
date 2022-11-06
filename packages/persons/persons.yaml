@@ -1,10 +1,22 @@
-device_tracker:
-  - platform: mqtt
-    devices:
-      tile_joao: "bouncer/presence/tile_joao"
-      tile_jelena: "bouncer/presence/tile_jelena"
-      tile_guest1: "bouncer/presence/tile_guest1"
-      tile_guest2: "bouncer/presence/tile_guest2"
+mqtt:
+  device_tracker:
+  - name: "tile_joao"
+    state_topic: "bouncer/presence/tile_joao"
+    qos: 0
+    payload_home: "home"
+    payload_not_home: "not_home"
+  - name: "tile_jelena"
+    state_topic: "bouncer/presence/tile_jelena"
+    qos: 0
+    payload_home: "home"
+    payload_not_home: "not_home"
+  - name: "tile_guest1"
+    state_topic: "bouncer/presence/tile_guest1"
+    qos: 0
+    payload_home: "home"
+    payload_not_home: "not_home"
+  - name: "tile_guest2"
+    state_topic: "bouncer/presence/tile_guest2"
     qos: 0
     payload_home: "home"
     payload_not_home: "not_home"
