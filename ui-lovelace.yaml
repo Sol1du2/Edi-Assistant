@@ -177,6 +177,26 @@ views:
             style:
               top: 65%
               left: 65.6%
+          - type: state-icon
+            entity: sensor.bathroom_temperature
+            style:
+              top: 87%
+              left: 60%
+          - type: state-label
+            entity: sensor.bathroom_temperature
+            style:
+              top: 87%
+              left: 66%
+          - type: state-icon
+            entity: sensor.bathroom_humidity
+            style:
+              top: 93%
+              left: 60%
+          - type: state-label
+            entity: sensor.bathroom_humidity
+            style:
+              top: 93%
+              left: 66%
 
           # Office
           - type: state-icon
@@ -261,22 +281,22 @@ views:
             entity: sensor.bedroom_temperature
             style:
               top: 87%
-              left: 75%
+              left: 85%
           - type: state-label
             entity: sensor.bedroom_temperature
             style:
               top: 87%
-              left: 81%
+              left: 91%
           - type: state-icon
             entity: sensor.bedroom_humidity
             style:
               top: 93%
-              left: 75%
+              left: 85%
           - type: state-label
             entity: sensor.bedroom_humidity
             style:
               top: 93%
-              left: 81%
+              left: 91%
 
       - type: weather-forecast
         entity: weather.home
@@ -448,6 +468,18 @@ views:
                 graph: line
               - type: sensor
                 entity: sensor.bedroom_humidity
+                name: "Humidity"
+                graph: line
+          - type: grid
+            title: "Bathroom"
+            columns: 2
+            cards:
+              - type: sensor
+                entity: sensor.bathroom_temperature
+                name: "Temperature"
+                graph: line
+              - type: sensor
+                entity: sensor.bathroom_humidity
                 name: "Humidity"
                 graph: line
           - type: grid
