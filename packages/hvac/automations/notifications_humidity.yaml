@@ -1,0 +1,53 @@
+- id: notify_high_humidity
+  alias: Humidity is too high in a certian room
+  trigger:
+    - platform: numeric_state
+      entity_id: 
+        - sensor.living_room_humidity
+        - sensor.office_humidity
+        - sensor.bedroom_humidity
+      above: 55
+  action:
+    - service: notify.joao
+      data_template:
+        message: >
+          {% if trigger.entity_id == "sensor.living_room_humidity" %}
+            The humidity in the living room is getting too high, open a window or turn on the dehumidifier.
+          {% elif trigger.entity_id == "sensor.office_humidity" %}
+            The humidity in the office is getting too high, open a window or turn on the dehumidifier.
+          {% elif trigger.entity_id == "sensor.bedroom_humidity" %}
+            The humidity in the bedroom is getting too high, open a window or turn on the dehumidifier.
+          {% else %}
+            Strange entity received in humidity high trigger: {{ trigger.entity_id }}
+          {% endif %}
+    - service: notify.jelena
+      data_template:
+        message: >
+          {% if trigger.entity_id == "sensor.living_room_humidity" %}
+            The humidity in the living room is getting too high, open a window or turn on the dehumidifier.
+          {% elif trigger.entity_id == "sensor.office_humidity" %}
+            The humidity in the office is getting too high, open a window or turn on the dehumidifier.
+          {% elif trigger.entity_id == "sensor.bedroom_humidity" %}
+            The humidity in the bedroom is getting too high, open a window or turn on the dehumidifier.
+          {% else %}
+            Strange entity received in humidity high trigger: {{ trigger.entity_id }}
+          {% endif %}
+
+- id: notify_high_humidity_bathroom
+  alias: Humidity is too high in the bathroom
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.bathroom_door_sensor
+      to: "on"
+      for: "00:05:00"
+  condition:
+    - condition: numeric_state
+      entity_id: sensor.bathroom_humidity
+      above: 55
+  action:
+    - service: notify.joao
+      data:
+        message: The bathroom door is open and the humidity is too high. I'd advise you to close it.
+    - service: notify.jelena
+      data:
+        message: The bathroom door is open and the humidity is too high. I'd advise you to close it.
