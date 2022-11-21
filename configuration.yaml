@@ -48,6 +48,8 @@ influxdb:
       - sensor.living_room_humidity
       - sensor.bedroom_temperature
       - sensor.bedroom_humidity
+      - sensor.bathroom_temperature
+      - sensor.bathroom_humidity
       - sensor.office_temperature
       - sensor.office_humidity
       - sensor.filament_box_temperature
