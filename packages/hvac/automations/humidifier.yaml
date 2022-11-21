@@ -34,7 +34,7 @@
           {% elif trigger.entity_id == "sensor.office_humidity" %}
             The humidity in the office is too low, starting humidifier... Please check if it has enough water.
           {% elif trigger.entity_id == "sensor.bedroom_humidity" %}
-            The humidity in the kitchen is too low, starting humidifier... Please check if it has enough water.
+            The humidity in the bedroom is too low, starting humidifier... Please check if it has enough water.
           {% else %}
             Strange entidy received in humidity trigger: {{ trigger.entity_id }}
           {% endif %}
