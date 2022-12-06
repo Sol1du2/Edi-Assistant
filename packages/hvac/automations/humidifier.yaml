@@ -8,6 +8,15 @@
         - sensor.bedroom_humidity
       below: 40
   condition:
+    - condition: numeric_state
+      entity_id: sensor.living_room_humidity
+      below: 53
+    - condition: numeric_state
+      entity_id: sensor.office_humidity
+      below: 53
+    - condition: numeric_state
+      entity_id: sensor.bedroom_humidity
+      below: 53
     - condition: state
       entity_id: switch.humidifier
       state: "off"
@@ -39,25 +48,48 @@
             Strange entidy received in humidity trigger: {{ trigger.entity_id }}
           {% endif %}
 
-- id: turn_off_humidifier_automation
-  alias: Humidity at a good level turn off humidifier
+- id: turn_off_humidifier_within_range
+  alias: Stop Humidifier Within Range
   trigger:
     - platform: numeric_state
       entity_id: 
         - sensor.living_room_humidity
         - sensor.office_humidity
         - sensor.bedroom_humidity
-      above: 50
+      above: 45
   condition:
     - condition: numeric_state
       entity_id: sensor.living_room_humidity
-      above: 40
+      above: 42
     - condition: numeric_state
       entity_id: sensor.office_humidity
-      above: 40
+      above: 42
     - condition: numeric_state
       entity_id: sensor.bedroom_humidity
-      above: 40
+      above: 42
+    - condition: state
+      entity_id: switch.humidifier
+      state: "on"
+  action:
+    - service: switch.turn_off
+      entity_id: switch.humidifier
+    - service: notify.joao
+      data:
+        message: Humidity's at a good level... Shutting down humidifier!
+    - service: notify.jelena
+      data:
+        message: Humidity's at a good level... Shutting down humidifier!
+
+- id: turn_off_humidifier_too_high
+  alias: Stop humidifier from getting humidity too high
+  trigger:
+    - platform: numeric_state
+      entity_id: 
+        - sensor.living_room_humidity
+        - sensor.office_humidity
+        - sensor.bedroom_humidity
+      above: 53
+  condition:
     - condition: state
       entity_id: switch.humidifier
       state: "on"
