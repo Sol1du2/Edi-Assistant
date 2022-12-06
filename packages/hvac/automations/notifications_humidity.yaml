@@ -1,5 +1,5 @@
 - id: notify_high_humidity
-  alias: Humidity is too high in a certian room
+  alias: Humidity is high in a certian room
   trigger:
     - platform: numeric_state
       entity_id: 
@@ -31,6 +31,111 @@
             The humidity in the bedroom is getting too high, open a window or turn on the dehumidifier.
           {% else %}
             Strange entity received in humidity high trigger: {{ trigger.entity_id }}
+          {% endif %}
+
+- id: notify_very_high_humidity
+  alias: Humidity is very high in a certian room
+  trigger:
+    - platform: numeric_state
+      entity_id: 
+        - sensor.living_room_humidity
+        - sensor.office_humidity
+        - sensor.bedroom_humidity
+      above: 70
+  action:
+    - service: notify.joao
+      data_template:
+        message: >
+          {% if trigger.entity_id == "sensor.living_room_humidity" %}
+            The humidity in the living room is very high! Open a window or turn on the dehumidifier, ASAP.
+          {% elif trigger.entity_id == "sensor.office_humidity" %}
+            The humidity in the office is very high! Open a window or turn on the dehumidifier, ASAP.
+          {% elif trigger.entity_id == "sensor.bedroom_humidity" %}
+            The humidity in the bedroom is very high! Open a window or turn on the dehumidifier, ASAP.
+          {% else %}
+            Strange entity received in humidity very high trigger: {{ trigger.entity_id }}
+          {% endif %}
+    - service: notify.jelena
+      data_template:
+        message: >
+          {% if trigger.entity_id == "sensor.living_room_humidity" %}
+            The humidity in the living room is very high! Open a window or turn on the dehumidifier, ASAP.
+          {% elif trigger.entity_id == "sensor.office_humidity" %}
+            The humidity in the office is very high! Open a window or turn on the dehumidifier, ASAP.
+          {% elif trigger.entity_id == "sensor.bedroom_humidity" %}
+            The humidity in the bedroom is very high! Open a window or turn on the dehumidifier, ASAP.
+          {% else %}
+            Strange entity received in humidity very high trigger: {{ trigger.entity_id }}
+          {% endif %}
+
+- id: notify_extremely_high_humidity
+  alias: Humidity is extremely high in a certian room
+  trigger:
+    - platform: numeric_state
+      entity_id: 
+        - sensor.living_room_humidity
+        - sensor.office_humidity
+        - sensor.bedroom_humidity
+      above: 80
+  action:
+    - service: notify.joao
+      data_template:
+        message: >
+          {% if trigger.entity_id == "sensor.living_room_humidity" %}
+            The humidity in the living room is EXTREMELY high! Open a window AND turn on the dehumidifier, ASAP.
+          {% elif trigger.entity_id == "sensor.office_humidity" %}
+            The humidity in the office is EXTREMELY high! Open a window AND turn on the dehumidifier, ASAP.
+          {% elif trigger.entity_id == "sensor.bedroom_humidity" %}
+            The humidity in the bedroom is EXTREMELY high! Open a window AND turn on the dehumidifier, ASAP.
+          {% else %}
+            Strange entity received in humidity extremely high trigger: {{ trigger.entity_id }}
+          {% endif %}
+    - service: notify.jelena
+      data_template:
+        message: >
+          {% if trigger.entity_id == "sensor.living_room_humidity" %}
+            The humidity in the living room is EXTREMELY high! Open a window AND turn on the dehumidifier, ASAP.
+          {% elif trigger.entity_id == "sensor.office_humidity" %}
+            The humidity in the office is EXTREMELY high! Open a window AND turn on the dehumidifier, ASAP.
+          {% elif trigger.entity_id == "sensor.bedroom_humidity" %}
+            The humidity in the bedroom is EXTREMELY high! Open a window AND turn on the dehumidifier, ASAP.
+          {% else %}
+            Strange entity received in humidity extremely high trigger: {{ trigger.entity_id }}
+          {% endif %}
+
+- id: notify_moldy_high_humidity
+  alias: Humidity is moldy high in a certian room
+  trigger:
+    - platform: numeric_state
+      entity_id: 
+        - sensor.living_room_humidity
+        - sensor.office_humidity
+        - sensor.bedroom_humidity
+      above: 90
+  action:
+    - service: notify.joao
+      data_template:
+        message: >
+          {% if trigger.entity_id == "sensor.living_room_humidity" %}
+            The humidity in the living room is PERFECT FOR MOLD! Open ALL windows AND turn on the dehumidifier, ASAP.
+          {% elif trigger.entity_id == "sensor.office_humidity" %}
+            The humidity in the office is PERFECT FOR MOLD! Open ALL windows AND turn on the dehumidifier, ASAP.
+          {% elif trigger.entity_id == "sensor.bedroom_humidity" %}
+            The humidity in the bedroom is PERFECT FOR MOLD! Open ALL windows AND turn on the dehumidifier, ASAP.
+          {% else %}
+            Strange entity received in humidity moldy high trigger: {{ trigger.entity_id }}
+          {% endif %}
+    - service: notify.jelena
+      data_template:
+        message: >
+          {% if trigger.entity_id == "sensor.living_room_humidity" %}
+            The humidity in the living room is PERFECT FOR MOLD! Open ALL windows AND turn on the dehumidifier, ASAP.
+          {% elif trigger.entity_id == "sensor.office_humidity" %}
+            The humidity in the office is PERFECT FOR MOLD! Open ALL windows AND turn on the dehumidifier, ASAP.
+          {% elif trigger.entity_id == "sensor.bedroom_humidity" %}
+            The humidity in the bedroom is PERFECT FOR MOLD! Open ALL windows AND turn on the dehumidifier, ASAP.
+          {% else %}
+            Strange entity received in humidity moldy high trigger: {{ trigger.entity_id }}
           {% endif %}
 
 - id: notify_high_humidity_bathroom
