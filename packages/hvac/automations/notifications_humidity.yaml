@@ -6,7 +6,7 @@
         - sensor.living_room_humidity
         - sensor.office_humidity
         - sensor.bedroom_humidity
-      above: 55
+      above: 60
   action:
     - service: notify.joao
       data_template:
@@ -144,11 +144,11 @@
     - platform: state
       entity_id: binary_sensor.bathroom_door_sensor
       to: "on"
-      for: "00:02:00"
+      for: "00:10:00"
   condition:
     - condition: numeric_state
       entity_id: sensor.bathroom_humidity
-      above: 55
+      above: 60
   action:
     - service: notify.joao
       data:
