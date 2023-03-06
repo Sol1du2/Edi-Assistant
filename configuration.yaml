@@ -7,7 +7,9 @@ homeassistant:
   longitude: !secret home_longitude
   elevation: 10
   unit_system: metric
+  currency: EUR
   time_zone: !secret timezone
+  country: !secret country
   packages:
     persons: !include packages/persons/persons.yaml
     voice_assistant: !include packages/voice_assistant/voice_assistant.yaml
