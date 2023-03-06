@@ -110,7 +110,7 @@
         id: bedroom_opple_switch
         event: 1002
   action:
-    - service: light.turn_off
+    - service: light.toggle
       data_template:
         entity_id: > 
           {% if trigger.event.data.id == 'office_opple_switch' %} 
