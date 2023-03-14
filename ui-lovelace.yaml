@@ -620,14 +620,23 @@ views:
             columns: 3
             cards:
               - type: button
-                name: Disable pi-hole (1 minute)
+                name: Disable Pi-Hole-Main (1 minute)
                 icon: mdi:pi-hole
                 tap_action:
                   action: call-service
                   service: pi_hole.disable
                   service_data:
+                    entity_id: switch.pi_hole_main
                     duration: '00:01'
-                    entity_id: all
+              - type: button
+                name: Disable Pi-Hole-Backup (1 minute)
+                icon: mdi:pi-hole
+                tap_action:
+                  action: call-service
+                  service: pi_hole.disable
+                  service_data:
+                    entity_id: switch.pi_hole_backup
+                    duration: '00:01'
       - type: entities
         title: "Switch Batteries"
         entities:
