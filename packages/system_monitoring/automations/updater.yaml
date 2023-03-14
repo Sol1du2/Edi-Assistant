@@ -2,10 +2,10 @@
   alias: "Update Available Notification"
   trigger:
     - platform: state
-      entity_id: binary_sensor.updater
+      entity_id: binary_sensor.home_assistant_website_update_available
       from: "off"
       to: "on"
   action:
     - service: notify.joao
       data:
-        message: "Home Assistant {{ state_attr('binary_sensor.updater', 'newest_version') }} is available. Release Notes: {{ state_attr('binary_sensor.updater', 'release_notes') }}"
+        message: "Home Assistant {{ states('sensor.home_assistant_website') }} is available. Release Notes: {{ state_attr('sensor.home_assistant_website', 'release_notes') }}"
