@@ -23,6 +23,8 @@ views:
             icon: mdi:ceiling-light
             tap_action:
               action: toggle
+            double_tap_action:
+              action: more-info
             entity: light.living_room_ceiling_light_1
             style:
               top: 64%
@@ -31,6 +33,8 @@ views:
             icon: mdi:ceiling-light
             tap_action:
               action: toggle
+            double_tap_action:
+              action: more-info
             entity: light.living_room_ceiling_light_2
             style:
               top: 64%
@@ -39,6 +43,8 @@ views:
             icon: mdi:lamp
             tap_action:
               action: toggle
+            double_tap_action:
+              action: more-info
             entity: light.fado_lamp
             style:
               top: 50%
@@ -47,6 +53,8 @@ views:
             icon: mdi:floor-lamp
             tap_action:
               action: toggle
+            double_tap_action:
+              action: more-info
             entity: light.corner_lamp
             style:
               top: 50%
@@ -77,6 +85,8 @@ views:
             icon: mdi:ceiling-light
             tap_action:
               action: toggle
+            double_tap_action:
+              action: more-info
             entity: light.kitchen_ceiling_light
             style:
               top: 66%
@@ -85,6 +95,8 @@ views:
             icon: mdi:stove
             tap_action:
               action: toggle
+            double_tap_action:
+              action: more-info
             entity: switch.kitchen_stove_light
             style:
               top: 75.5%
@@ -95,6 +107,8 @@ views:
             icon: mdi:outdoor-lamp
             tap_action:
               action: toggle
+            double_tap_action:
+              action: more-info
             entity: light.balcony_ceiling_light
             style:
               top: 83%
@@ -103,6 +117,8 @@ views:
             icon: mdi:string-lights
             tap_action:
               action: toggle
+            double_tap_action:
+              action: more-info
             entity: switch.balcony_string_lights
             style:
               top: 83.5%
@@ -133,6 +149,8 @@ views:
             icon: mdi:ceiling-light
             tap_action:
               action: toggle
+            double_tap_action:
+              action: more-info
             entity: light.hall_ceiling_light
             style:
               top: 43%
@@ -143,6 +161,8 @@ views:
             icon: mdi:ceiling-light
             tap_action:
               action: toggle
+            double_tap_action:
+              action: more-info
             entity: light.boiler_room_ceiling_light
             style:
               top: 27%
@@ -153,6 +173,8 @@ views:
             icon: mdi:ceiling-light
             tap_action:
               action: toggle
+            double_tap_action:
+              action: more-info
             entity: light.closet_ceiling_light
             style:
               top: 37%
@@ -163,6 +185,8 @@ views:
             icon: mdi:ceiling-light
             tap_action:
               action: toggle
+            double_tap_action:
+              action: more-info
             entity: light.toilet_ceiling_light
             style:
               top: 60%
@@ -173,6 +197,8 @@ views:
             icon: mdi:ceiling-light
             tap_action:
               action: toggle
+            double_tap_action:
+              action: more-info
             entity: light.bathroom_ceiling_light
             style:
               top: 65%
@@ -203,6 +229,8 @@ views:
             icon: mdi:ceiling-light
             tap_action:
               action: toggle
+            double_tap_action:
+              action: more-info
             entity: light.office_ceiling_light
             style:
               top: 30%
@@ -211,6 +239,8 @@ views:
             icon: mdi:floor-lamp
             tap_action:
               action: toggle
+            double_tap_action:
+              action: more-info
             entity: light.office_lamp
             style:
               top: 36%
@@ -219,6 +249,8 @@ views:
             icon: mdi:desk-lamp
             tap_action:
               action: toggle
+            double_tap_action:
+              action: more-info
             entity: light.office_droopy_lamp
             style:
               top: 25%
@@ -227,6 +259,8 @@ views:
             icon: mdi:desk-lamp
             tap_action:
               action: toggle
+            double_tap_action:
+              action: more-info
             entity: light.office_work_desk_lamp
             style:
               top: 36%
@@ -257,6 +291,8 @@ views:
             icon: mdi:ceiling-light
             tap_action:
               action: toggle
+            double_tap_action:
+              action: more-info
             entity: light.bedroom_ceiling_light
             style:
               top: 59%
@@ -265,6 +301,8 @@ views:
             icon: mdi:floor-lamp
             tap_action:
               action: toggle
+            double_tap_action:
+              action: more-info
             entity: light.bedroom_lamp
             style:
               top: 45%
@@ -273,6 +311,8 @@ views:
             icon: mdi:lamp
             tap_action:
               action: toggle
+            double_tap_action:
+              action: more-info
             entity: switch.bedroom_nightstand_light
             style:
               top: 74%
