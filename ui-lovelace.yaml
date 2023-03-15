@@ -25,16 +25,16 @@ views:
               action: toggle
             entity: light.living_room_ceiling_light_1
             style:
-              top: 62%
-              left: 33%
+              top: 64%
+              left: 28%
           - type: state-icon
             icon: mdi:ceiling-light
             tap_action:
               action: toggle
             entity: light.living_room_ceiling_light_2
             style:
-              top: 62%
-              left: 21%
+              top: 64%
+              left: 16%
           - type: state-icon
             icon: mdi:lamp
             tap_action:
@@ -42,7 +42,7 @@ views:
             entity: light.fado_lamp
             style:
               top: 50%
-              left: 27%
+              left: 20%
           - type: state-icon
             icon: mdi:floor-lamp
             tap_action:
@@ -50,7 +50,7 @@ views:
             entity: light.corner_lamp
             style:
               top: 50%
-              left: 14%
+              left: 5%
           - type: state-icon
             entity: sensor.living_room_temperature
             style:
@@ -60,7 +60,7 @@ views:
             entity: sensor.living_room_temperature
             style:
               top: 33%
-              left: 20%
+              left: 22%
           - type: state-icon
             entity: sensor.living_room_humidity
             style:
@@ -70,7 +70,7 @@ views:
             entity: sensor.living_room_humidity
             style:
               top: 39%
-              left: 20%
+              left: 21%
           
           # Kitchen
           - type: state-icon
@@ -80,7 +80,7 @@ views:
             entity: light.kitchen_ceiling_light
             style:
               top: 66%
-              left: 44%
+              left: 43%
           - type: state-icon
             icon: mdi:stove
             tap_action:
@@ -88,7 +88,7 @@ views:
             entity: switch.kitchen_stove_light
             style:
               top: 75.5%
-              left: 44.4%
+              left: 44%
 
           # Balcony
           - type: state-icon
@@ -116,7 +116,7 @@ views:
             entity: sensor.balcony_temperature
             style:
               top: 91%
-              left: 26%
+              left: 27%
           - type: state-icon
             entity: sensor.balcony_humidity
             style:
@@ -126,7 +126,7 @@ views:
             entity: sensor.balcony_humidity
             style:
               top: 97%
-              left: 26%
+              left: 27%
           
           # Hallway
           - type: state-icon
@@ -136,7 +136,7 @@ views:
             entity: light.hall_ceiling_light
             style:
               top: 43%
-              left: 52%
+              left: 55%
 
           # Boiler Room
           - type: state-icon
@@ -146,7 +146,7 @@ views:
             entity: light.boiler_room_ceiling_light
             style:
               top: 27%
-              left: 62%
+              left: 67%
 
           # Closet
           - type: state-icon
@@ -156,7 +156,7 @@ views:
             entity: light.closet_ceiling_light
             style:
               top: 37%
-              left: 62%
+              left: 67%
 
           # Toilet
           - type: state-icon
@@ -166,7 +166,7 @@ views:
             entity: light.toilet_ceiling_light
             style:
               top: 60%
-              left: 56.4%
+              left: 59.5%
 
           # Bathroom
           - type: state-icon
@@ -176,7 +176,7 @@ views:
             entity: light.bathroom_ceiling_light
             style:
               top: 65%
-              left: 65.6%
+              left: 71.2%
           - type: state-icon
             entity: sensor.bathroom_temperature
             style:
@@ -186,7 +186,7 @@ views:
             entity: sensor.bathroom_temperature
             style:
               top: 87%
-              left: 66%
+              left: 68%
           - type: state-icon
             entity: sensor.bathroom_humidity
             style:
@@ -196,7 +196,7 @@ views:
             entity: sensor.bathroom_humidity
             style:
               top: 93%
-              left: 66%
+              left: 67%
 
           # Office
           - type: state-icon
@@ -206,7 +206,7 @@ views:
             entity: light.office_ceiling_light
             style:
               top: 30%
-              left: 77%
+              left: 88.5%
           - type: state-icon
             icon: mdi:floor-lamp
             tap_action:
@@ -214,7 +214,7 @@ views:
             entity: light.office_lamp
             style:
               top: 36%
-              left: 84%
+              left: 95%
           - type: state-icon
             icon: mdi:desk-lamp
             tap_action:
@@ -222,7 +222,7 @@ views:
             entity: light.office_droopy_lamp
             style:
               top: 25%
-              left: 74%
+              left: 81%
           - type: state-icon
             icon: mdi:desk-lamp
             tap_action:
@@ -230,7 +230,7 @@ views:
             entity: light.office_work_desk_lamp
             style:
               top: 36%
-              left: 74%
+              left: 81%
           - type: state-icon
             entity: sensor.office_temperature
             style:
@@ -240,7 +240,7 @@ views:
             entity: sensor.office_temperature
             style:
               top: 7%
-              left: 76%
+              left: 78%
           - type: state-icon
             entity: sensor.office_humidity
             style:
@@ -250,7 +250,7 @@ views:
             entity: sensor.office_humidity
             style:
               top: 13%
-              left: 76%
+              left: 77%
 
           # Bedroom
           - type: state-icon
@@ -260,7 +260,7 @@ views:
             entity: light.bedroom_ceiling_light
             style:
               top: 59%
-              left: 79%
+              left: 89%
           - type: state-icon
             icon: mdi:floor-lamp
             tap_action:
@@ -268,7 +268,7 @@ views:
             entity: light.bedroom_lamp
             style:
               top: 45%
-              left: 84%
+              left: 95%
           - type: state-icon
             icon: mdi:lamp
             tap_action:
@@ -276,7 +276,7 @@ views:
             entity: switch.bedroom_nightstand_light
             style:
               top: 74%
-              left: 77%
+              left: 83%
           - type: state-icon
             entity: sensor.bedroom_temperature
             style:
@@ -286,7 +286,7 @@ views:
             entity: sensor.bedroom_temperature
             style:
               top: 87%
-              left: 91%
+              left: 93%
           - type: state-icon
             entity: sensor.bedroom_humidity
             style:
@@ -296,7 +296,7 @@ views:
             entity: sensor.bedroom_humidity
             style:
               top: 93%
-              left: 91%
+              left: 92%
 
       - type: weather-forecast
         entity: weather.home
@@ -536,7 +536,6 @@ views:
             cards:
               - type: media-control
                 entity: media_player.voyager_1
-
   - path: printer
     title: 3D Printer
     icon: mdi:printer-3d
