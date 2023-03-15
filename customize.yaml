@@ -16,6 +16,15 @@ switch.droopy:
   friendly_name: Droopy
   icon: mdi:printer-3d
 
+sensor.droopy_estimated_total_time:
+  friendly_name: "Total Time (Estimated)"
+
+sensor.droopy_estimated_remaining_time:
+  friendly_name: "Remaining Time (Estimated)"
+
+sensor.droopy_estimated_finish_time_local:
+  friendly_name: "Finish Time (Estimated)"
+
 sensor.living_room_temperature:
   friendly_name: Living Room Temperature Sensor
 

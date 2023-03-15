@@ -618,9 +618,9 @@ views:
            - sensor.octoprint_target_tool0_temp
            - sensor.octoprint_target_bed_temp
            - sensor.octoprint_job_percentage
-           - sensor.droopy_est_total_time
-           - sensor.droopy_est_remaining_time
-           - sensor.droopy_est_finish_time_local
+           - sensor.droopy_estimated_total_time
+           - sensor.droopy_estimated_remaining_time
+           - sensor.droopy_estimated_finish_time_local
       - type: picture-entity
         entity: camera.droopy_cam
   - path: analytics
