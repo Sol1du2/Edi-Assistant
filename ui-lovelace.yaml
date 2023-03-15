@@ -518,6 +518,25 @@ views:
                 entity: sensor.balcony_humidity
                 name: "Humidity"
                 graph: line
+  - path: entertainment
+    title: Entertainment
+    icon: mdi:television-speaker
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: vertical-stack
+            title: Living Room
+            cards:
+              - type: media-control
+                entity: media_player.rosetta
+              - type: media-control
+                entity: media_player.ava
+          - type: horizontal-stack
+            title: Office
+            cards:
+              - type: media-control
+                entity: media_player.voyager_1
+
   - path: printer
     title: 3D Printer
     icon: mdi:printer-3d

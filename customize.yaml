@@ -63,3 +63,9 @@ sensor.filament_box_pressure:
 
 sensor.octopi_cpu_temperature:
   icon: mdi:cpu-32-bit
+
+media_player.voyager_1:
+  icon: mdi:speaker
+
+media_player.ava:
+  icon: mdi:speaker

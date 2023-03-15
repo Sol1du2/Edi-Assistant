@@ -1,0 +1,10 @@
+# Seems this works better than the media_player.toggle as it seems to fail to
+# turn off sometimes. Use this for the tiles in the mobile app.
+toggle_rosetta:
+  alias: Toggle Rosetta
+  sequence:
+    - service: androidtv.adb_command
+      target:
+        entity_id: media_player.rosetta
+      data:
+        command: "POWER"
