@@ -658,41 +658,41 @@ views:
             content: |
               ## Home-Assistant
               {% if is_state('binary_sensor.home_assistant_website_update_available', 'on') %}
-                Version {{ states('sensor.home_assistant_website') }} is available. Release Notes: {{ state_attr('sensor.home_assistant_website', 'release_notes') }}
+                Version {{ states('sensor.home_assistant_website') }} is available. [Release Notes]({{ state_attr('sensor.home_assistant_website', 'release_notes') }})
               {% else %}
                 Up-to-date <ha-icon icon="mdi:robot-happy-outline"></ha-icon>
               {% endif %}
 
               ## Pi-Hole-Main
               {% if is_state('update.pi_hole_main_core_update_available', 'on') %}
-                __Core__ Version {{ state_attr('update.pi_hole_main_core_update_available', 'latest_version') }} is available. Release Notes: {{ state_attr('update.pi_hole_main_core_update_available', 'latest_version') }}
+                __Core__ Version {{ state_attr('update.pi_hole_main_core_update_available', 'latest_version') }} is available. [Release Notes]({{ state_attr('update.pi_hole_main_core_update_available', 'release_url') }})
               {% else %}
                 __Core__ Up-to-date <ha-icon icon="mdi:robot-happy-outline"></ha-icon>
               {% endif %}
               {% if is_state('update.pi_hole_main_ftl_update_available', 'on') %}
-                __FTL__ Version {{ state_attr('update.pi_hole_main_ftl_update_available', 'latest_version') }} is available. Release Notes: {{ state_attr('update.pi_hole_main_ftl_update_available', 'latest_version') }}
+                __FTL__ Version {{ state_attr('update.pi_hole_main_ftl_update_available', 'latest_version') }} is available. [Release Notes]({{ state_attr('update.pi_hole_main_ftl_update_available', 'release_url') }})
               {% else %}
                 __FTL__ Up-to-date <ha-icon icon="mdi:robot-happy-outline"></ha-icon>
               {% endif %}
               {% if is_state('update.pi_hole_main_web_update_available', 'on') %}
-                __Web UI__ Version {{ state_attr('update.pi_hole_main_web_update_available', 'latest_version') }} is available. Release Notes: {{ state_attr('update.pi_hole_main_web_update_available', 'latest_version') }}
+                __Web UI__ Version {{ state_attr('update.pi_hole_main_web_update_available', 'latest_version') }} is available. [Release Notes]({{ state_attr('update.pi_hole_main_web_update_available', 'release_url') }})
               {% else %}
                 __Web UI__ Up-to-date <ha-icon icon="mdi:robot-happy-outline"></ha-icon>
               {% endif %}
 
               ## Pi-Hole-Backup
               {% if is_state('update.pi_hole_backup_core_update_available', 'on') %}
-                __Core__ Version {{ state_attr('update.pi_hole_backup_core_update_available', 'latest_version') }} is available. Release Notes: {{ state_attr('update.pi_hole_backup_core_update_available', 'latest_version') }}
+                __Core__ Version {{ state_attr('update.pi_hole_backup_core_update_available', 'latest_version') }} is available. [Release Notes]({{ state_attr('update.pi_hole_backup_core_update_available', 'release_url') }})
               {% else %}
                 __Core__ Up-to-date <ha-icon icon="mdi:robot-happy-outline"></ha-icon>
               {% endif %}
               {% if is_state('update.pi_hole_backup_ftl_update_available', 'on') %}
-                __FTL__ Version {{ state_attr('update.pi_hole_main_ftl_update_available', 'latest_version') }} is available. Release Notes: {{ state_attr('update.pi_hole_main_ftl_update_available', 'latest_version') }}
+                __FTL__ Version {{ state_attr('update.pi_hole_main_ftl_update_available', 'latest_version') }} is available. [Release Notes]({{ state_attr('update.pi_hole_main_ftl_update_available', 'release_url') }})
               {% else %}
                 __FTL__ Up-to-date <ha-icon icon="mdi:robot-happy-outline"></ha-icon>
               {% endif %}
               {% if is_state('update.pi_hole_backup_web_update_available', 'on') %}
-                __Web UI__ Version {{ state_attr('update.pi_hole_backup_web_update_available', 'latest_version') }} is available. Release Notes: {{ state_attr('update.pi_hole_backup_web_update_available', 'latest_version') }}
+                __Web UI__ Version {{ state_attr('update.pi_hole_backup_web_update_available', 'latest_version') }} is available. [Release Notes]({{ state_attr('update.pi_hole_backup_web_update_available', 'release_url') }})
               {% else %}
                 __Web UI__ Up-to-date <ha-icon icon="mdi:robot-happy-outline"></ha-icon>
               {% endif %}
