@@ -1,3 +1,16 @@
+shell_command:
+  shutdown_dreadnought: !secret dreadnought_shutdown_ssh
+
+wake_on_lan:
+
+switch:
+  - platform: wake_on_lan
+    name: Dreadnought Toggle
+    mac: !secret dreadnought_mac_address
+    host: !secret dreadnought_host
+    turn_off:
+      service: shell_command.shutdown_dreadnought
+
 sensor:
   - platform: systemmonitor
     resources:
