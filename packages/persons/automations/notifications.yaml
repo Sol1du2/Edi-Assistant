@@ -63,3 +63,38 @@
           {% elif trigger.entity_id == "person.guest2" %}
             Guest 2 just left the house!
           {% endif %}
+
+- id: warn_movement
+  alias: Notify when a person leaves the house
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.hall_motion_sensor
+      from: "off"
+      to: "on"
+    - platform: state
+      entity_id: binary_sensor.living_room_motion_sensor
+      from: "off"
+      to: "on"
+  condition:
+    - condition:  state
+      entity_id: binary_sensor.someone_home
+      state: 'off'
+  action:
+    - service: notify.joao
+      data_template:
+        message: >
+          {% if trigger.entity_id == "binary_sensor.hall_motion_sensor" %}
+            {% set location = 'HALL' %}
+          {% elif trigger.entity_id == "binary_sensor.living_room_motion_sensor" %}
+            {% set location = 'LIVING ROOM' %}
+          {% endif %}
+          WARNING: I DETECTED MOVEMENT IN THE {{ location }} BUT NO ONE SEEMS TO BE AT HOME!
+    - service: notify.jelena
+      data_template:
+        message: >
+          {% if trigger.entity_id == "binary_sensor.hall_motion_sensor" %}
+            {% set location = 'HALL' %}
+          {% elif trigger.entity_id == "binary_sensor.living_room_motion_sensor" %}
+            {% set location = 'LIVING ROOM' %}
+          {% endif %}
+          WARNING: I DETECTED MOVEMENT IN THE {{ location }} BUT NO ONE SEEMS TO BE AT HOME!
