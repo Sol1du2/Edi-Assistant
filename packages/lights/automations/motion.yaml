@@ -1,0 +1,28 @@
+- id: turn_on_hall_light_movement
+  alias: Turn on Light in Hall when movement is detected
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.hall_motion_sensor
+      from: "off"
+      to: "on"
+  condition:
+    - condition: numeric_state
+      entity_id: sensor.hall_motion_sensor_light_level
+      below: 15
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.hall_ceiling_light
+        brightness: 250
+
+- id: turn_off_hall_light_movement
+  alias: Turn off Light in Hall when movement is detected
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.hall_motion_sensor
+      from: "on"
+      to: "off"
+  action:
+    - service: light.turn_off
+      data:
+        entity_id: light.hall_ceiling_light

@@ -644,8 +644,8 @@ views:
       - type: history-graph
         title: "Lux Graph"
         entities:
-          - sensor.office_light_sensor
-          - sensor.living_room_light_sensor
+          - sensor.hall_motion_sensor_light_level
+          - sensor.living_room_motion_sensor_light_level
         hours_to_show: 24
         refresh_interval: 60
   - path: monitoring
@@ -795,5 +795,5 @@ views:
           - type: entities
             title: "Motion Sensor Batteries"
             entities:
-              - sensor.living_room_motion_light_sensor_battery_level
-              - sensor.office_motion_light_sensor_battery_level
+              - sensor.living_room_motion_sensor_battery_level
+              - sensor.hall_motion_sensor_battery_level
