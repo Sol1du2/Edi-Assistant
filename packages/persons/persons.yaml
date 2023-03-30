@@ -39,4 +39,14 @@ person:
     device_trackers:
       - device_tracker.tile_guest2
 
+template:
+  - binary_sensor:
+      - name: Someone Home
+        state: >
+          {% if is_state('person.joao', 'not_home')  and  is_state('person.jelena', 'not_home') and is_state('person.guest1', 'not_home') and is_state('person.guest2', 'not_home') %}
+            off
+          {% else %}
+            on
+          {% endif %}
+
 automation: !include_dir_merge_list automations/

@@ -1,0 +1,47 @@
+- id: turn_off_heating_no_one_home
+  alias: Turn off heating when everyone leaves
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.someone_home
+      from: 'on'
+      to: 'off'
+  condition:
+    - condition: state
+      entity_id: climate.warmy
+      state: 'heat'
+  action:
+    - service: light.turn_off
+      entity_id: light.house_lights
+    - service: notify.joao
+      data_template:
+        message: >
+          Turning off the lights!
+    - condition:
+      - condition: state
+        entity_id: climate.warmy
+        state: 'heat'
+    - service: climate.turn_off
+      entity_id: climate.warmy
+    - service: notify.joao
+      data_template:
+        message: >
+          Turning off the heating!
+
+- id: turn_on_heating_first_to_arrive
+  alias: Turn on heating when one person arrives
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.someone_home
+      from: 'off'
+      to: 'on'
+  condition:
+    - condition: state
+      entity_id: climate.warmy
+      state: 'off'
+  action:
+    - service: climate.turn_on
+      entity_id: climate.warmy
+    - service: notify.joao
+      data_template:
+        message: >
+          Someone just came home, turning on the heating!
