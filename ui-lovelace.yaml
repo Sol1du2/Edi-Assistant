@@ -567,19 +567,34 @@ views:
           - type: vertical-stack
             title: Living Room
             cards:
-              - type: button
-                entity: remote.rosetta
-                tap_action:
-                  action: toggle
-                hold_action:
-                  action: more-info
-                double_tap_action:
-                  action: more-info
+              - type: horizontal-stack
+                cards:
+                  - type: button
+                    entity: remote.rosetta
+                    name: Rosetta On/Off
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+                    double_tap_action:
+                      action: more-info
+                  - type: button
+                    entity: script.tv_mode
+                    icon: mdi:television-ambient-light
+                    name: TV Ambiance
+                    tap_action:
+                      action: toggle
+                    hold_action:
+                      action: more-info
+                    double_tap_action:
+                      action: more-info
+
               - type: media-control
                 entity: media_player.rosetta
               - type: media-control
                 entity: media_player.ava
-          - type: horizontal-stack
+              
+          - type: vertical-stack
             title: Office
             cards:
               - type: media-control
