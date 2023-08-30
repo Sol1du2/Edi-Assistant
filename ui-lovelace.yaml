@@ -706,22 +706,6 @@ views:
                 __Web UI__ Up-to-date <ha-icon icon="mdi:robot-happy-outline"></ha-icon>
               {% endif %}
 
-              ## Pi-Hole-Backup
-              {% if is_state('update.pi_hole_backup_core_update_available', 'on') %}
-                __Core__ Version {{ state_attr('update.pi_hole_backup_core_update_available', 'latest_version') }} is available. [Release Notes]({{ state_attr('update.pi_hole_backup_core_update_available', 'release_url') }})
-              {% else %}
-                __Core__ Up-to-date <ha-icon icon="mdi:robot-happy-outline"></ha-icon>
-              {% endif %}
-              {% if is_state('update.pi_hole_backup_ftl_update_available', 'on') %}
-                __FTL__ Version {{ state_attr('update.pi_hole_main_ftl_update_available', 'latest_version') }} is available. [Release Notes]({{ state_attr('update.pi_hole_main_ftl_update_available', 'release_url') }})
-              {% else %}
-                __FTL__ Up-to-date <ha-icon icon="mdi:robot-happy-outline"></ha-icon>
-              {% endif %}
-              {% if is_state('update.pi_hole_backup_web_update_available', 'on') %}
-                __Web UI__ Version {{ state_attr('update.pi_hole_backup_web_update_available', 'latest_version') }} is available. [Release Notes]({{ state_attr('update.pi_hole_backup_web_update_available', 'release_url') }})
-              {% else %}
-                __Web UI__ Up-to-date <ha-icon icon="mdi:robot-happy-outline"></ha-icon>
-              {% endif %}
           - type: grid
             columns: 2
             square: false
@@ -775,15 +759,6 @@ views:
                   service: pi_hole.disable
                   service_data:
                     entity_id: switch.pi_hole_main
-                    duration: '00:01'
-              - type: button
-                name: Disable Pi-Hole-Backup (1 minute)
-                icon: mdi:pi-hole
-                tap_action:
-                  action: call-service
-                  service: pi_hole.disable
-                  service_data:
-                    entity_id: switch.pi_hole_backup
                     duration: '00:01'
       - type: vertical-stack
         cards:
