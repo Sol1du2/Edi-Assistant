@@ -66,17 +66,17 @@ template:
           {{ finish - now() }}
         {% endif %}
 
-sensor:
-  - platform: command_line
-    name: OctoPi CPU Temperature
-    command: !secret octoprint_cpu_temp
-    unit_of_measurement: "ºC"
-    value_template: >
-      {% if is_number(value) %}
-        {{ value | multiply(0.001) | round(1) }}
-      {% else %}
-        {{ value }}
-      {% endif %}
+command_line:
+  - sensor:
+      name: OctoPi CPU Temperature
+      command: !secret octoprint_cpu_temp
+      unit_of_measurement: "ºC"
+      value_template: >
+        {% if is_number(value) %}
+          {{ value | multiply(0.001) | round(1) }}
+        {% else %}
+          {{ value }}
+        {% endif %}
 
 automation: !include_dir_merge_list automations/
 script: !include_dir_merge_named scripts/
