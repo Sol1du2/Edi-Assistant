@@ -1,0 +1,47 @@
+- id: heating_status_telegram
+  alias: Heating Status via Telegram
+  trigger:
+    platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/heating_status'
+  action:
+    - service: telegram_bot.send_message
+      data:
+        target: "{{ trigger.event.data.chat_id }}"
+        message: |
+          *State:* {{ states('climate.warmy') }}
+          *Current Temperature:* {{ state_attr('climate.warmy', 'current_temperature') }}°C
+          *Set Temperature:* {{ state_attr('climate.warmy', 'temperature') }}°C
+          *Current Action:* {{ state_attr('climate.warmy', 'hvac_action') }}
+          *Preset Mode:* {{ state_attr('climate.warmy', 'preset_mode') }}
+
+- id: heating_on_telegram
+  alias: Turn on Heating via Telegram
+  trigger:
+    platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/heating_on'
+  action:
+    - service: climate.turn_on
+      entity_id: climate.warmy
+    - service: telegram_bot.send_message
+      data:
+        target: "{{ trigger.event.data.chat_id }}"
+        message: Heating has been turned on!
+
+- id: heating_off_telegram
+  alias: Turn off Heating via Telegram
+  trigger:
+    platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/heating_off'
+  action:
+    - service: climate.turn_off
+      entity_id: climate.warmy
+    - service: telegram_bot.send_message
+      data:
+        target: "{{ trigger.event.data.chat_id }}"
+        message: Heating has been turned off!
