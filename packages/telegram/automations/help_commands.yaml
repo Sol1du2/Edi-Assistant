@@ -15,3 +15,4 @@
           - "/occupancy"
           - "/shop, /clear_shop"
           - "/droopy_status, /droopy_snap, /droopy_off, /droopy_emergency"
+          - "/dreadnought_on, /dreadnought_off"

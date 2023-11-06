@@ -1,0 +1,29 @@
+- id: dreadnought_on_telegram
+  alias: Turn on Dreadnought via Telegram
+  trigger:
+    platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/dreadnought_on'
+  action:
+    - service: wake_on_lan.send_magic_packet
+      data:
+        mac: !secret dreadnought_mac_address
+    - service: telegram_bot.send_message
+      data:
+        target: "{{ trigger.event.data.chat_id }}"
+        message: Dreadnought booting up!
+
+- id: dreadnought_off_telegram
+  alias: Turn off Dreadnought via Telegram
+  trigger:
+    platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/dreadnought_off'
+  action:
+    - service: shell_command.shutdown_dreadnought
+    - service: telegram_bot.send_message
+      data:
+        target: "{{ trigger.event.data.chat_id }}"
+        message: Dreadnought shutting down!
