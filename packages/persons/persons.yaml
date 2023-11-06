@@ -39,14 +39,38 @@ person:
     device_trackers:
       - device_tracker.tile_guest2
 
+input_boolean:
+  enable_joao:
+    name: Enable joao for automations
+  enable_jelena:
+    name: Enable jelena for automations
+  enable_guest1:
+    name: Enable guest1 for automations
+  enable_guest2:
+    name: Enable guest2 for automations
+
 template:
   - binary_sensor:
       - name: Someone Home
-        state: >
-          {% if is_state('person.joao', 'not_home')  and  is_state('person.jelena', 'not_home') and is_state('person.guest1', 'not_home') and is_state('person.guest2', 'not_home') %}
-            off
-          {% else %}
+        state: > 
+          {% set someone_home = false %}
+          {% if is_state('input_boolean.enable_joao', 'on') %}
+            {% set someone_home = someone_home or is_state('person.joao', 'home') %}
+          {% endif %}
+          {% if is_state('input_boolean.enable_jelena', 'on') %}
+            {% set someone_home = someone_home or is_state('person.jelena', 'home') %}
+          {% endif %}
+          {% if is_state('input_boolean.enable_guest1', 'on') %}
+            {% set someone_home = someone_home or is_state('person.guest1', 'home') %}
+          {% endif %}
+          {% if is_state('input_boolean.enable_guest2', 'on') %}
+            {% set someone_home = someone_home or is_state('person.guest2', 'home') %}
+          {% endif %}
+
+          {% if someone_home %}
             on
+          {% else %}
+            off
           {% endif %}
 
 automation: !include_dir_merge_list automations/
