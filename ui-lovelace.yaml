@@ -723,22 +723,32 @@ views:
           - type: markdown
             content: |
               # Device Control
-          - type: grid
+          - type: vertical-stack
             title: "Presence"
-            columns: 4
             cards:
               - type: button
-                name: João
-                entity: input_boolean.enable_joao
-              - type: button
-                name: Jelena
-                entity: input_boolean.enable_jelena
-              - type: button
-                name: Guest1
-                entity: input_boolean.enable_guest1
-              - type: button
-                name: Guest2
-                entity: input_boolean.enable_guest2
+                name: "Request Presence"
+                icon: mdi:home-account
+                tap_action:
+                  action: call-service
+                  service: mqtt.publish
+                  service_data:
+                    topic: bouncer/request/presence   
+              - type: grid
+                columns: 4
+                cards:    
+                  - type: button
+                    name: João
+                    entity: input_boolean.enable_joao
+                  - type: button
+                    name: Jelena
+                    entity: input_boolean.enable_jelena
+                  - type: button
+                    name: Guest1
+                    entity: input_boolean.enable_guest1
+                  - type: button
+                    name: Guest2
+                    entity: input_boolean.enable_guest2
           - type: grid
             title: "DreadNought"
             columns: 3
