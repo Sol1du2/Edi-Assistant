@@ -3,7 +3,7 @@ intent:
 intent_script:
   GoodMorning:
     speech:
-      text: Good morning. Today you can expect an average temperature of {{ states.sensor.br_temperature_1d.state }} degrees and a chance of rain of {{ states.sensor.br_rainchance_1d.state }} percent
+      text: Good morning. Today you can expect an average temperature of {{ states('sensor.br_temperature_1d') }} degrees and a chance of rain of {{ states('sensor.br_rainchance_1d') }} percent
     action:
       service: light.turn_off
       entity_id: light.house_lights
@@ -21,15 +21,15 @@ intent_script:
     speech:
       text: >
         {% if location == "living room" %}
-          It's {{ states.sensor.living_room_temperature.state }} degrees in the living room
+          It's {{ states('sensor.living_room_temperature') }} degrees in the living room
         {% elif location == "bedroom" %}
-          It's {{ states.sensor.bedroom_temperature.state }} degrees in the bedroom
+          It's {{ states('sensor.bedroom_temperature') }} degrees in the bedroom
         {% elif location == "office" %}
-          It's {{ states.sensor.office_temperature.state }} degrees in the office
+          It's {{ states('sensor.office_temperature') }} degrees in the office
         {% elif location == "balcony" %}
-          It's {{ states.sensor.balcony_temperature.state }} degrees outside
+          It's {{ states('sensor.balcony_temperature') }} degrees outside
         {% elif location == "filament box" %}
-          It's {{ states.sensor.filament_box_temperature.state }} degrees in the filament container
+          It's {{ states('sensor.filament_box_temperature') }} degrees in the filament container
         {% else %}
           There is no temperature sensor in {{ location }}
         {% endif %}
@@ -37,15 +37,15 @@ intent_script:
     speech:
       text: >
         {% if location == "living room" %}
-          It's {{ states.sensor.living_room_humidity.state }} percent in the living room
+          It's {{ states('sensor.living_room_humidity') }} percent in the living room
         {% elif location == "bedroom" %}
-          It's {{ states.sensor.bedroom_humidity.state }} percent in the bedroom
+          It's {{ states('sensor.bedroom_humidity') }} percent in the bedroom
         {% elif location == "office" %}
-          It's {{ states.sensor.office_humidity.state }} percent in the office
+          It's {{ states('sensor.office_humidity') }} percent in the office
         {% elif location == "balcony" %}
-          It's {{ states.sensor.balcony_humidity.state }} percent outside
+          It's {{ states('sensor.balcony_humidity') }} percent outside
         {% elif location == "filament container" %}
-          It's {{ states.sensor.filament_box_humidity.state }} percent in the filament container
+          It's {{ states('sensor.filament_box_humidity') }} percent in the filament container
         {% else %}
           There is no humidity sensor in {{ location }}
         {% endif %}

@@ -37,8 +37,8 @@ template:
         {% elif is_state('sensor.octoprint_start_time', 'unknown') %}
           unknown
         {% else %}
-          {% set start = as_datetime(states.sensor.octoprint_start_time.state) %}
-          {% set finish = as_datetime(states.sensor.octoprint_estimated_finish_time.state) %}
+          {% set start = as_datetime(states('sensor.octoprint_start_time')) %}
+          {% set finish = as_datetime(states('sensor.octoprint_estimated_finish_time')) %}
           {{ finish - start }}
         {% endif %}
 
@@ -50,7 +50,7 @@ template:
         {% elif is_state('sensor.octoprint_estimated_finish_time', 'unknown') %}
           unknown
         {% else %}
-          {% set finish = as_datetime(states.sensor.octoprint_estimated_finish_time.state) %}
+          {% set finish = as_datetime(states('sensor.octoprint_estimated_finish_time')) %}
           {{ as_local(finish) }}
         {% endif %}
         
@@ -62,7 +62,7 @@ template:
         {% elif is_state('sensor.octoprint_estimated_finish_time', 'unknown') %}
           unknown
         {% else %}
-          {% set finish = as_datetime(states.sensor.octoprint_estimated_finish_time.state) %}
+          {% set finish = as_datetime(states('sensor.octoprint_estimated_finish_time')) %}
           {{ finish - now() }}
         {% endif %}
 

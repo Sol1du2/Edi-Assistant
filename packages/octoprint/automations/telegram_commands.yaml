@@ -4,22 +4,22 @@
     platform: event
     event_type: telegram_command
     event_data:
-      command: '/droopy_status'
+      command: '/droopy'
   action:
     - service: telegram_bot.send_message
       data_template:
         target: "{{ trigger.event.data.chat_id }}"
         message: |
-          *State:* {{ states.sensor.octoprint_current_state.state }}
-          *Job Percentage:* {{ states.sensor.octoprint_job_percentage.state }}%
-          *Total Time (Estimated):* {{ states.sensor.droopy_est_total_time.state }}
-          *Remaining Time (Estimated):* {{ states.sensor.droopy_est_remaining_time.state }}
-          *Finish Time (Estimated):* {{ states.sensor.droopy_est_finish_time_local.state }}
+          *State:* {{ states('sensor.octoprint_current_state') }}
+          *Job Percentage:* {{ states('sensor.octoprint_job_percentage') }}%
+          *Total Time (Estimated):* {{ states('sensor.droopy_est_total_time') }}
+          *Remaining Time (Estimated):* {{ states('sensor.droopy_est_remaining_time') }}
+          *Finish Time (Estimated):* {{ states('sensor.droopy_est_finish_time_local') }}
 
-          *Tool Temp:* {{ states.sensor.octoprint_actual_tool0_temp.state }}°C
-          *Bed Temp:* {{ states.sensor.octoprint_actual_bed_temp.state }}°C
-          *Target Tool Temp:* {{ states.sensor.octoprint_target_tool0_temp.state }}°C
-          *Target Bed Temp:* {{ states.sensor.octoprint_target_bed_temp.state }}°C
+          *Tool Temp:* {{ states('sensor.octoprint_actual_tool0_temp') }}°C
+          *Bed Temp:* {{ states('sensor.octoprint_actual_bed_temp') }}°C
+          *Target Tool Temp:* {{ states('sensor.octoprint_target_tool0_temp') }}°C
+          *Target Bed Temp:* {{ states('sensor.octoprint_target_bed_temp') }}°C
 
 - id: send_droopy_snapshot_telegram
   alias: Send a snapshot of droopy's camera
