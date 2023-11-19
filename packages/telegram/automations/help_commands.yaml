@@ -12,8 +12,8 @@
         message: "Here's a list of commands you can use"
         keyboard:
           - "/lights, /lights_on, /lights_off"
-          - "/heating_status, /heating_on, /heating_off"
+          - "/hvac, /heating, /heating_on, /heating_off"
           - "/occupancy"
           - "/shop, /clear_shop"
-          - "/droopy_status, /droopy_snap, /droopy_off, /droopy_emergency"
+          - "/droopy, /droopy_snap, /droopy_off, /droopy_emergency"
           - "/dreadnought_on, /dreadnought_off"

@@ -4,7 +4,7 @@
     platform: event
     event_type: telegram_command
     event_data:
-      command: '/heating_status'
+      command: '/heating'
   action:
     - service: telegram_bot.send_message
       data:
@@ -15,6 +15,37 @@
           *Set Temperature:* {{ state_attr('climate.warmy', 'temperature') }}°C
           *Current Action:* {{ state_attr('climate.warmy', 'hvac_action') }}
           *Preset Mode:* {{ state_attr('climate.warmy', 'preset_mode') }}
+
+- id: hvac_status_telegram
+  alias: HVAC Status via Telegram
+  trigger:
+    platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/hvac'
+  action:
+    - service: telegram_bot.send_message
+      data:
+        target: "{{ trigger.event.data.chat_id }}"
+        message: |
+          *Living Room:*
+            Temperature: {{ states('sensor.living_room_temperature') }}°C
+            Humidity: {{ states('sensor.living_room_humidity') }}%
+          *Balcony:*
+            Temperature: {{ states('sensor.balcony_temperature') }}°C
+            Humidity: {{ states('sensor.balcony_humidity') }}%
+          *Bathroom:*
+            Temperature: {{ states('sensor.bathroom_temperature') }}°C
+            Humidity: {{ states('sensor.bathroom_humidity') }}%
+          *Office:*
+            Temperature: {{ states('sensor.office_temperature') }}°C
+            Humidity: {{ states('sensor.office_humidity') }}%
+          *Bedroom:*
+            Temperature: {{ states('sensor.bedroom_temperature') }}°C
+            Humidity: {{ states('sensor.bedroom_humidity') }}%
+          *Filament Box:*
+            Temperature: {{ states('sensor.filament_box_temperature') }}°C
+            Humidity: {{ states('sensor.filament_box_humidity') }}%
 
 - id: heating_on_telegram
   alias: Turn on Heating via Telegram
