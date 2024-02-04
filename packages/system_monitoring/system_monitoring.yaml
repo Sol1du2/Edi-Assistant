@@ -1,5 +1,6 @@
 shell_command:
   shutdown_dreadnought: !secret dreadnought_shutdown_ssh
+  shutdown_pihole: !secret pihole_shutdown_ssh
 
 wake_on_lan:
 

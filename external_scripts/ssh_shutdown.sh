@@ -3,7 +3,7 @@
 set -e
 
 if [ $# -lt 3 ]; then
-  echo "Usage: octoprint_shutdown.sh <user> <address> <port>"
+  echo "Usage: ssh_shutdown.sh <user> <address> <port>"
   exit 1
 fi
 

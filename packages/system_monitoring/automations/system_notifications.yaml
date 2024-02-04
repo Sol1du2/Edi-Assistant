@@ -7,6 +7,7 @@
     condition: template
     value_template: "{{ (as_timestamp(now()) - as_timestamp(states('sensor.last_boot'))) | int < 120 }}"
   action:
-    service: notify.joao
-    data:
-      message: Edi has just rebooted ({{ (as_timestamp(now()) - as_timestamp(states('sensor.last_boot'))) | int }} seconds ago)
+    - service: notify.joao
+      data:
+        message: Edi has just rebooted ({{ (as_timestamp(now()) - as_timestamp(states('sensor.last_boot'))) | int }} seconds ago)
+
