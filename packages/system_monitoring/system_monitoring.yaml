@@ -11,12 +11,4 @@ switch:
     turn_off:
       service: shell_command.shutdown_dreadnought
 
-sensor:
-  - platform: systemmonitor
-    resources:
-      - type: processor_use
-      - type: processor_temperature
-      - type: memory_use_percent
-      - type: last_boot
-
 automation: !include_dir_merge_list automations/
