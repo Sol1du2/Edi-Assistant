@@ -1,0 +1,47 @@
+- id: sleep_mode_triggered_check_dreadnought
+  alias: Sleep mode was triggered
+  trigger:
+    platform: state
+    entity_id: script.sleep_mode
+    to: 'on'
+  action:
+    - choose:
+        - conditions:
+            - condition:  state
+              entity_id: switch.dreadnought_toggle
+              state: 'on'
+          sequence:
+            - service: >
+                {% if is_state_attr('person.joao', 'id', trigger.to_state.context.user_id) %}
+                  notify.joao
+                {% elif is_state_attr('person.jelena', 'id', trigger.to_state.context.user_id) %}
+                  notify.jelena
+                {% else %}
+                  notify.joao
+                {% endif %}
+              data_template:
+                message: >
+                  Sleep mode activated, do you want me to shutdown Dreadnought as well?
+                data:
+                  inline_keyboard:
+                    - "Yes:/dreadnought_off, No:/dreadnought_do_nothing"
+    - choose:
+        - conditions:
+            - condition:  state
+              entity_id: remote.rosetta
+              state: 'on'
+          sequence:
+            - service: >
+                {% if is_state_attr('person.joao', 'id', trigger.to_state.context.user_id) %}
+                  notify.joao
+                {% elif is_state_attr('person.jelena', 'id', trigger.to_state.context.user_id) %}
+                  notify.jelena
+                {% else %}
+                  notify.joao
+                {% endif %}
+              data_template:
+                message: >
+                  Sleep mode activated, do you want me to turn off Rosetta as well?
+                data:
+                  inline_keyboard:
+                    - "Yes:/rosetta_off, No:/rosetta_do_nothing"
