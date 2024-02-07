@@ -13,6 +13,7 @@
         keyboard:
           - "/lights, /lights_on, /lights_off"
           - "/hvac, /heating, /heating_on, /heating_off"
+          - "/rosetta_on, /rosetta_off"
           - "/occupancy"
           - "/shop, /clear_shop"
           - "/droopy, /droopy_snap, /droopy_off, /droopy_emergency"
