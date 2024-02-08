@@ -129,9 +129,9 @@
       data:
         message: |
           The bathroom door is open and the humidity is higher than average in the house.
-          Bathroom Humidity: {{ states('sensor.bathroom_humidity')% }}
+          Bathroom Humidity: {{ states('sensor.bathroom_humidity') }}%
     - service: notify.jelena
       data:
         message: |
           The bathroom door is open and the humidity is higher than average in the house.
-          Bathroom Humidity: {{ states('sensor.bathroom_humidity')% }}
+          Bathroom Humidity: {{ states('sensor.bathroom_humidity') }}%
