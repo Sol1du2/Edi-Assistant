@@ -58,7 +58,7 @@
     - service: notify.jelena
       data_template:
         message: >
-         {% if trigger.entity_id == "sensor.living_room_humidity" %}
+          {% if trigger.entity_id == "sensor.living_room_humidity" %}
             Danger, the humidity in the living room is above 80.
           {% elif trigger.entity_id == "sensor.office_humidity" %}
             Danger, the humidity in the office is above 80.
