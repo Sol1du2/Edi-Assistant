@@ -629,24 +629,22 @@ views:
                   service: script.turn_on
                   service_data:
                     entity_id: script.emergency_power_off_droopy
-      - type: sensor
-        entity: sensor.octopi_cpu_temperature
-        name: "CPU Temperature"
-        graph: line
-      - type: entities
-        title: "Droopy Status"
-        entities:
-           - sensor.octoprint_current_state
-           - sensor.octoprint_actual_tool0_temp
-           - sensor.octoprint_actual_bed_temp
-           - sensor.octoprint_target_tool0_temp
-           - sensor.octoprint_target_bed_temp
-           - sensor.octoprint_job_percentage
-           - sensor.droopy_estimated_total_time
-           - sensor.droopy_estimated_remaining_time
-           - sensor.droopy_estimated_finish_time_local
-      - type: picture-entity
-        entity: camera.droopy_cam
+          - type: picture-entity
+            entity: camera.droopy_cam
+      - type: vertical-stack
+        title: Droopy Status
+        cards:
+          - type: entities
+            entities:
+              - sensor.octoprint_current_state
+              - sensor.octoprint_actual_tool0_temp
+              - sensor.octoprint_actual_bed_temp
+              - sensor.octoprint_target_tool0_temp
+              - sensor.octoprint_target_bed_temp
+              - sensor.octoprint_job_percentage
+              - sensor.droopy_estimated_total_time
+              - sensor.droopy_estimated_remaining_time
+              - sensor.droopy_estimated_finish_time_local
   - path: analytics
     title: "Analytics"
     icon: mdi:home-analytics
