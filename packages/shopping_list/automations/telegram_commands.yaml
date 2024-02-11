@@ -1,10 +1,10 @@
 - id: get_shopping_list_unchecked_telegram
   alias: Retrieve all shopping list items telegram command
   trigger:
-    platform: event
-    event_type: telegram_command
-    event_data:
-      command: '/shop'
+    - platform: event
+      event_type: telegram_command
+      event_data:
+        command: '/shop'
   action:
     - service: telegram_bot.send_message
       data_template:
@@ -21,13 +21,25 @@
 - id: clear_shopping_list_command
   alias: Clear the shopping list telegram command
   trigger:
-    platform: event
-    event_type: telegram_command
-    event_data:
-      command: '/clear_shop'
+    - platform: event
+      event_type: telegram_command
+      event_data:
+        command: '/clear_shop'
+    - platform: event
+      event_type: telegram_callback
+      event_data:
+        command: '/clear_shop'
   action:
     - service: script.complete_shopping_list
     - service: telegram_bot.send_message
       data:
         target: "{{ trigger.event.data.chat_id }}"
         message: The shopping list has been cleared
+    - condition:
+      - condition: template
+        value_template: "{{ trigger.event.event_type == 'telegram_callback' }}"
+    - service: telegram_bot.answer_callback_query
+      data:
+        callback_query_id: "{{ trigger.event.data.id }}"
+        message: Alright, clearing shopping list 😄
+        show_alert: false

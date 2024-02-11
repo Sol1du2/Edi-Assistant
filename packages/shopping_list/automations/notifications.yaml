@@ -45,4 +45,4 @@
           {{ states('sensor.shopping_list_unchecked_items') }}
         data:
           inline_keyboard:
-            - "Yes:/clear_shop, No:/shop_do_nothing"
+            - "Clear list:/clear_shop"

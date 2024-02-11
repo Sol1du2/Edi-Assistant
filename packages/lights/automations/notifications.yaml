@@ -21,10 +21,10 @@
                 {% endif %}
               data_template:
                 message: >
-                  Sleep mode activated, do you want me to shutdown Dreadnought as well?
+                  Would you like me to shutdown Dreadnought as well?
                 data:
                   inline_keyboard:
-                    - "Yes:/dreadnought_off, No:/dreadnought_do_nothing"
+                    - "Shutdown Dreadnought:/dreadnought_off"
     - choose:
         - conditions:
             - condition:  state
@@ -41,7 +41,7 @@
                 {% endif %}
               data_template:
                 message: >
-                  Sleep mode activated, do you want me to turn off Rosetta as well?
+                  Would you like me to turn Rosetta off as well?
                 data:
                   inline_keyboard:
-                    - "Yes:/rosetta_off, No:/rosetta_do_nothing"
+                    - "Turn off Rosetta:/rosetta_off"
