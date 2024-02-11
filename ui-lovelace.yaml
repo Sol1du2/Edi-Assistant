@@ -344,7 +344,8 @@ views:
         view_layout:
           position: sidebar
 
-      - type: shopping-list
+      - type: todo-list
+        entity: todo.shopping_list
         title: Shopping List
         view_layout:
           position: sidebar
