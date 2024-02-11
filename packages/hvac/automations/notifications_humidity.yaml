@@ -72,7 +72,7 @@
   alias: Humidity is moldy high in a certian room
   trigger:
     - platform: numeric_state
-      entity_id: 
+      entity_id:
         - sensor.living_room_humidity
         - sensor.office_humidity
         - sensor.bedroom_humidity
