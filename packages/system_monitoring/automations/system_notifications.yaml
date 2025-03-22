@@ -11,3 +11,39 @@
       data:
         message: Edi has just rebooted ({{ (as_timestamp(now()) - as_timestamp(states('sensor.last_boot'))) | int }} seconds ago)
 
+- id: power_cut
+  alias: Power Cut
+  trigger:
+    - platform: state
+      entity_id: sensor.ups_status
+      to: "ONBATT"
+  action:
+    - service: notify.joao
+      data:
+        message: Power failure on Edi's UPS. Running on batteries!
+    - service: notify.jelena
+      data:
+        message: Power failure on Edi's UPS. Running on batteries!
+
+- id: shutdown_low_battery
+  alias: Shutdown system when running on low battery
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.ups_battery
+      below: 10
+  condition:
+    - condition: state
+      entity_id: sensor.ups_status
+      state: "ONBATT"
+  action:
+    - service: notify.joao
+      data:
+        message: UPS Battery too low. Shutting down systems... Bye!
+    - service: notify.jelena
+      data:
+        message: UPS Battery too low. Shutting down systems... Bye!
+    - delay:
+        seconds: 10
+    - service: shell_command.shutdown_pihole
+    - service: shell_command.shutdown_edi
+      
