@@ -1,11 +1,12 @@
 - id: notify_update 
   alias: "Update Available Notification"
-  trigger:
-    - platform: state
+  triggers:
+    - trigger: state
       entity_id: binary_sensor.home_assistant_website_update_available
       from: "off"
       to: "on"
-  action:
-    - service: notify.joao
+  actions:
+    - action: notify.send_message
       data:
+        entity_id: notify.telegram_joao
         message: "Home Assistant {{ states('sensor.home_assistant_website') }} is available. Release Notes: {{ state_attr('sensor.home_assistant_website', 'release_notes') }}"

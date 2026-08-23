@@ -4,7 +4,7 @@ power_on_droopy:
     - condition: state
       entity_id: switch.droopy
       state: "off"
-    - service: switch.turn_on
+    - action: switch.turn_on
       data:
         entity_id: switch.droopy
 
@@ -16,21 +16,19 @@ safely_power_off_droopy:
         - condition: state
           entity_id: switch.droopy
           state: "on"
-        - condition: not
-          conditions:
-            - condition: state
-              entity_id: sensor.octoprint_current_state
-              state: "Printing"
-    - service: input_boolean.turn_on
+        - condition: state
+          entity_id: binary_sensor.octoprint_printing
+          state: "off"
+    - action: input_boolean.turn_on
       data:
         entity_id: input_boolean.droopy_shutting_down
-    - service: shell_command.shutdown_octoprint
+    - action: shell_command.shutdown_octoprint
     - delay:
         seconds: 30
-    - service: switch.turn_off
+    - action: switch.turn_off
       data:
         entity_id: switch.droopy
-    - service: input_boolean.turn_off
+    - action: input_boolean.turn_off
       data:
         entity_id: input_boolean.droopy_shutting_down
 
@@ -40,14 +38,14 @@ emergency_power_off_droopy:
     - condition: state
       entity_id: switch.droopy
       state: "on"
-    - service: switch.turn_off
+    - action: switch.turn_off
       data:
         entity_id: switch.droopy
 
 power_cycle_droopy:
   alias: Power Cycle Droopy
   sequence:
-    - service: >
+    - action: >
         {% if is_state('switch.droopy', 'off') %}
           script.power_on_droopy
         {% else %}

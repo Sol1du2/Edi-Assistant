@@ -1,87 +1,80 @@
 light:
   - platform: switch
-    name: Kitchen Stove Light
-    entity_id: switch.kitchen_stove_light
+    name: Front Door Light
+    entity_id: switch.front_door_light
   - platform: switch
-    name: Balcony String Lights
-    entity_id: switch.balcony_string_lights
+    name: Entryway Ceiling Light
+    entity_id: switch.entryway_ceiling_light
   - platform: switch
-    name: Bedroom Nightstand Light
-    entity_id: switch.bedroom_nightstand_light
+    name: Toilet Ceiling Light
+    entity_id: switch.toilet_ceiling_light
+  - platform: switch
+    name: Kitchen Table Lights
+    entity_id: switch.kitchen_table_lights
+  - platform: switch
+    name: Kitchen Bench Lights
+    entity_id: switch.kitchen_bench_lights
+  - platform: switch
+    name: Living Room Ceiling Lights
+    entity_id: switch.living_room_ceiling_lights
+  - platform: switch
+    name: TV Stand Light
+    entity_id: switch.tv_stand_light
+  - platform: switch
+    name: Hallway Ceiling Light
+    entity_id: switch.hallway_ceiling_light
+  - platform: switch
+    name: Office Jelena Ceiling Light
+    entity_id: switch.office_jelena_ceiling_light
+  - platform: switch
+    name: Bedroom Ceiling Light
+    entity_id: switch.bedroom_ceiling_light
+  - platform: switch
+    name: Closet Room Ceiling Light
+    entity_id: switch.closet_room_ceiling_light
+  - platform: switch
+    name: Bathroom Ceiling Light
+    entity_id: switch.bathroom_ceiling_light
+  - platform: switch
+    name: Bathroom Mirror Light
+    entity_id: switch.bathroom_mirror_light
+  - platform: switch
+    name: Attic Ceiling Lights
+    entity_id: switch.attic_ceiling_lights
+  - platform: switch
+    name: Attic Donut Lamp
+    entity_id: switch.attic_donut_lamp
+  - platform: switch
+    name: Shed Outside Light
+    entity_id: switch.shed_outside_light
+  - platform: switch
+    name: Shed Inside Light
+    entity_id: switch.shed_inside_light
 
   - platform: group
-    name: Living Room Lights
+    unique_id: living_room_corner_lamp
+    name: Living Room Corner Lamp
     entities:
-      - light.living_room_ceiling_light_1
-      - light.living_room_ceiling_light_2
-      - light.fado_lamp
-      - light.corner_lamp
+      - light.living_room_corner_lamp_1
+      - light.living_room_corner_lamp_2
+      - light.living_room_corner_lamp_3
   - platform: group
-    name: Living Room Ceiling Lights
+    unique_id: mechanical_room_ceiling_lights
+    name: Mechanical Room Ceiling Lights
     entities:
-      - light.living_room_ceiling_light_1
-      - light.living_room_ceiling_light_2
-  - platform: group
-    name: Living Room Lamps
-    entities:
-      - light.fado_lamp
-      - light.corner_lamp
-  - platform: group
-    name: Kitchen Lights
-    entities:
-      - light.kitchen_ceiling_light
-      - light.kitchen_stove_light
-  - platform: group
-    name: Balcony Lights
-    entities:
-      - light.balcony_ceiling_light
-      - light.balcony_string_lights
-  - platform: group
-    name: Hall Lights
-    entities:
-      - light.hall_ceiling_light
-  - platform: group
-    name: Boiler Room Lights
-    entities:
-      - light.boiler_room_ceiling_light
-  - platform: group
-    name: Closet Lights
-    entities:
-      - light.closet_ceiling_light
-  - platform: group
-    name: Toilet Lights
-    entities:
-      - light.toilet_ceiling_light
-  - platform: group
-    name: Bathroom Lights
-    entities:
-      - light.bathroom_ceiling_light
-  - platform: group
-    name: Office Lights
-    entities:
-      - light.office_ceiling_light
-      - light.office_lamp
-      - light.office_droopy_lamp
-      - light.office_work_desk_lamp
-  - platform: group
-    name: Bedroom Lights
-    entities:
-      - light.bedroom_ceiling_light
-      - light.bedroom_lamp
-      - light.bedroom_nightstand_light
-  - platform: group
-    name: House Lights
-    entities:
-      - light.living_room_lights
-      - light.kitchen_lights
-      - light.balcony_lights
-      - light.hall_lights
-      - light.boiler_room_lights
-      - light.closet_lights
-      - light.toilet_lights
-      - light.bathroom_lights
-      - light.office_lights
-      - light.bedroom_lights
+      - light.mechanical_room_light_1
+      - light.mechanical_room_light_2
+      - light.mechanical_room_light_3
+
+input_boolean:
+  ha_toggle_in_progress:
+    name: HA toggle in progress
+    initial: off
+    icon: mdi:toggle-switch
+  halloween_mode:
+    name: Halloween Mode
+    initial: off
+    icon: mdi:halloween
 
 group: !include_dir_merge_named groups/
 automation: !include_dir_merge_list automations/

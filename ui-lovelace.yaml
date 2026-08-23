@@ -1,4 +1,10 @@
 title: EDI-Habitat
+resources:
+  - url: /local/button-card.js
+    type: module
+  - url: /local/local-conditional-card.js
+    type: module
+
 views:
   - path: default_view
     type: sidebar
@@ -12,335 +18,596 @@ views:
           - person.jelena
           - person.guest1
           - person.guest2
-        view_layout:
-          position: sidebar
 
-      - type: picture-elements
-        image: http://192.168.1.20:8123/local/floor-plan.svg
-        elements:
-          # Living Room
-          - type: state-icon
-            icon: mdi:ceiling-light
-            tap_action:
-              action: toggle
-            double_tap_action:
-              action: more-info
-            entity: light.living_room_ceiling_light_1
-            style:
-              top: 64%
-              left: 28%
-          - type: state-icon
-            icon: mdi:ceiling-light
-            tap_action:
-              action: toggle
-            double_tap_action:
-              action: more-info
-            entity: light.living_room_ceiling_light_2
-            style:
-              top: 64%
-              left: 16%
-          - type: state-icon
-            icon: mdi:lamp
-            tap_action:
-              action: toggle
-            double_tap_action:
-              action: more-info
-            entity: light.fado_lamp
-            style:
-              top: 50%
-              left: 20%
-          - type: state-icon
-            icon: mdi:floor-lamp
-            tap_action:
-              action: toggle
-            double_tap_action:
-              action: more-info
-            entity: light.corner_lamp
-            style:
-              top: 50%
-              left: 5%
-          - type: state-icon
-            entity: sensor.living_room_temperature
-            style:
-              top: 33%
-              left: 14%
-          - type: state-label
-            entity: sensor.living_room_temperature
-            style:
-              top: 33%
-              left: 22%
-          - type: state-icon
-            entity: sensor.living_room_humidity
-            style:
-              top: 39%
-              left: 14%
-          - type: state-label
-            entity: sensor.living_room_humidity
-            style:
-              top: 39%
-              left: 21%
-          
-          # Kitchen
-          - type: state-icon
-            icon: mdi:ceiling-light
-            tap_action:
-              action: toggle
-            double_tap_action:
-              action: more-info
-            entity: light.kitchen_ceiling_light
-            style:
-              top: 66%
-              left: 43%
-          - type: state-icon
-            icon: mdi:stove
-            tap_action:
-              action: toggle
-            double_tap_action:
-              action: more-info
-            entity: switch.kitchen_stove_light
-            style:
-              top: 75.5%
-              left: 44%
+      # Floor Plan Control Buttons
+      - type: horizontal-stack
+        cards:
+          # Ground Floor (inside)
+          - type: custom:local-conditional-card
+            id: ground_button_active
+            default: show      
+            persist_state: true
+            card:
+              type: custom:button-card
+              name: Ground floor
+              icon: mdi:home-floor-g
+              size: 30%
+              color: var(--state-active-color)
+              show_name: false
+              tap_action:
+                action: fire-dom-event
+                local_conditional_card:
+                  action: set
+                  ids:
+                    - ground_button_active: show
+                    - ground_button_inactive: hide
+                    - first_button_active: hide
+                    - first_button_inactive: show
+                    - attic_button_active: hide
+                    - attic_button_inactive: show
+                    - garden_button_active: hide
+                    - garden_button_inactive: show
+                    - ground: show
+                    - first: hide
+                    - attic: hide
+                    - garden: hide
+          - type: custom:local-conditional-card
+            id: ground_button_inactive
+            default: hide      
+            persist_state: true
+            card:
+              type: custom:button-card
+              name: Ground floor
+              icon: mdi:home-floor-g
+              size: 30%
+              color: var(--state-icon-color)
+              show_name: false
+              tap_action:
+                action: fire-dom-event
+                local_conditional_card:
+                  action: set
+                  ids:
+                    - ground_button_active: show
+                    - ground_button_inactive: hide
+                    - first_button_active: hide
+                    - first_button_inactive: show
+                    - attic_button_active: hide
+                    - attic_button_inactive: show
+                    - garden_button_active: hide
+                    - garden_button_inactive: show
+                    - ground: show
+                    - first: hide
+                    - attic: hide
+                    - garden: hide
+          # First Floor
+          - type: custom:local-conditional-card
+            id: first_button_active
+            default: hide
+            persist_state: true
+            card:
+              type: custom:button-card
+              name: First floor
+              icon: mdi:home-floor-1
+              size: 30%
+              color: var(--state-active-color)
+              show_name: false
+              tap_action:
+                action: fire-dom-event
+                local_conditional_card:
+                  action: set
+                  ids:
+                    - ground_button_active: hide
+                    - ground_button_inactive: show
+                    - first_button_active: show
+                    - first_button_inactive: hide
+                    - attic_button_active: hide
+                    - attic_button_inactive: show
+                    - garden_button_active: hide
+                    - garden_button_inactive: show
+                    - ground: hide
+                    - first: show
+                    - attic: hide
+                    - garden: hide
+          - type: custom:local-conditional-card
+            id: first_button_inactive
+            default: show
+            persist_state: true
+            card:
+              type: custom:button-card
+              name: First floor
+              icon: mdi:home-floor-1
+              size: 30%
+              color: var(--state-icon-color)
+              show_name: false
+              tap_action:
+                action: fire-dom-event
+                local_conditional_card:
+                  action: set
+                  ids:
+                    - ground_button_active: hide
+                    - ground_button_inactive: show
+                    - first_button_active: show
+                    - first_button_inactive: hide
+                    - attic_button_active: hide
+                    - attic_button_inactive: show
+                    - garden_button_active: hide
+                    - garden_button_inactive: show
+                    - ground: hide
+                    - first: show
+                    - attic: hide
+                    - garden: hide
+          # Attic
+          - type: custom:local-conditional-card
+            id: attic_button_active
+            default: hide
+            persist_state: true
+            card:
+              type: custom:button-card
+              name: Attic floor
+              icon: mdi:home-floor-a
+              size: 30%
+              color: var(--state-active-color)
+              show_name: false
+              tap_action:
+                action: fire-dom-event
+                local_conditional_card:
+                  action: set
+                  ids:
+                    - ground_button_active: hide
+                    - ground_button_inactive: show
+                    - first_button_active: hide
+                    - first_button_inactive: show
+                    - attic_button_active: show
+                    - attic_button_inactive: hide
+                    - garden_button_active: hide
+                    - garden_button_inactive: show
+                    - ground: hide
+                    - first: hide
+                    - attic: show
+                    - garden: hide
+          - type: custom:local-conditional-card
+            id: attic_button_inactive
+            default: show
+            persist_state: true
+            card:
+              type: custom:button-card
+              name: Attic floor
+              icon: mdi:home-floor-a
+              size: 30%
+              color: var(--state-icon-color)
+              show_name: false
+              tap_action:
+                action: fire-dom-event
+                local_conditional_card:
+                  action: set
+                  ids:
+                    - ground_button_active: hide
+                    - ground_button_inactive: show
+                    - first_button_active: hide
+                    - first_button_inactive: show
+                    - attic_button_active: show
+                    - attic_button_inactive: hide
+                    - garden_button_active: hide
+                    - garden_button_inactive: show
+                    - ground: hide
+                    - first: hide
+                    - attic: show
+                    - garden: hide
+          # Garden
+          - type: custom:local-conditional-card
+            id: garden_button_active
+            default: hide
+            persist_state: true
+            card:
+              type: custom:button-card
+              name: Garden
+              icon: mdi:shovel
+              size: 30%
+              color: var(--state-active-color)
+              show_name: false
+              tap_action:
+                action: fire-dom-event
+                local_conditional_card:
+                  action: set
+                  ids:
+                    - ground_button_active: hide
+                    - ground_button_inactive: show
+                    - first_button_active: hide
+                    - first_button_inactive: show
+                    - attic_button_active: hide
+                    - attic_button_inactive: show
+                    - garden_button_active: show
+                    - garden_button_inactive: hide
+                    - ground: hide
+                    - first: hide
+                    - attic: hide
+                    - garden: show
+          - type: custom:local-conditional-card
+            id: garden_button_inactive
+            default: show
+            persist_state: true
+            card:
+              type: custom:button-card
+              name: Garden
+              icon: mdi:shovel
+              size: 30%
+              color: var(--state-icon-color)
+              show_name: false
+              tap_action:
+                action: fire-dom-event
+                local_conditional_card:
+                  action: set
+                  ids:
+                    - ground_button_active: hide
+                    - ground_button_inactive: show
+                    - first_button_active: hide
+                    - first_button_inactive: show
+                    - attic_button_active: hide
+                    - attic_button_inactive: show
+                    - garden_button_active: show
+                    - garden_button_inactive: hide
+                    - ground: hide
+                    - first: hide
+                    - attic: hide
+                    - garden: show
 
-          # Balcony
-          - type: state-icon
-            icon: mdi:outdoor-lamp
-            tap_action:
-              action: toggle
-            double_tap_action:
-              action: more-info
-            entity: light.balcony_ceiling_light
-            style:
-              top: 83%
-              left: 35%
-          - type: state-icon
-            icon: mdi:string-lights
-            tap_action:
-              action: toggle
-            double_tap_action:
-              action: more-info
-            entity: switch.balcony_string_lights
-            style:
-              top: 83.5%
-              left: 43%
-          - type: state-icon
-            entity: sensor.balcony_temperature
-            style:
-              top: 91%
-              left: 20%
-          - type: state-label
-            entity: sensor.balcony_temperature
-            style:
-              top: 91%
-              left: 27%
-          - type: state-icon
-            entity: sensor.balcony_humidity
-            style:
-              top: 97%
-              left: 20%
-          - type: state-label
-            entity: sensor.balcony_humidity
-            style:
-              top: 97%
-              left: 27%
-          
-          # Hallway
-          - type: state-icon
-            icon: mdi:ceiling-light
-            tap_action:
-              action: toggle
-            double_tap_action:
-              action: more-info
-            entity: light.hall_ceiling_light
-            style:
-              top: 43%
-              left: 55%
-
-          # Boiler Room
-          - type: state-icon
-            icon: mdi:ceiling-light
-            tap_action:
-              action: toggle
-            double_tap_action:
-              action: more-info
-            entity: light.boiler_room_ceiling_light
-            style:
-              top: 27%
-              left: 67%
-
-          # Closet
-          - type: state-icon
-            icon: mdi:ceiling-light
-            tap_action:
-              action: toggle
-            double_tap_action:
-              action: more-info
-            entity: light.closet_ceiling_light
-            style:
-              top: 37%
-              left: 67%
-
-          # Toilet
-          - type: state-icon
-            icon: mdi:ceiling-light
-            tap_action:
-              action: toggle
-            double_tap_action:
-              action: more-info
-            entity: light.toilet_ceiling_light
-            style:
-              top: 60%
-              left: 59.5%
-
-          # Bathroom
-          - type: state-icon
-            icon: mdi:ceiling-light
-            tap_action:
-              action: toggle
-            double_tap_action:
-              action: more-info
-            entity: light.bathroom_ceiling_light
-            style:
-              top: 65%
-              left: 71.2%
-          - type: state-icon
-            entity: sensor.bathroom_temperature
-            style:
-              top: 87%
-              left: 60%
-          - type: state-label
-            entity: sensor.bathroom_temperature
-            style:
-              top: 87%
-              left: 68%
-          - type: state-icon
-            entity: sensor.bathroom_humidity
-            style:
-              top: 93%
-              left: 60%
-          - type: state-label
-            entity: sensor.bathroom_humidity
-            style:
-              top: 93%
-              left: 67%
-
-          # Office
-          - type: state-icon
-            icon: mdi:ceiling-light
-            tap_action:
-              action: toggle
-            double_tap_action:
-              action: more-info
-            entity: light.office_ceiling_light
-            style:
-              top: 30%
-              left: 88.5%
-          - type: state-icon
-            icon: mdi:floor-lamp
-            tap_action:
-              action: toggle
-            double_tap_action:
-              action: more-info
-            entity: light.office_lamp
-            style:
-              top: 36%
-              left: 95%
-          - type: state-icon
-            icon: mdi:desk-lamp
-            tap_action:
-              action: toggle
-            double_tap_action:
-              action: more-info
-            entity: light.office_droopy_lamp
-            style:
-              top: 25%
-              left: 81%
-          - type: state-icon
-            icon: mdi:desk-lamp
-            tap_action:
-              action: toggle
-            double_tap_action:
-              action: more-info
-            entity: light.office_work_desk_lamp
-            style:
-              top: 36%
-              left: 81%
-          - type: state-icon
-            entity: sensor.office_temperature
-            style:
-              top: 7%
-              left: 70%
-          - type: state-label
-            entity: sensor.office_temperature
-            style:
-              top: 7%
-              left: 78%
-          - type: state-icon
-            entity: sensor.office_humidity
-            style:
-              top: 13%
-              left: 70%
-          - type: state-label
-            entity: sensor.office_humidity
-            style:
-              top: 13%
-              left: 77%
-
-          # Bedroom
-          - type: state-icon
-            icon: mdi:ceiling-light
-            tap_action:
-              action: toggle
-            double_tap_action:
-              action: more-info
-            entity: light.bedroom_ceiling_light
-            style:
-              top: 59%
-              left: 89%
-          - type: state-icon
-            icon: mdi:floor-lamp
-            tap_action:
-              action: toggle
-            double_tap_action:
-              action: more-info
-            entity: light.bedroom_lamp
-            style:
-              top: 45%
-              left: 95%
-          - type: state-icon
-            icon: mdi:lamp
-            tap_action:
-              action: toggle
-            double_tap_action:
-              action: more-info
-            entity: switch.bedroom_nightstand_light
-            style:
-              top: 74%
-              left: 83%
-          - type: state-icon
-            entity: sensor.bedroom_temperature
-            style:
-              top: 87%
-              left: 85%
-          - type: state-label
-            entity: sensor.bedroom_temperature
-            style:
-              top: 87%
-              left: 93%
-          - type: state-icon
-            entity: sensor.bedroom_humidity
-            style:
-              top: 93%
-              left: 85%
-          - type: state-label
-            entity: sensor.bedroom_humidity
-            style:
-              top: 93%
-              left: 92%
+      # Ground Floor (inside)
+      - type: custom:local-conditional-card
+        id: ground
+        default: show      
+        persist_state: true
+        card:
+          type: picture-elements
+          image: /local/plan-ground-floor.svg
+          elements:
+            # Entryway
+            - type: state-icon
+              icon: mdi:ceiling-light
+              tap_action:
+                action: toggle
+              double_tap_action:
+                action: more-info
+              entity: switch.entryway_ceiling_light
+              style:
+                top: 32%
+                left: 82%
+            - type: state-icon
+              icon: mdi:outdoor-lamp
+              tap_action:
+                action: toggle
+              double_tap_action:
+                action: more-info
+              entity: switch.front_door_light
+              style:
+                top: 43%
+                left: 99%
+            # Toilet
+            - type: state-icon
+              icon: mdi:wall-sconce-round
+              tap_action:
+                action: toggle
+              double_tap_action:
+                action: more-info
+              entity: switch.toilet_ceiling_light
+              style:
+                top: 31%
+                left: 55%
+            # Kitchen
+            - type: state-icon
+              icon: mdi:wall-sconce-flat
+              tap_action:
+                action: toggle
+              double_tap_action:
+                action: more-info
+              entity: switch.kitchen_bench_lights
+              style:
+                top: 59%
+                left: 59.3%
+            - type: state-icon
+              icon: mdi:vanity-light
+              tap_action:
+                action: toggle
+              double_tap_action:
+                action: more-info
+              entity: switch.kitchen_table_lights
+              style:
+                top: 60%
+                left: 84%
+            - type: state-label
+              entity: sensor.ground_floor_ambient_sensor_temperature
+              style:
+                top: 18%
+                left: 7%
+                color: black
+            - type: state-label
+              entity: sensor.ground_floor_ambient_sensor_humidity
+              style:
+                top: 25%
+                left: 7%
+                color: black
+            # Living Room
+            - type: state-icon
+              icon: mdi:ceiling-light-multiple
+              tap_action:
+                action: toggle
+              double_tap_action:
+                action: more-info
+              entity: switch.living_room_ceiling_lights
+              style:
+                top: 31%
+                left: 28%
+            - type: state-icon
+              icon: mdi:ceiling-light-multiple
+              tap_action:
+                action: toggle
+              double_tap_action:
+                action: more-info
+              entity: switch.living_room_ceiling_lights
+              style:
+                top: 71%
+                left: 28%
+            - type: state-icon
+              icon: mdi:led-strip
+              tap_action:
+                action: toggle
+              double_tap_action:
+                action: more-info
+              entity: switch.tv_stand_light
+              style:
+                top: 25%
+                left: 45%
+            - type: state-icon
+              icon: mdi:lamp
+              tap_action:
+                action: toggle
+              double_tap_action:
+                action: more-info
+              entity: light.living_room_fado_lamp
+              style:
+                top: 90%
+                left: 37%
+            - type: state-icon
+              icon: mdi:floor-lamp-dual
+              tap_action:
+                action: toggle
+              double_tap_action:
+                action: more-info
+              entity: light.living_room_corner_lamp
+              style:
+                top: 90%
+                left: 14%
+      # First Floor
+      - type: custom:local-conditional-card
+        id: first
+        default: hide      
+        persist_state: true
+        card:
+          type: picture-elements
+          image: /local/plan-first-floor.svg
+          elements:
+            # Hallway
+            - type: state-icon
+              icon: mdi:ceiling-light
+              tap_action:
+                action: toggle
+              double_tap_action:
+                action: more-info
+              entity: switch.hallway_ceiling_light
+              style:
+                top: 63%
+                left: 42.5%
+            # Bathroom
+            - type: state-icon
+              icon: mdi:wall-sconce-round
+              tap_action:
+                action: toggle
+              double_tap_action:
+                action: more-info
+              entity: switch.bathroom_ceiling_light
+              style:
+                top: 70%
+                left: 10%
+            - type: state-icon
+              icon: mdi:mirror-rectangle
+              tap_action:
+                action: toggle
+              double_tap_action:
+                action: more-info
+              entity: switch.bathroom_mirror_light
+              style:
+                top: 56.6%
+                left: 15%
+            # Office Jelena
+            - type: state-icon
+              icon: mdi:ceiling-light
+              tap_action:
+                action: toggle
+              double_tap_action:
+                action: more-info
+              entity: switch.office_jelena_ceiling_light
+              style:
+                top: 35%
+                left: 25%
+            - type: state-icon
+              icon: mdi:desk-lamp
+              tap_action:
+                action: toggle
+              double_tap_action:
+                action: more-info
+              entity: light.office_jelena_desk_lamp
+              style:
+                top: 32%
+                left: 8%
+            # Closet Room
+            - type: state-icon
+              icon: mdi:ceiling-light
+              tap_action:
+                action: toggle
+              double_tap_action:
+                action: more-info
+              entity: switch.closet_room_ceiling_light
+              style:
+                top: 72%
+                left: 77%
+            # Bedroom
+            - type: state-icon
+              icon: mdi:ceiling-light
+              tap_action:
+                action: toggle
+              double_tap_action:
+                action: more-info
+              entity: switch.bedroom_ceiling_light
+              style:
+                top: 32%
+                left: 75%
+            - type: state-icon
+              icon: mdi:floor-lamp
+              tap_action:
+                action: toggle
+              double_tap_action:
+                action: more-info
+              entity: light.bedroom_lamp
+              style:
+                top: 10%
+                left: 50%
+            - type: state-icon
+              icon: mdi:lamp
+              tap_action:
+                action: toggle
+              double_tap_action:
+                action: more-info
+              entity: light.bedroom_nightstand_lamp_1
+              style:
+                top: 53%
+                left: 61.7%
+            - type: state-icon
+              icon: mdi:lamp
+              tap_action:
+                action: toggle
+              double_tap_action:
+                action: more-info
+              entity: light.bedroom_nightstand_lamp_2
+              style:
+                top: 53%
+                left: 87.7%
+      # Attic
+      - type: custom:local-conditional-card
+        id: attic
+        default: hide      
+        persist_state: true
+        card:
+          type: picture-elements
+          image: /local/plan-attic.svg
+          elements:
+            - type: state-icon
+              icon: mdi:wall-sconce-flat
+              tap_action:
+                action: toggle
+              double_tap_action:
+                action: more-info
+              entity: switch.attic_ceiling_lights
+              style:
+                top: 50%
+                left: 25%
+            - type: state-icon
+              icon: mdi:floor-lamp
+              tap_action:
+                action: toggle
+              double_tap_action:
+                action: more-info
+              entity: light.attic_lamp
+              style:
+                top: 93%
+                left: 64%
+            - type: state-icon
+              icon: mdi:led-strip-variant
+              tap_action:
+                action: toggle
+              double_tap_action:
+                action: more-info
+              entity: light.secretlab_magrgb_lightstrip
+              style:
+                top: 95%
+                left: 50%
+            - type: state-icon
+              icon: mdi:light-recessed
+              tap_action:
+                action: toggle
+              double_tap_action:
+                action: more-info
+              entity: light.attic_donut_lamp
+              style:
+                top: 93%
+                left: 92%
+            - type: state-icon
+              icon: mdi:spotlight-beam
+              tap_action:
+                action: toggle
+              double_tap_action:
+                action: more-info
+              entity: light.mechanical_room_ceiling_lights
+              style:
+                top: 12%
+                left: 38.5%
+            - type: state-label
+              entity: sensor.attic_ambient_sensor_temperature
+              style:
+                top: 75%
+                left: 85%
+                color: black
+            - type: state-label
+              entity: sensor.attic_ambient_sensor_humidity
+              style:
+                top: 80%
+                left: 85%
+                color: black
+      # Garden
+      - type: custom:local-conditional-card
+        id: garden
+        default: hide      
+        persist_state: true
+        card:
+          type: picture-elements
+          image: /local/plan-garden.svg
+          elements:
+            # Garden
+            - type: state-icon
+              icon: mdi:outdoor-lamp
+              tap_action:
+                action: toggle
+              double_tap_action:
+                action: more-info
+              entity: switch.shed_outside_light
+              style:
+                top: 43%
+                left: 31%
+            - type: state-icon
+              icon: mdi:coach-lamp-variant
+              tap_action:
+                action: toggle
+              double_tap_action:
+                action: more-info
+              entity: switch.shed_inside_light
+              style:
+                top: 33%
+                left: 31%
+            - type: state-label
+              entity: sensor.shed_ambient_sensor_temperature
+              style:
+                top: 10%
+                left: 29%
+                color: black
+            - type: state-label
+              entity: sensor.shed_ambient_sensor_humidity
+              style:
+                top: 15%
+                left: 29%
+                color: black
 
       - type: weather-forecast
-        entity: weather.home
+        entity: weather.buienradar
         show_forecast: true
+        forecast_type: daily
         view_layout:
           position: sidebar
 
@@ -349,154 +616,322 @@ views:
         title: Shopping List
         view_layout:
           position: sidebar
+  
   - path: lights
     title: House Lights
     icon: mdi:lightbulb-on-outline
+    badges:
+      - type: entity
+        entity: script.sleep_mode
+        name: "Sleep Mode"
+        show_name: true
+        show_state: false
+        tap_action:
+          action: perform-action
+          perform_action: script.turn_on
+          target: 
+            entity_id: script.sleep_mode
     cards:
       - type: grid
-        title: "Living Room"
+        title: "Ground Floor"
+        columns: 2
+        square: false
         cards:
-          - type: light
-            entity: light.living_room_ceiling_light_1
-            name: "Ceiling Light 1"
+          - type: tile
+            entity: light.front_door_light
+            name: "Front Door"
             icon: mdi:ceiling-light
-          - type: light
-            entity: light.living_room_ceiling_light_2
-            name: "Ceiling Light 2"
+          - type: tile
+            entity: light.entryway_ceiling_light
+            name: "Entryway"
             icon: mdi:ceiling-light
-          - type: light
-            entity: light.fado_lamp
+          - type: tile
+            entity: light.toilet_ceiling_light
+            name: "Toilet"
+            icon: mdi:ceiling-light
+          - type: tile
+            entity: light.kitchen_table_lights
+            name: "Kitchen Ceiling"
+            icon: mdi:ceiling-light
+          - type: tile
+            entity: light.kitchen_bench_lights
+            name: "Kitchen Bench"
+            icon: mdi:ceiling-light
+          - type: tile
+            entity: light.living_room_ceiling_lights
+            name: "Living Room Ceiling"
+            icon: mdi:ceiling-light
+          - type: tile
+            entity: light.tv_stand_light
+            name: "TV Stand"
+            icon: mdi:led-strip
+          - type: tile
+            entity: light.living_room_fado_lamp
             name: "Fado Lamp"
             icon: mdi:lamp
-          - type: light
-            entity: light.corner_lamp
+            features:
+              - type: "light-brightness"
+          - type: tile
+            entity: light.living_room_corner_lamp
             name: "Corner Lamp"
             icon: mdi:floor-lamp
+            features:
+              - type: "light-brightness"
+              - type: "light-color-temp"
+          #- type: button
+          #  entity: switch.unused_plug
+          #  name: "Christmas Tree"
+          #  icon: mdi:pine-tree
       - type: grid
-        title: "Kitchen"
+        title: "First Floor"
+        columns: 2
+        square: false
         cards:
-          - type: light
-            entity: light.kitchen_ceiling_light
-            name: "Ceiling Light"
+          - type: tile
+            entity: light.hallway_ceiling_light
+            name: "Hallway Light"
             icon: mdi:ceiling-light
-          - type: button
-            name: "Stove Light"
-            entity: switch.kitchen_stove_light
-            icon: mdi:stove
-      - type: grid
-        title: "Balcony"
-        cards:
-          - type: light
-            entity: light.balcony_ceiling_light
-            name: "Ceiling Light"
-            icon: mdi:outdoor-lamp
-          - type: button
-            entity: switch.balcony_string_lights
-            name: "String Lights"
-            icon: mdi:string-lights
-      - type: grid
-        title: "Hallway"
-        cards:
-          - type: light
-            entity: light.hall_ceiling_light
-            name: "Ceiling Light"
+          - type: tile
+            entity: light.office_jelena_ceiling_light
+            name: "Office Jelena Ceiling Light"
             icon: mdi:ceiling-light
-      - type: grid
-        title: "Boiler Room"
-        cards:
-          - type: light
-            entity: light.boiler_room_ceiling_light
-            name: "Boiler Room Light"
-            icon: mdi:ceiling-light
-      - type: grid
-        title: "Closet"
-        cards:
-          - type: light
-            entity: light.closet_ceiling_light
-            name: "Closet Light"
-            icon: mdi:ceiling-light
-      - type: grid
-        title: "Toilet"
-        cards:
-          - type: light
-            entity: light.toilet_ceiling_light
-            name: "Toilet Light"
-            icon: mdi:ceiling-light
-      - type: grid
-        title: "Bathroom"
-        cards:
-          - type: light
-            entity: light.bathroom_ceiling_light
-            name: "Bathroom Light"
-            icon: mdi:ceiling-light
-      - type: grid
-        title: "Office"
-        cards:
-          - type: light
-            entity: light.office_ceiling_light
-            name: "Ceiling Light"
-            icon: mdi:ceiling-light
-          - type: light
-            entity: light.office_lamp
-            name: "Lamp"
+          - type: tile
+            entity: light.office_jelena_desk_lamp
+            name: "Office Jelena Desk Lamp"
             icon: mdi:floor-lamp
-          - type: light
-            entity: light.office_droopy_lamp
-            name: "Droopy Lamp"
-            icon: mdi:desk-lamp
-          - type: light
-            entity: light.office_work_desk_lamp
-            name: "Work Desk Lamp"
-            icon: mdi:desk-lamp
-      - type: grid
-        title: "Bedroom"
-        cards:
-          - type: light
+            features:
+              - type: "light-brightness"
+          - type: tile
             entity: light.bedroom_ceiling_light
-            name: "Ceiling Light"
+            name: "Bedroom Ceiling Light"
             icon: mdi:ceiling-light
-          - type: light
+          - type: tile
             entity: light.bedroom_lamp
-            name: "Lamp"
+            name: "Bedroom Lamp"
             icon: mdi:floor-lamp
-          - type: button
-            entity: switch.bedroom_nightstand_light
-            name: "Nightstand Lamp"
+            features:
+              - type: "light-brightness"
+          - type: tile
+            entity: light.bedroom_nightstand_lamp_1
+            name: "Bedroom Nightstand Lamp 1"
             icon: mdi:lamp
-          - type: button
-            name: "Sleep Mode"
-            icon: mdi:bed-king-outline
-            tap_action:
-              action: call-service
-              service: script.turn_on
-              service_data:
-                entity_id: script.sleep_mode
+            features:
+              - type: "light-brightness"
+              - type: "light-color-temp"
+          - type: tile
+            entity: light.bedroom_nightstand_lamp_2
+            name: "Bedroom Nightstand Lamp 2"
+            icon: mdi:lamp
+            features:
+              - type: "light-brightness"
+              - type: "light-color-temp"
+          - type: tile
+            entity: light.closet_room_ceiling_light
+            name: "Closet Room Ceiling Light"
+            icon: mdi:ceiling-light
+          - type: tile
+            entity: light.bathroom_ceiling_light
+            name: "Bathroom Ceiling Light"
+            icon: mdi:ceiling-light
+          - type: tile
+            entity: light.bathroom_mirror_light
+            name: "Bathroom Mirror Light"
+            icon: mdi:ceiling-light
+      - type: grid
+        title: "Attic"
+        columns: 2
+        square: false
+        cards:
+          - type: tile
+            entity: light.attic_ceiling_lights
+            name: "Ceiling Lights"
+            icon: mdi:ceiling-light
+          - type: tile
+            entity: light.attic_lamp
+            name: "Floor Lamp"
+            icon: mdi:floor-lamp
+            features:
+              - type: "light-brightness"
+              - type: "light-color-temp"
+          - type: tile
+            entity: light.attic_donut_lamp
+            name: "Donut Lamp"
+            icon: mdi:light-recessed
+          - type: tile
+            entity: light.secretlab_magrgb_lightstrip
+            name: "Desk RGB"
+            icon: mdi:led-strip-variant
+          - type: tile
+            entity: light.mechanical_room_ceiling_lights
+            name: "Mechanical Room Ceiling Lights"
+            icon: mdi:ceiling-light
+      - type: grid
+        title: "Garden"
+        columns: 2
+        square: false
+        cards:
+          - type: tile
+            entity: light.shed_outside_light
+            name: "Garden Light - Shed"
+            icon: mdi:ceiling-light
+          - type: tile
+            entity: light.shed_inside_light
+            name: "Shed Light"
+            icon: mdi:ceiling-light
+          
   - path: hvac
     title: HVAC
     icon: mdi:home-thermometer-outline
+    badges:
+      - type: entity
+        entity: sensor.ecodan_heatpump_operation_mode
+        name: "Operation Mode"
+        show_name: true
+      - type: entity
+        entity: binary_sensor.ecodan_heatpump_compressor
+        name: "Compressor"
+        show_name: true
+      - type: entity
+        entity: binary_sensor.ecodan_heatpump_booster_heater
+        name: "Booster"
+        show_name: true
+      - type: entity
+        entity: binary_sensor.ecodan_heatpump_defrost
+        name: "Defrost"
+        show_name: true
+      - type: entity
+        entity: sensor.ecodan_heatpump_estimated_cop
+        name: "Est. COP"
+        show_name: true
+      - type: entity 
+        entity: sensor.ecodan_heatpump_compressor_frequency
+        name: "Compressor Freq."
+        show_name: true
+      - type: entity 
+        entity: sensor.ecodan_heatpump_output_power
+        name: "Output Power"
+        show_name: true
+      - type: entity 
+        entity: sensor.ecodan_heatpump_pump_consumption
+        name: "Pump Power"
+        show_name: true
+      - type: entity
+        entity: sensor.ecodan_heatpump_outside_temp
+        name: "Outside Temperature"
+        show_name: true
+      - type: entity
+        entity: sensor.ecodan_heatpump_feed_temp
+        name: "Feed Temperature"
+        show_name: true
+      - type: entity
+        entity: sensor.ecodan_heatpump_return_temp
+        name: "Returning Temperature"
+        show_name: true
+      - type: entity
+        entity: sensor.ecodan_heatpump_dhw_current_temp
+        name: "DHW T1"
+        show_name: true
+      - type: entity
+        entity: sensor.ecodan_heatpump_dhw_secondary_temp
+        name: "DHW T2"
+        show_name: true
     cards:
       - type: vertical-stack
         title: "Controllers"
         cards:
           - type: thermostat
-            entity: climate.warmy
-          - type: button
-            name: "Humidifier"
-            entity: switch.humidifier
-            icon: mdi:air-humidifier
+            entity: climate.ecodan_heatpump_zone_1_room_temp
+            name: "Space Temperature"
+            show_current_as_primary: true
+          - type: thermostat
+            entity: climate.ecodan_heatpump_dhw_climate
+            name: "DHW"
+            show_current_as_primary: true
       - type: vertical-stack
-        title: "Sensors"
+        title: "Heat Pump Sensors"
+        cards:
+          # General status
+          - type: history-graph
+            title: "Overview"
+            entities:
+              - entity: sensor.ecodan_heatpump_operation_mode
+                name: "Operating Mode"
+              - entity: binary_sensor.ecodan_heatpump_compressor
+                name: "Compressor"
+              - entity: binary_sensor.ecodan_heatpump_booster_heater
+                name: "Booster Heater"
+              - entity: binary_sensor.ecodan_heatpump_defrost
+                name: "Defrost"
+          - type: history-graph
+            title: "Operating Temperatures"
+            entities:
+              - entity: sensor.ecodan_heatpump_outside_temp
+                name: "Outside Temperature"
+              - entity: sensor.ecodan_heatpump_feed_temp
+                name: "Feed Temperature"
+              - entity: sensor.ecodan_heatpump_return_temp
+                name: "Returning Temperature"
+              - entity: sensor.ecodan_heatpump_refrigerant_liquid_temp
+                name: "Refrigerant Condensing Temperature"
+              - entity: sensor.ecodan_heatpump_refrigerant_condensing_temp
+                name: "Refrigerant Temperature"
+          - type: history-graph
+            title: "DHW Temperatures"
+            entities:    
+              - entity: sensor.ecodan_heatpump_dhw_current_temp
+                name: "Primary Temperature"
+              - entity: sensor.ecodan_heatpump_dhw_secondary_temp
+                name: "Secondary Temperature"
+
+          - type: glance
+            entities:
+              - entity: sensor.ecodan_heatpump_heating_consumed
+                name: Heating consumed
+              - entity: sensor.ecodan_heatpump_heating_delivered
+                name: Heating delivered
+              - entity: sensor.ecodan_heatpump_heating_cop
+                name: Heating COP
+              - entity: sensor.ecodan_heatpump_cool_consumed
+                name: Cooling consumed
+              - entity: sensor.ecodan_heatpump_cool_delivered
+                name: Cooling delivered
+              - entity: sensor.ecodan_heatpump_cool_cop
+                name: Cooling COP
+              - entity: sensor.ecodan_heatpump_dhw_consumed
+                name: DHW Consumed
+              - entity: sensor.ecodan_heatpump_dhw_delivered
+                name: DHW Delivered
+              - entity: sensor.ecodan_heatpump_dhw_cop
+                name: DHW COP
+            columns: 3
+            state_color: false
+      
+      # None Heat pump related sensors
+      - type: vertical-stack
+        title: "Other Sensors"
         cards:
           - type: grid
-            title: "Living Room"
+            title: "Ground Floor"
             columns: 2
             cards:
               - type: sensor
-                entity: sensor.living_room_temperature
+                entity: sensor.ground_floor_ambient_sensor_temperature
                 name: "Temperature"
                 graph: line
               - type: sensor
-                entity: sensor.living_room_humidity
+                entity: sensor.ground_floor_ambient_sensor_humidity
+                name: "Humidity"
+                graph: line
+          - type: grid
+            title: "Shed"
+            columns: 2
+            cards:
+              - type: sensor
+                entity: sensor.shed_ambient_sensor_temperature
+                name: "Temperature"
+                graph: line
+              - type: sensor
+                entity: sensor.shed_ambient_sensor_humidity
                 name: "Humidity"
                 graph: line
           - type: grid
@@ -504,11 +939,11 @@ views:
             columns: 2
             cards:
               - type: sensor
-                entity: sensor.bedroom_temperature
+                entity: sensor.bedroom_ambient_sensor_temperature
                 name: "Temperature"
                 graph: line
               - type: sensor
-                entity: sensor.bedroom_humidity
+                entity: sensor.bedroom_ambient_sensor_humidity
                 name: "Humidity"
                 graph: line
           - type: grid
@@ -516,23 +951,23 @@ views:
             columns: 2
             cards:
               - type: sensor
-                entity: sensor.bathroom_temperature
+                entity: sensor.bathroom_ambient_sensor_temperature
                 name: "Temperature"
                 graph: line
               - type: sensor
-                entity: sensor.bathroom_humidity
+                entity: sensor.bathroom_ambient_sensor_humidity
                 name: "Humidity"
                 graph: line
           - type: grid
-            title: "Office"
+            title: "Attic"
             columns: 2
             cards:
               - type: sensor
-                entity: sensor.office_temperature
+                entity: sensor.attic_ambient_sensor_temperature
                 name: "Temperature"
                 graph: line
               - type: sensor
-                entity: sensor.office_humidity
+                entity: sensor.attic_ambient_sensor_humidity
                 name: "Humidity"
                 graph: line
           - type: grid
@@ -540,25 +975,14 @@ views:
             columns: 2
             cards:
               - type: sensor
-                entity: sensor.filament_box_temperature
+                entity: sensor.filament_ambient_sensor_temperature
                 name: "Temperature"
                 graph: line
               - type: sensor
-                entity: sensor.filament_box_humidity
+                entity: sensor.filament_ambient_sensor_humidity
                 name: "Humidity"
                 graph: line
-          - type: grid
-            title: "Balcony"
-            columns: 2
-            cards:
-              - type: sensor
-                entity: sensor.balcony_temperature
-                name: "Temperature"
-                graph: line
-              - type: sensor
-                entity: sensor.balcony_humidity
-                name: "Humidity"
-                graph: line
+ 
   - path: entertainment
     title: Entertainment
     icon: mdi:television-speaker
@@ -600,6 +1024,7 @@ views:
             cards:
               - type: media-control
                 entity: media_player.voyager_1
+ 
   - path: printer
     title: 3D Printer
     icon: mdi:printer-3d
@@ -617,23 +1042,27 @@ views:
                 name: "On/Off"
                 icon: mdi:power-cycle
                 tap_action:
-                  action: call-service
-                  service: script.turn_on
-                  service_data:
+                  action: perform-action
+                  perform_action: script.turn_on
+                  target: 
                     entity_id: script.power_cycle_droopy
               - type: button
                 name: "Emergency Off"
                 icon: mdi:flash-alert-outline
                 tap_action:
-                  action: call-service
-                  service: script.turn_on
-                  service_data:
+                  action: perform-action
+                  perform_action: script.turn_on
+                  target:
                     entity_id: script.emergency_power_off_droopy
           - type: picture-entity
-            entity: camera.droopy_cam
+            entity: camera.droopy_camera
       - type: vertical-stack
         title: Droopy Status
         cards:
+          - type: sensor
+            entity: sensor.droopy_cpu_temperature
+            name: "Droopy CPU Temperature"
+            graph: line
           - type: entities
             entities:
               - sensor.octoprint_current_state
@@ -645,31 +1074,23 @@ views:
               - sensor.droopy_estimated_total_time
               - sensor.droopy_estimated_remaining_time
               - sensor.droopy_estimated_finish_time_local
+ 
   - path: analytics
     title: "Analytics"
     icon: mdi:home-analytics
     cards:
-      - type: history-graph
-        title: "Device Current Power Drain"
-        entities:
-          - sensor.droopy_power
-          - sensor.humidifier_power
-        hours_to_show: 24
-        refresh_interval: 60
-      - type: history-graph
-        title: "Device Power Consumption"
-        entities:
-          - sensor.droopy_consumption
-          - sensor.humidifier_consumption
-        hours_to_show: 24
-        refresh_interval: 60
+      - type: energy-devices-detail-graph
+        title: "Device Energy Usage"
+      - type: power-sankey
+        title: "Home Power Drain"
+        show_legend: true
       - type: history-graph
         title: "Lux Graph"
         entities:
-          - sensor.hall_motion_sensor_light_level
-          - sensor.living_room_motion_sensor_light_level
+          - sensor.entryway_motion_sensor_illuminance
+          - sensor.hallway_motion_sensor_illuminance
         hours_to_show: 24
-        refresh_interval: 60
+ 
   - path: monitoring
     title: "Monitoring"
     icon: mdi:monitor-eye
@@ -689,18 +1110,18 @@ views:
               {% endif %}
 
               ## Pi-Hole-Main
-              {% if is_state('update.pi_hole_main_core_update_available', 'on') %}
-                __Core__ Version {{ state_attr('update.pi_hole_main_core_update_available', 'latest_version') }} is available. [Release Notes]({{ state_attr('update.pi_hole_main_core_update_available', 'release_url') }})
+              {% if is_state('update.pi_hole_core_update_available', 'on') %}
+                __Core__ Version {{ state_attr('update.pi_hole_core_update_available', 'latest_version') }} is available. [Release Notes]({{ state_attr('update.pi_hole_core_update_available', 'release_url') }})
               {% else %}
                 __Core__ Up-to-date <ha-icon icon="mdi:robot-happy-outline"></ha-icon>
               {% endif %}
-              {% if is_state('update.pi_hole_main_ftl_update_available', 'on') %}
-                __FTL__ Version {{ state_attr('update.pi_hole_main_ftl_update_available', 'latest_version') }} is available. [Release Notes]({{ state_attr('update.pi_hole_main_ftl_update_available', 'release_url') }})
+              {% if is_state('update.pi_hole_ftl_update_available', 'on') %}
+                __FTL__ Version {{ state_attr('update.pi_hole_ftl_update_available', 'latest_version') }} is available. [Release Notes]({{ state_attr('update.pi_hole_ftl_update_available', 'release_url') }})
               {% else %}
                 __FTL__ Up-to-date <ha-icon icon="mdi:robot-happy-outline"></ha-icon>
               {% endif %}
-              {% if is_state('update.pi_hole_main_web_update_available', 'on') %}
-                __Web UI__ Version {{ state_attr('update.pi_hole_main_web_update_available', 'latest_version') }} is available. [Release Notes]({{ state_attr('update.pi_hole_main_web_update_available', 'release_url') }})
+              {% if is_state('update.pi_hole_web_update_available', 'on') %}
+                __Web UI__ Version {{ state_attr('update.pi_hole_web_update_available', 'latest_version') }} is available. [Release Notes]({{ state_attr('update.pi_hole_web_update_available', 'release_url') }})
               {% else %}
                 __Web UI__ Up-to-date <ha-icon icon="mdi:robot-happy-outline"></ha-icon>
               {% endif %}
@@ -710,11 +1131,11 @@ views:
             square: false
             cards:
               - type: gauge
-                entity: sensor.processor_use_percent
+                entity: sensor.system_monitor_processor_use
               - type: gauge
-                entity: sensor.memory_use_percent
+                entity: sensor.system_monitor_memory_usage
           - type: sensor
-            entity: sensor.processor_temperature
+            entity: sensor.system_monitor_processor_temperature
             name: "CPU Temperature"
             graph: line
       - type: vertical-stack
@@ -729,10 +1150,10 @@ views:
                 name: "Request Presence"
                 icon: mdi:home-account
                 tap_action:
-                  action: call-service
-                  service: mqtt.publish
-                  service_data:
-                    topic: bouncer/request/presence   
+                  action: perform-action
+                  perform_action: mqtt.publish
+                  target:
+                    topic: bouncer/request/presence
               - type: grid
                 columns: 4
                 cards:    
@@ -749,13 +1170,13 @@ views:
                     name: Guest2
                     entity: input_boolean.enable_guest2
           - type: grid
-            title: "DreadNought"
+            title: "Leviathan"
             columns: 3
             cards:
               - type: button
                 name: On/Off
                 icon: mdi:desktop-tower-monitor
-                entity: switch.dreadnought_toggle
+                entity: switch.leviathan_toggle
           - type: grid
             title: "Battery Chargers"
             columns: 3
@@ -773,18 +1194,28 @@ views:
                 entity: switch.hota_d6_pro_3
                 icon: mdi:battery-heart-outline
           - type: grid
-            title: "Pi Holes"
+            title: "Pi Hole"
             columns: 3
             cards:
               - type: button
-                name: Disable Pi-Hole-Main (1 minute)
+                entity: switch.pi_hole
+                name: "Disable Pi-Hole (1 minute)"
                 icon: mdi:pi-hole
+                show_state: true
                 tap_action:
-                  action: call-service
-                  service: pi_hole.disable
-                  service_data:
-                    entity_id: switch.pi_hole_main
-                    duration: '00:01'
+                  action: perform-action
+                  perform_action: pi_hole.disable
+                  target:
+                    entity_id: switch.pi_hole
+                  data:
+                    duration: "00:01"
+          - type: grid
+            title: "Misc"
+            columns: 3
+            cards:    
+              - type: button
+                name: Halloween
+                entity: input_boolean.halloween_mode
       - type: vertical-stack
         cards:
           - type: markdown
@@ -793,30 +1224,27 @@ views:
           - type: entities
             title: "Switch Batteries"
             entities:
-              - sensor.living_room_opple_switch_battery_level
-              - sensor.cuby_battery_level
-              - sensor.kitchen_opple_switch_battery_level
-              - sensor.kitchen_ikea_switch_battery_level
-              - sensor.balcony_opple_switch_battery_level
-              - sensor.hall_opple_switch_battery_level
-              - sensor.toilet_opple_switch_battery_level
-              - sensor.bathroom_opple_switch_battery_level
-              - sensor.office_opple_switch_battery_level
-              - sensor.office_ikea_switch_battery_level
-              - sensor.office_droopy_lamp_switch_battery_level
-              - sensor.office_work_desk_lamp_switch_battery_level
-              - sensor.bedroom_opple_switch_battery_level
-              - sensor.bedroom_ikea_switch_battery_level
+              - sensor.cuby_battery
+              - sensor.kitchen_switch_battery
+              - sensor.office_jelena_switch_battery
+              - sensor.bedroom_switch_1_battery
+              - sensor.bedroom_switch_2_battery
+              - sensor.attic_lights_switch_battery
           - type: entities
             title: "Climate Sensor Batteries"
             entities:
-              - sensor.living_room_climate_sensor_battery_level
-              - sensor.balcony_climate_sensor_battery_level
-              - sensor.office_climate_sensor_battery_level
-              - sensor.filament_box_climate_sensor_battery_level
-              - sensor.bedroom_climate_sensor_battery_level
+              - sensor.ground_floor_ambient_sensor_battery
+              - sensor.shed_ambient_sensor_battery
+              - sensor.bedroom_ambient_sensor_battery
+              - sensor.bathroom_ambient_sensor_battery
+              - sensor.attic_ambient_sensor_battery
+              - sensor.filament_ambient_sensor_battery
           - type: entities
             title: "Motion Sensor Batteries"
             entities:
-              - sensor.living_room_motion_sensor_battery_level
-              - sensor.hall_motion_sensor_battery_level
+              - sensor.entryway_motion_sensor_battery
+              - sensor.hallway_motion_sensor_battery
+          - type: entities
+            title: "Door Sensor Batteries"
+            entities:
+              - sensor.mechanical_room_door_sensor_battery

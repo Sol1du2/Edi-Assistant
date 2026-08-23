@@ -1,0 +1,9 @@
+- name: TV Mode
+  entities:
+    switch.living_room_ceiling_lights: "off"
+    light.living_room_fado_lamp: "on"
+    light.living_room_corner_lamp: "on"
+    switch.kitchen_bench_lights: "off"
+    switch.kitchen_table_lights: "off"
+    switch.kitchen_lamp: "off"
+

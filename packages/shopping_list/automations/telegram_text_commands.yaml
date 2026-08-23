@@ -1,39 +1,39 @@
 - id: add_item_shopping_list_text
   alias: Add an item to the shopping list text command
-  trigger:
-    platform: event
-    event_type: telegram_text
-  condition:
-    condition: template
-    value_template: "{{ trigger.event.data.text.split(' ')[0] | lower == 'add' }}"
+  triggers:
+    - trigger: event
+      event_type: telegram_text
+  conditions:
+    - condition: template
+      value_template: "{{ trigger.event.data.text.split(' ')[0] | lower == 'add' }}"
   variables:
     text: "{{ trigger.event.data.text.split(' ') }}"
     item: "{% for word in text %}{% if not loop.first %}{{ word }} {% endif %}{% endfor %}"
-  action:
-    - service: script.add_item_shopping_list
+  actions:
+    - action: script.add_item_shopping_list
       data:
         item: "{{ item }}"
-    - service: telegram_bot.send_message
+    - action: telegram_bot.send_message
       data_template:
-        target: "{{ trigger.event.data.chat_id }}"
+        chat_id: "{{ trigger.event.data.chat_id }}"
         message: "{{ item }} added to the shopping list"
 
 - id: remove_item_shopping_list_text
   alias: Remove an item from the shopping list text command
-  trigger:
-    platform: event
-    event_type: telegram_text
-  condition:
-    condition: template
-    value_template: "{{ trigger.event.data.text.split(' ')[0] | lower == 'remove' }}"
+  triggers:
+    - trigger: event
+      event_type: telegram_text
+  conditions:
+    - condition: template
+      value_template: "{{ trigger.event.data.text.split(' ')[0] | lower == 'remove' }}"
   variables:
     text: "{{ trigger.event.data.text.split(' ') }}"
     item: "{% for word in text %}{% if not loop.first %}{{ word }} {% endif %}{% endfor %}"
-  action:
-    - service: script.complete_item_shopping_list
+  actions:
+    - action: script.complete_item_shopping_list
       data:
         item: "{{ item }}"
-    - service: telegram_bot.send_message
+    - action: telegram_bot.send_message
       data_template:
-        target: "{{ trigger.event.data.chat_id }}"
+        chat_id: "{{ trigger.event.data.chat_id }}"
         message: "{{ item }} removed from the shopping list"

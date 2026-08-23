@@ -1,58 +1,57 @@
 - id: warn_battery_low
   alias: Warn the battery on a sensor is low
-  trigger:
-    - platform: numeric_state
-      entity_id: sensor.living_room_opple_switch_battery_level
+  triggers:
+    # Ambient Sensors
+    - trigger: numeric_state
+      entity_id: sensor.ground_floor_ambient_sensor_battery
       below: 5
-    - platform: numeric_state
-      entity_id: sensor.living_room_motion_light_sensor_battery_level
+    - trigger: numeric_state
+      entity_id: sensor.bedroom_ambient_sensor_battery
       below: 5
-    - platform: numeric_state
-      entity_id: sensor.cuby_battery_level
+    - trigger: numeric_state
+      entity_id: sensor.bathroom_ambient_sensor_battery
       below: 5
-    - platform: numeric_state
-      entity_id: sensor.kitchen_opple_switch_battery_level
+    - trigger: numeric_state
+      entity_id: sensor.attic_ambient_sensor_battery
       below: 5
-    - platform: numeric_state
-      entity_id: sensor.kitchen_ikea_switch_battery_level
+    - trigger: numeric_state
+      entity_id: sensor.filament_ambient_sensor_battery
       below: 5
-    - platform: numeric_state
-      entity_id: sensor.balcony_opple_switch_battery_level
+    - trigger: numeric_state
+      entity_id: sensor.shed_ambient_sensor_battery
       below: 5
-    - platform: numeric_state
-      entity_id: sensor.hall_opple_switch_battery_level
+    # Light Switches
+    - trigger: numeric_state
+      entity_id: sensor.kitchen_switch_battery
       below: 5
-    - platform: numeric_state
-      entity_id: sensor.toilet_opple_switch_battery_level
+    - trigger: numeric_state
+      entity_id: sensor.cuby_battery
       below: 5
-    - platform: numeric_state
-      entity_id: sensor.bathroom_opple_switch_battery_level
+    - trigger: numeric_state
+      entity_id: sensor.office_jelena_switch_battery
       below: 5
-    - platform: numeric_state
-      entity_id: sensor.office_opple_switch_battery_level
+    - trigger: numeric_state
+      entity_id: sensor.bedroom_switch_1_battery
       below: 5
-    - platform: numeric_state
-      entity_id: sensor.office_ikea_switch_battery_level
+    - trigger: numeric_state
+      entity_id: sensor.bedroom_switch_2_battery
       below: 5
-    - platform: numeric_state
-      entity_id: sensor.office_droopy_lamp_switch_battery_level
+    - trigger: numeric_state
+      entity_id: sensor.attic_lights_switch_battery
       below: 5
-    - platform: numeric_state
-      entity_id: sensor.office_work_desk_lamp_switch_battery_level
+    # Motion sensors
+    - trigger: numeric_state
+      entity_id: sensor.entryway_motion_sensor_battery
       below: 5
-    - platform: numeric_state
-      entity_id: sensor.office_motion_light_sensor_battery_level
+    # Door sensors
+    - trigger: numeric_state
+      entity_id: sensor.mechanical_room_door_sensor_battery
       below: 5
-    - platform: numeric_state
-      entity_id: sensor.bedroom_opple_switch_battery_level
-      below: 5
-    - platform: numeric_state
-      entity_id: sensor.bedroom_ikea_switch_battery_level
-      below: 5
-  action:
-    - service: notify.joao
-      data_template:
+  actions:
+    - action: notify.send_message
+      data:
+        entity_id: notify.telegram_joao
         message: >
-          The battery on the {{ state_attr('trigger.entity_id', 'friendly_name') }} has
+          The battery of the {{ state_attr(trigger.entity_id, "friendly_name") }} ({{ trigger.entity_id }}) has
           fallen below {{ trigger.below }}
           

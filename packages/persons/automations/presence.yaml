@@ -1,11 +1,11 @@
 - id: on_start_request_persons_presence
   alias: On start request presence of people
-  trigger:
-    - platform: homeassistant
+  triggers:
+    - trigger: homeassistant
       event: start
-  action:
+  actions:
     - delay:
         seconds: 30
-    - service: mqtt.publish
+    - action: mqtt.publish
       data:
         topic: bouncer/request/presence

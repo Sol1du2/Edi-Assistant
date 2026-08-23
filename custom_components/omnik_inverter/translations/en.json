@@ -1,0 +1,60 @@
+{
+    "config": {
+        "step": {
+            "setup": {
+                "title": "Omnik Inverter - JS or JSON",
+                "description": "Set up Omnik Inverter to integrate with Home Assistant.",
+                "data": {
+                    "name": "Name",
+                    "host": "Host"
+                }
+            },
+            "setup_html": {
+                "title": "Omnik Inverter - HTML",
+                "description": "Set up Omnik Inverter to integrate with Home Assistant.",
+                "data": {
+                    "name": "Name",
+                    "host": "Host",
+                    "username": "Username",
+                    "password": "Password"
+                }
+            },
+            "setup_tcp": {
+                "title": "Omnik Inverter - TCP",
+                "description": "Set up Omnik Inverter to integrate with Home Assistant.",
+                "data": {
+                    "name": "Name",
+                    "host": "Host",
+                    "serial": "Serial Number"
+                }
+            },
+            "user": {
+                "description": "Choose which data source applies to your Omnik Inverter.",
+                "data": {
+                    "type": "Data source type"
+                }
+            }
+        },
+        "error": {
+            "cannot_connect": "Failed to connect",
+            "unknown": "Unexpected error",
+            "invalid_host": "Invalid hostname or IP address (do not use the web browser URL)"
+        }
+    },
+    "options": {
+        "step": {
+            "init": {
+                "data": {
+                    "name": "Name",
+                    "host": "Host",
+                    "username": "Username",
+                    "password": "Password",
+                    "serial": "Serial Number",
+                    "scan_interval": "Minimum time between entity updates [m]",
+                    "use_cache": "Cache the total power of today"
+                },
+                "description": "Change the way the integration fetches your Omnik Inverter."
+            }
+        }
+    }
+}

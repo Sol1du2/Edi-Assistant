@@ -1,83 +1,61 @@
-# Double tap Cube
-- id: cuby_toggle_kitchen_lights
-  alias: Toggle kitchen lights on double tap cuby
-  trigger:
-    - platform: event
-      event_type: deconz_event
-      event_data:
-        id: cuby
-        gesture: 6
-  # The wake event has no gesture data, which triggers all of them
-  condition:
-    - condition: template
-      value_template: "{{ (trigger.event.data.gesture)|int != '' }}"
-  action:
-    - service: light.toggle
-      entity_id: light.kitchen_lights
-
 # Shake Cube
 - id: cuby_set_tv_mode
   alias: Set tv mode in the living room
-  trigger:
-    - platform: event
-      event_type: deconz_event
-      event_data:
-        id: cuby
-        gesture: 1
-  # The wake event has no gesture data, which triggers all of them
-  condition:
-    - condition: template
-      value_template: "{{ (trigger.event.data.gesture)|int != '' }}"
-  action:
-    - service: script.tv_mode
+  triggers:
+    - trigger: device
+      domain: mqtt
+      device_id: f4bd7e14a3dd31d84fd38056894d307b
+      type: action
+      subtype: shake
+  actions:
+    - action: scene.turn_on
+      target:
+        entity_id: scene.tv_mode
+
+# Double tap Cube
+- id: cuby_toggle_kitchen_lights
+  alias: Toggle kitchen lights on double tap cuby
+  triggers:
+    - trigger: device
+      domain: mqtt
+      device_id: f4bd7e14a3dd31d84fd38056894d307b
+      type: action
+      subtype: tap
+  actions:
+    - action: switch.toggle
+      target:
+        area_id: kitchen
 
 # Rotate Cube 90 degrees
-- id: cuby_turn_on_living_room
-  alias: Turn on all living room lights
-  trigger:
-    - platform: event
-      event_type: deconz_event
-      event_data:
-        id: cuby
-        gesture: 3
-  # The wake event has no gesture data, which triggers all of them
-  condition:
-    - condition: template
-      value_template: "{{ (trigger.event.data.gesture)|int != '' }}"
-  action:
-    - service: light.turn_on
-      entity_id: light.living_room_lights
-
-# Rotate Cube 180 degrees
-- id: cuby_turn_off_living_room
-  alias: Turn off all living room lights
-  trigger:
-    - platform: event
-      event_type: deconz_event
-      event_data:
-        id: cuby
-        gesture: 4
-  # The wake event has no gesture data, which triggers all of them
-  condition:
-    - condition: template
-      value_template: "{{ (trigger.event.data.gesture)|int != '' }}"
-  action:
-    - service: light.turn_off
-      entity_id: light.living_room_lights
+- id: cuby_set_lamps_only_living_room
+  alias: Set lamps only on living room
+  triggers:
+    - trigger: device
+      domain: mqtt
+      device_id: f4bd7e14a3dd31d84fd38056894d307b
+      type: action
+      subtype: flip90
+  actions:
+    - action: switch.turn_off
+      target:
+        entity_id: switch.living_room_ceiling_lights
+    - action: light.turn_on
+      target:
+        entity_id: light.living_room_fado_lamp
+    - action: light.turn_on
+      target:
+        entity_id: light.living_room_corner_lamp
 
 # Throw Cube in the air
 - id: cuby_toggle_ceiling_lights_living_room
   alias: Toggle the ceiling lights in the living room
-  trigger:
-    - platform: event
-      event_type: deconz_event
-      event_data:
-        id: cuby
-        gesture: 2
-  # The wake event has no gesture data, which triggers all of them
-  condition:
-    - condition: template
-      value_template: "{{ (trigger.event.data.gesture)|int != '' }}"
-  action:
-    - service: light.toggle
-      entity_id: light.living_room_ceiling_lights
+  triggers:
+    - trigger: device
+      domain: mqtt
+      device_id: f4bd7e14a3dd31d84fd38056894d307b
+      type: action
+      subtype: fall
+  actions:
+    - action: switch.turn_on
+      target:
+        entity_id: switch.living_room_ceiling_lights

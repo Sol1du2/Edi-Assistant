@@ -1,0 +1,37 @@
+- id: turn_on_halloween_mode
+  alias: Turn on Halloween Mode
+  triggers:
+    - trigger: state
+      entity_id: input_boolean.halloween_mode
+      to: "on"
+  actions:
+    - action: script.halloween_loop
+
+- id: tv_stand_light_auto_turn_on_off
+  alias: TV stand light follow rosetta
+  triggers:
+    - trigger: state
+      entity_id: media_player.rosetta
+      to: "on"
+    - trigger: state
+      entity_id: media_player.rosetta
+      to: "off"
+      for: "00:01:00" # Avoid shutting down too early due to reboots or things like that
+  actions:
+  - choose:
+      - conditions:
+          - condition: state
+            entity_id: media_player.rosetta
+            state: "on"
+        sequence:
+          - action: switch.turn_on
+            target:
+              entity_id: switch.tv_stand_light
+      - conditions:
+          - condition: state
+            entity_id: media_player.rosetta
+            state: "off"
+        sequence:
+          - action: switch.turn_off
+            target:
+              entity_id: switch.tv_stand_light

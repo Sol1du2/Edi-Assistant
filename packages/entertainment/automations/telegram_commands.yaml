@@ -1,40 +1,40 @@
 - id: rosetta_on_telegram
   alias: Turn on Rosetta via Telegram
-  trigger:
-    platform: event
-    event_type: telegram_command
-    event_data:
-      command: '/rosetta_on'
-  action:
-    - service: remote.turn_on
+  triggers:
+    - trigger: event
+      event_type: telegram_command
+      event_data:
+        command: '/rosetta_on'
+  actions:
+    - action: remote.turn_on
       entity_id: remote.rosetta
-    - service: telegram_bot.send_message
+    - action: telegram_bot.send_message
       data:
-        target: "{{ trigger.event.data.chat_id }}"
+        chat_id: "{{ trigger.event.data.chat_id }}"
         message: Rosetta turned on
 
 - id: rosetta_off_telegram
   alias: Turn off Rosetta via Telegram
-  trigger:
-    - platform: event
+  triggers:
+    - trigger: event
       event_type: telegram_command
       event_data:
         command: '/rosetta_off'
-    - platform: event
+    - trigger: event
       event_type: telegram_callback
       event_data:
         command: '/rosetta_off'
-  action:
-    - service: remote.turn_off
+  actions:
+    - action: remote.turn_off
       entity_id: remote.rosetta
-    - service: telegram_bot.send_message
+    - action: telegram_bot.send_message
       data:
-        target: "{{ trigger.event.data.chat_id }}"
+        chat_id: "{{ trigger.event.data.chat_id }}"
         message: Rosetta turned off
     - condition:
       - condition: template
         value_template: "{{ trigger.event.event_type == 'telegram_callback' }}"
-    - service: telegram_bot.answer_callback_query
+    - action: telegram_bot.answer_callback_query
       data:
         callback_query_id: "{{ trigger.event.data.id }}"
         message: Alright, turning Rosetta off 😄

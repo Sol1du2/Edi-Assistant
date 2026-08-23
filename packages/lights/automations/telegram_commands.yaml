@@ -1,68 +1,64 @@
 - id: get_light_status_telegram
   alias: Returns the status of all house lights
-  trigger:
-    platform: event
-    event_type: telegram_command
-    event_data:
-      command: '/lights'
-  action:
-    - service: telegram_bot.send_message
+  triggers:
+    - trigger: event
+      event_type: telegram_command
+      event_data:
+        command: "/lights"
+  actions:
+    - action: telegram_bot.send_message
       data_template:
-        target: "{{ trigger.event.data.chat_id }}"
+        chat_id: "{{ trigger.event.data.chat_id }}"
         message: |
-          *Living Room:*
-            Ceiling Light 1: {{ states('light.living_room_ceiling_light_1') }}
-            Ceiling Light 2: {{ states('light.living_room_ceiling_light_2') }}
-            Fado Lamp: {{ states('light.fado_lamp') }}
-            Corner Lamp: {{ states('light.corner_lamp') }}
-          *Kitchen:* 
-            Ceiling Light: {{ states('light.kitchen_ceiling_light') }}
-            Stove Light: {{ states('switch.kitchen_stove_light') }}
-          *Balcony:*
-            Ceiling Light: {{ states('light.balcony_ceiling_light') }}
-            String Lights: {{ states('light.balcony_string_lights') }}
-          *Hallway:*
-            Ceiling Light: {{ states('light.hall_ceiling_light') }}
-          *Toilet:*
-            Ceiling Light: {{ states('light.toilet_ceiling_light') }}
-          *Bathroom:*
-            Ceiling Light: {{ states('light.bathroom_ceiling_light') }}
-          *Office:*
-            Ceiling Light: {{ states('light.office_ceiling_light') }}
-            Lamp: {{ states('light.office_lamp') }}
-            Droopy Lamp: {{ states('light.office_droopy_lamp') }}
-            Work Desk Lamp: {{ states('light.office_work_desk_lamp') }}
-          *Bedroom:*
-            Ceiling Light: {{ states('light.bedroom_ceiling_light') }}
-            Lamp: {{ states('light.bedroom_lamp') }}
-            Night Stand Light: {{ states('switch.bedroom_nightstand_light') }}
+          *Ground Floor:*
+            Front Door Light: {{ states('light.front_door_light') }}
+            Entryway Light: {{ states('light.entryway_ceiling_light') }}
+            Toilet Light: {{ states('light.toilet_ceiling_light') }}
+            Kitchen Ceiling Light: {{ states('light.kitchen_table_lights') }}
+            Kitchen Bench Lights: {{ states('light.kitchen_bench_lights') }}
+            Living Room Ceiling Lights: {{ states('light.living_room_ceiling_lights') }}
+            Fado Lamp: {{ states('light.living_room_fado_lamp') }}
+            Corner Lamp: {{ states('light.living_room_corner_lamp') }}
+          *First Floor:*
+            Hall Light: {{ states('light.hallway_ceiling_light') }}
+            Office Jelena Ceiling Light: {{ states('light.office_jelena_ceiling_light') }}
+            Office Jelena Desk Lamp: {{ states('light.office_jelena_desk_lamp') }}
+            Bedroom Ceiling Light: {{ states('light.bedroom_ceiling_light') }}
+            Bedroom Lamp: {{ states('light.bedroom_lamp') }}
+            Closet Room Ceiling Light: {{ states('light.closet_room_ceiling_light') }}
+            Bathroom Ceiling Light: {{ states('light.bathroom_ceiling_light') }}
+            Bathroom Mirror Light: {{ states('light.bathroom_mirror_light') }}
+          *Attic:*
+            Ceiling Lights: {{ states('light.attic_ceiling_lights') }}
+            Mechanical Room Ceiling Lights: {{ states('light.mechanical_room_ceiling_lights') }}
+          *Garden:*
+            Garden Light - Shed: {{ states('light.shed_outside_light') }}
+            Shed Light: {{ states('light.shed_inside_light') }}
 
 - id: house_lights_on_telegram
-  alias: Turn off all lights
-  trigger:
-    platform: event
-    event_type: telegram_command
-    event_data:
-      command: '/lights_on'
-  action:
-    - service: light.turn_on
-      entity_id: light.house_lights
-    - service: telegram_bot.send_message
+  alias: Turn on all lights
+  triggers:
+    - trigger: event
+      event_type: telegram_command
+      event_data:
+        command: "/lights_on"
+  actions:
+    - action: script.all_lights_on
+    - action: telegram_bot.send_message
       data:
-        target: "{{ trigger.event.data.chat_id }}"
+        chat_id: "{{ trigger.event.data.chat_id }}"
         message: All lights on! It's a party!
 
 - id: house_lights_off_telegram
   alias: Turn off all lights
-  trigger:
-    platform: event
-    event_type: telegram_command
-    event_data:
-      command: '/lights_off'
-  action:
-    - service: light.turn_off
-      entity_id: light.house_lights
-    - service: telegram_bot.send_message
+  triggers:
+    - trigger: event
+      event_type: telegram_command
+      event_data:
+        command: "/lights_off"
+  actions:
+    - action: script.all_lights_off
+    - action: telegram_bot.send_message
       data:
-        target: "{{ trigger.event.data.chat_id }}"
+        chat_id: "{{ trigger.event.data.chat_id }}"
         message: All lights off! Party's over!

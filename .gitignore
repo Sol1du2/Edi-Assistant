@@ -1,11 +1,27 @@
+# VSCode ignore folders
+.vscode
+
+# HA ignore folders
 .cloud
 .storage
-.HA_VERSION
 .vscode
-.shopping_list.json
-
+.cache
 backups
-secrets.yaml
+deps
+tts
+
+# HA ignore files
+.shopping_list.json
+.HA_VERSION
+.ha_run.lock
+
+# HA database file globs
 home-assistant_v2.db*
 home-assistant.log*
 
+# Ignore sentitive secrets file
+secrets.yaml
+
+# HA custom components noise
+custom_components/**/__pycache__/
+custom_components/**/*.pyc

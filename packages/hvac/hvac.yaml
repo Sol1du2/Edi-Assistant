@@ -1,1 +1,25 @@
+template:
+  - sensor:
+    - name: "Power Produced Negative"
+      unique_id: power_produced_negative
+      state_class: "measurement"
+      device_class: "power"
+      unit_of_measurement: "kW"
+      state: "{{ states('sensor.power_produced') | float * (-1) }}"
+
+# Heat Pump Energy Sensors (based off reported consumption)
+utility_meter:
+  heatpump_total_daily_energy_consumption_by_mode:
+    source: sensor.ecodan_heatpump_reported_total_daily_energy_consumption
+    cycle: daily
+    tariffs:
+      - idle
+      - frost
+      - heating
+      - cooling
+      - dhw
+      - other
+    # The source resets to 0 at midnight, so this should stay enabled.
+    periodically_resetting: true
+
 automation: !include_dir_merge_list automations/
