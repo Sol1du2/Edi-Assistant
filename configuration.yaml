@@ -23,7 +23,14 @@ homeassistant:
   customize: !include customize.yaml
 
 lovelace:
-  mode: yaml
+  resource_mode: yaml
+  dashboards:
+    lovelace:
+      mode: yaml
+      filename: ui-lovelace.yaml
+      title: Home
+      icon: mdi:view-dashboard
+      show_in_sidebar: true
 
 # Allows you to issue voice commands from the frontend in enabled browsers
 conversation:
@@ -31,60 +38,22 @@ conversation:
 # Records states to the db
 recorder:
 
-# Record some of our data to influxdb so it can be visualized in grafana
-influxdb:
-  host: !secret influxdb_host
-  port: !secret influxdb_port
-  username: !secret influxdb_username
-  password: !secret influxdb_password
-  include:
-    entities:
-      - sensor.droopy_power
-      - sensor.humidifier_power
-      - sensor.droopy_consumption
-      - sensor.humidifier_consumption
-      - sensor.office_light_sensor
-      - sensor.living_room_light_sensor
-      - binary_sensor.living_room_motion_sensor
-      - binary_sensor.office_motion_sensor
-      - sensor.living_room_temperature
-      - sensor.living_room_humidity
-      - sensor.bedroom_temperature
-      - sensor.bedroom_humidity
-      - sensor.bathroom_temperature
-      - sensor.bathroom_humidity
-      - sensor.office_temperature
-      - sensor.office_humidity
-      - sensor.filament_box_temperature
-      - sensor.filament_box_humidity
-      - sensor.balcony_temperature
-      - sensor.balcony_humidity
-      - light.living_room_ceiling_light_1
-      - light.living_room_ceiling_light_2
-      - light.fado_lamp
-      - light.corner_lamp
-      - light.kitchen_ceiling_light
-      - light.balcony_ceiling_light
-      - light.hall_ceiling_light
-      - light.boiler_room_ceiling_light
-      - light.closet_ceiling_light
-      - light.toilet_ceiling_light
-      - light.bathroom_ceiling_light
-      - light.office_ceiling_light
-      - light.office_lamp
-      - light.office_droopy_lamp
-      - light.office_work_desk_lamp
-      - light.bedroom_ceiling_light
-      - light.bedroom_lamp
-      - switch.kitchen_stove_light
-      - switch.balcony_string_lights
-      - switch.bedroom_nightstand_light
-
 # Text to speech
 tts:
   - platform: google_translate
 
-shopping_list:
+input_select:
+  floor_plan:
+    name: Floor Selector
+    options:
+      - garden
+      - ground
+      - first
+      - attic
+    initial: ground
+    icon: mdi:floor-plan
+
+scene: !include scenes.yaml
 
 #group: !include groups.yaml
 #automation: !include automations.yaml

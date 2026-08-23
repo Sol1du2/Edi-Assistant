@@ -1,13 +1,13 @@
 - id: turn_on_humidifier_automation
   alias: Humidity too low notify and turn on humidifier
-  trigger:
-    - platform: numeric_state
+  triggers:
+    - trigger: numeric_state
       entity_id: 
         - sensor.living_room_humidity
         - sensor.office_humidity
         - sensor.bedroom_humidity
       below: 40
-  condition:
+  conditions:
     - condition: numeric_state
       entity_id: sensor.living_room_humidity
       below: 53
@@ -20,11 +20,14 @@
     - condition: state
       entity_id: switch.humidifier
       state: "off"
-  action:
-    - service: switch.turn_on
+  actions:
+    - action: switch.turn_on
       entity_id: switch.humidifier
-    - service: notify.joao
-      data_template:
+    - action: notify.send_message
+      data:
+        entity_id: 
+          - notify.telegram_joao
+          - notify.telegram_jelena
         message: >
           {% if trigger.entity_id == "sensor.living_room_humidity" %}
             The humidity in the living room is too low, starting humidifier... Please check if it has enough water.
@@ -35,29 +38,17 @@
           {% else %}
             Strange entity received in humidity trigger: {{ trigger.entity_id }}
           {% endif %}
-    - service: notify.jelena
-      data_template:
-        message: >
-          {% if trigger.entity_id == "sensor.living_room_humidity" %}
-            The humidity in the living room is too low, starting humidifier... Please check if it has enough water.
-          {% elif trigger.entity_id == "sensor.office_humidity" %}
-            The humidity in the office is too low, starting humidifier... Please check if it has enough water.
-          {% elif trigger.entity_id == "sensor.bedroom_humidity" %}
-            The humidity in the bedroom is too low, starting humidifier... Please check if it has enough water.
-          {% else %}
-            Strange entidy received in humidity trigger: {{ trigger.entity_id }}
-          {% endif %}
 
 - id: turn_off_humidifier_within_range
   alias: Stop Humidifier Within Range
-  trigger:
-    - platform: numeric_state
+  triggers:
+    - trigger: numeric_state
       entity_id: 
         - sensor.living_room_humidity
         - sensor.office_humidity
         - sensor.bedroom_humidity
       above: 45
-  condition:
+  conditions:
     - condition: numeric_state
       entity_id: sensor.living_room_humidity
       above: 42
@@ -70,35 +61,35 @@
     - condition: state
       entity_id: switch.humidifier
       state: "on"
-  action:
-    - service: switch.turn_off
+  actions:
+    - action: switch.turn_off
       entity_id: switch.humidifier
-    - service: notify.joao
+    - action: notify.send_message
       data:
-        message: Humidity's at a good level... Shutting down humidifier!
-    - service: notify.jelena
-      data:
-        message: Humidity's at a good level... Shutting down humidifier!
+        entity_id: 
+          - notify.telegram_joao
+          - notify.telegram_jelena
+        message: "Humidity's at a good level... Shutting down humidifier!"
 
 - id: turn_off_humidifier_too_high
   alias: Stop humidifier from getting humidity too high
-  trigger:
-    - platform: numeric_state
+  triggers:
+    - trigger: numeric_state
       entity_id: 
         - sensor.living_room_humidity
         - sensor.office_humidity
         - sensor.bedroom_humidity
       above: 53
-  condition:
+  conditions:
     - condition: state
       entity_id: switch.humidifier
       state: "on"
-  action:
-    - service: switch.turn_off
+  actions:
+    - action: switch.turn_off
       entity_id: switch.humidifier
-    - service: notify.joao
+    - action: notify.send_message
       data:
-        message: Humidity's at a good level... Shutting down humidifier!
-    - service: notify.jelena
-      data:
-        message: Humidity's at a good level... Shutting down humidifier!
+        entity_id: 
+          - notify.telegram_joao
+          - notify.telegram_jelena
+        message: "Humidity's at a good level... Shutting down humidifier!"

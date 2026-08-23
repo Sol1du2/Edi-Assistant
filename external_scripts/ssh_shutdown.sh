@@ -1,17 +1,22 @@
 #!/bin/sh
-
-set -e
+set -eu
 
 if [ $# -lt 3 ]; then
-  echo "Usage: ssh_shutdown.sh <user> <address> <port>"
+  echo "Usage: ssh_shutdown.sh <user> <address> <port>" >&2
   exit 1
 fi
 
-if ping -c 1 -W 1 $2 > /dev/null 2>&1; then
-  HOST=$1@$2
-  # sending a shutdown command via ssh will result in an error since the
-  # connection is interrupted, let's ignore it so we don't get an error in home
-  # assistant. Unfortunately that also means we can't check if this command
-  # actually worked.
-  ssh -p $3 $HOST 'sudo shutdown -h now' || true
+USER="$1"
+ADDR="$2"
+PORT="$3"
+HOST="${USER}@${ADDR}"
+
+if ping -c 1 -W 1 "$ADDR" >/dev/null 2>&1; then
+  # --no-block returns right away (less likely to error due to disconnect)
+  ssh -p "$PORT" \
+    -o BatchMode=yes \
+    -o ConnectTimeout=5 \
+    "$HOST" \
+    "sudo -n shutdown -h now" \
+    >/dev/null 2>&1 || true
 fi

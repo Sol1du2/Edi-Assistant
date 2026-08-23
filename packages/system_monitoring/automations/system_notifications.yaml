@@ -1,49 +1,48 @@
 - id: edi_rebooted
   alias: Edi Rebooted
-  trigger:
-    - platform: homeassistant
+  triggers:
+    - trigger: homeassistant
       event: start
-  condition:
-    condition: template
-    value_template: "{{ (as_timestamp(now()) - as_timestamp(states('sensor.last_boot'))) | int < 120 }}"
-  action:
-    - service: notify.joao
+  conditions:
+    - condition: template
+      value_template: "{{ (as_timestamp(now()) - as_timestamp(states('sensor.last_boot'))) | int < 120 }}"
+  actions:
+    - action: notify.send_message
       data:
-        message: Edi has just rebooted ({{ (as_timestamp(now()) - as_timestamp(states('sensor.last_boot'))) | int }} seconds ago)
+        entity_id: notify.telegram_joao
+        message: "Edi has just rebooted ({{ (as_timestamp(now()) - as_timestamp(states('sensor.last_boot'))) | int }} seconds ago)"
 
 - id: power_cut
   alias: Power Cut
-  trigger:
-    - platform: state
+  triggers:
+    - trigger: state
       entity_id: sensor.ups_status
       to: "ONBATT"
-  action:
-    - service: notify.joao
+  actions:
+    - action: notify.send_message
       data:
-        message: Power failure on Edi's UPS. Running on batteries!
-    - service: notify.jelena
-      data:
-        message: Power failure on Edi's UPS. Running on batteries!
+        entity_id: notify.telegram_joao
+        message: "Power failure on Edi's UPS. Running on batteries!"
 
 - id: shutdown_low_battery
   alias: Shutdown system when running on low battery
-  trigger:
-    - platform: numeric_state
+  triggers:
+    - trigger: numeric_state
       entity_id: sensor.ups_battery
       below: 10
-  condition:
+  conditions:
     - condition: state
       entity_id: sensor.ups_status
       state: "ONBATT"
-  action:
-    - service: notify.joao
+  actions:
+    - action: notify.send_message
       data:
-        message: UPS Battery too low. Shutting down systems... Bye!
-    - service: notify.jelena
-      data:
-        message: UPS Battery too low. Shutting down systems... Bye!
+        entity_id: 
+          - notify.telegram_joao
+          - notify.telegram_jelena
+        message: "UPS Battery too low. Shutting down systems... Bye!"
     - delay:
         seconds: 10
-    - service: shell_command.shutdown_pihole
-    - service: shell_command.shutdown_edi
+    - action: shell_command.shutdown_pihole
+    - action: shell_command.shutdown_edi
       

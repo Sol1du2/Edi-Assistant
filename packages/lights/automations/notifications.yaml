@@ -1,47 +1,53 @@
-- id: sleep_mode_triggered_check_dreadnought
+- id: sleep_mode_triggered_check_devices
   alias: Sleep mode was triggered
-  trigger:
-    platform: state
+  triggers:
+    trigger: state
     entity_id: script.sleep_mode
     to: 'on'
-  action:
+  actions:
     - choose:
         - conditions:
             - condition:  state
-              entity_id: switch.dreadnought_toggle
+              entity_id: switch.leviathan_toggle
               state: 'on'
           sequence:
-            - service: >
-                {% if is_state_attr('person.joao', 'id', trigger.to_state.context.user_id) %}
-                  notify.joao
-                {% elif is_state_attr('person.jelena', 'id', trigger.to_state.context.user_id) %}
-                  notify.jelena
-                {% else %}
-                  notify.joao
-                {% endif %}
-              data_template:
-                message: >
-                  Would you like me to shutdown Dreadnought as well?
-                data:
-                  inline_keyboard:
-                    - "Shutdown Dreadnought:/dreadnought_off"
+            - variables:
+                joao_chat_id: !secret joao_telegram_chat_id
+                jelena_chat_id: !secret jelena_telegram_chat_id
+                chat_id: >-
+                  {% if is_state_attr('person.joao', 'id', trigger.to_state.context.user_id) %}
+                    {{ joao_chat_id }}
+                  {% elif is_state_attr('person.jelena', 'id', trigger.to_state.context.user_id) %}
+                    {{ jelena_chat_id }}
+                  {% else %}
+                    {{ joao_chat_id }}
+                  {% endif %}
+            - action: telegram_bot.send_message
+              data:
+                chat_id: "{{ chat_id | int }}"
+                message: "Would you like me to shutdown Leviathan as well?"
+                inline_keyboard:
+                  - "Shutdown Leviathan:/leviathan_off"
     - choose:
         - conditions:
             - condition:  state
               entity_id: remote.rosetta
               state: 'on'
           sequence:
-            - service: >
-                {% if is_state_attr('person.joao', 'id', trigger.to_state.context.user_id) %}
-                  notify.joao
-                {% elif is_state_attr('person.jelena', 'id', trigger.to_state.context.user_id) %}
-                  notify.jelena
-                {% else %}
-                  notify.joao
-                {% endif %}
-              data_template:
-                message: >
-                  Would you like me to turn Rosetta off as well?
-                data:
-                  inline_keyboard:
-                    - "Turn off Rosetta:/rosetta_off"
+            - variables:
+                joao_chat_id: !secret joao_telegram_chat_id
+                jelena_chat_id: !secret jelena_telegram_chat_id
+                chat_id: >-
+                  {% if is_state_attr('person.joao', 'id', trigger.to_state.context.user_id) %}
+                    {{ joao_chat_id }}
+                  {% elif is_state_attr('person.jelena', 'id', trigger.to_state.context.user_id) %}
+                    {{ jelena_chat_id }}
+                  {% else %}
+                    {{ joao_chat_id }}
+                  {% endif %}
+            - action: telegram_bot.send_message
+              data:
+                chat_id: "{{ chat_id | int }}"
+                message: "Would you like me to turn Rosetta off as well?"
+                inline_keyboard:
+                  - "Turn off Rosetta:/rosetta_off"

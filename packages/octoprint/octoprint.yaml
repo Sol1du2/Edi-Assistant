@@ -68,7 +68,11 @@ template:
 
 command_line:
   - sensor:
-      name: OctoPi CPU Temperature
+      name: Droopy Availability
+      command: !secret octoprint_availability
+
+  - sensor:
+      name: Droopy CPU Temperature
       command: !secret octoprint_cpu_temp
       unit_of_measurement: "ºC"
       value_template: >
@@ -76,6 +80,12 @@ command_line:
           {{ value | multiply(0.001) | round(1) }}
         {% else %}
           {{ value }}
+        {% endif %}
+      availability: >
+        {% if is_state("sensor.droopy_availability", "available") %}
+          {{ true }}
+        {% else %}
+          {{ false }}
         {% endif %}
 
 automation: !include_dir_merge_list automations/

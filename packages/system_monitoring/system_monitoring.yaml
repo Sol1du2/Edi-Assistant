@@ -1,4 +1,5 @@
 shell_command:
+  shutdown_leviathan: !secret leviathan_shutdown_ssh
   shutdown_dreadnought: !secret dreadnought_shutdown_ssh
   shutdown_pihole: !secret pihole_shutdown_ssh
   shutdown_edi: !secret edi_shutdown_ssh
@@ -6,6 +7,12 @@ shell_command:
 wake_on_lan:
 
 switch:
+  - platform: wake_on_lan
+    name: Leviathan Toggle
+    mac: !secret leviathan_mac_address
+    host: !secret leviathan_host
+    turn_off:
+      service: shell_command.shutdown_leviathan
   - platform: wake_on_lan
     name: Dreadnought Toggle
     mac: !secret dreadnought_mac_address

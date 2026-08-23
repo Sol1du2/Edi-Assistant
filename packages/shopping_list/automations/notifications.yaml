@@ -1,21 +1,22 @@
 - id: send_shopping_list_away
   alias: Send the shopping list when a person leaves the house
-  trigger:
-    - platform: state
+  triggers:
+    - trigger: state
       entity_id: person.joao
       from: 'home'
       to: 'not_home'
-    - platform: state
+    - trigger: state
       entity_id: person.jelena
       from: 'home'
       to: 'not_home'
-  condition:
-    condition: template
-    value_template: "{{ states('sensor.shopping_list_unchecked_items') != '' }}"
-  action:
-    - service: >
-        notify.{{ trigger.entity_id.split('.')[1] }}
-      data_template:
+  conditions:
+    - condition: template
+      value_template: "{{ states('sensor.shopping_list_unchecked_items') != '' }}"
+  actions:
+    - action: notify.send_message
+      data:
+        entity_id: >-
+          {{ 'notify.telegram_' ~ trigger.entity_id.split('.')[1] }}
         message: >
           Hey, I saw you're leaving the house. Friendly reminder, you guys have these in the shopping list:
 
@@ -23,26 +24,35 @@
 
 - id: clear_shopping_list_home
   alias: Ask to clear the shopping list when someone arrives home
-  trigger:
-    - platform: state
+  triggers:
+    - trigger: state
       entity_id: person.joao
       from: 'not_home'
       to: 'home'
-    - platform: state
+    - trigger: state
       entity_id: person.jelena
       from: 'not_home'
       to: 'home'
-  condition:
-    condition: template
-    value_template: "{{ states('sensor.shopping_list_unchecked_items') != '' }}"
-  action:
-    - service: >
-        notify.{{ trigger.entity_id.split('.')[1] }}
-      data_template:
+  conditions:
+    - condition: template
+      value_template: "{{ states('sensor.shopping_list_unchecked_items') != '' }}"
+  actions:
+    - variables:
+        # Mappings for the telegram chat ids.
+        telegram_chat:
+            joao: !secret joao_telegram_chat_id
+            jelena: !secret jelena_telegram_chat_id
+
+        who: "{{ trigger.entity_id.split('.')[1] }}"
+        chat_id: "{{ telegram_chat.get(who, telegram_chat.joao) | int }}"
+
+    - action: telegram_bot.send_message
+      data:
+        chat_id:
+          - "{{ chat_id }}"
         message: >
           Welcome home, do you want me to clear the following items on the shopping list?
 
           {{ states('sensor.shopping_list_unchecked_items') }}
-        data:
-          inline_keyboard:
-            - "Clear list:/clear_shop"
+        inline_keyboard:
+          - "Clear list:/clear_shop"

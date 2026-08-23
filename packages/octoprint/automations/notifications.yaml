@@ -1,50 +1,68 @@
 - id: notify_droopy_off
   alias: Notify when droopy turns off
-  trigger:
-    - platform: state
+  triggers:
+    - trigger: state
       entity_id: switch.droopy
       from: 'on'
       to: 'off'
-  action:
-    - service: notify.joao
+  actions:
+    - action: notify.send_message
       data:
-        message: Droopy just went fully offline.
+        entity_id: notify.telegram_joao
+        message: "Droopy just went fully offline."
 
 - id: warn_droopy_idle_10_min
   alias: Warn when droopy is idle for 10 minutes
-  trigger:
-    - platform: state
-      entity_id: sensor.octoprint_current_state
-      to: "Operational"
+  triggers:
+    - trigger: state
+      entity_id: binary_sensor.octoprint_printing
+      to: "off"
       for: "00:10:00"
-  action:
-    - service: notify.joao
+  conditions:
+    - condition: state
+      entity_id: sensor.octoprint_current_state
+      state: "operational"
+  actions:
+    - action: notify.send_message
       data:
-        message: Droopy has been idle for 10 minutes and will shutdown in 5 minutes.
+        entity_id: notify.telegram_joao
+        message: "Droopy has been idle for 10 minutes and will shutdown in 5 minutes."
 
 - id: warn_droopy_idle_14_min
   alias: Warn when droopy is idle for 14 minutes
-  trigger:
-    - platform: state
-      entity_id: sensor.octoprint_current_state
-      to: "Operational"
+  triggers:
+    - trigger: state
+      entity_id: binary_sensor.octoprint_printing
+      to: "off"
       for: "00:14:00"
-  action:
-    - service: notify.joao
+  conditions:
+    - condition: state
+      entity_id: sensor.octoprint_current_state
+      state: "operational"
+  actions:
+    - action: notify.send_message
       data:
-        message: Droopy has been idle for 14 minutes and will shutdown in 1 minute.
+        entity_id: notify.telegram_joao
+        message: "Droopy has been idle for 14 minutes and will shutdown in 1 minute."
 
 - id: notify_job_finished
-  alias: Notifies when a print job is finished
-  trigger:
-    - platform: state
+  alias: Notify when a print job is finished
+  triggers:
+    - trigger: state
+      entity_id: binary_sensor.octoprint_printing
+      from: "on"
+      to: "off"
+  conditions:
+    - condition: state
       entity_id: sensor.octoprint_current_state
-      from: "Printing"
-  action:
-    - service: notify.joao
+      state: "operational"
+    - condition: numeric_state
+      entity_id: sensor.octoprint_job_percentage
+      above: 99
+  actions:
+    - action: telegram_bot.send_photo
       data:
-        message: Droopy's job has finished!
-        data:
-          photo:
-            - url: !secret octoprint_url_webcam_snapshot
-              caption: "Droopy's job has finished!"
+        chat_id: !secret joao_telegram_chat_id
+        caption: "Droopy's job has finished!"
+        url: !secret octoprint_url_webcam_snapshot
+

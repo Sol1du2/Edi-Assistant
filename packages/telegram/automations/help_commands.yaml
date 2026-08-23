@@ -1,14 +1,14 @@
 - id: help_command_telegram
-  alias: Get a list of commands
-  trigger:
-    platform: event
-    event_type: telegram_command
-    event_data:
-      command: '/help'
-  action:
-    - service: telegram_bot.send_message
+  alias: Help Command Telegram
+  triggers:
+    - trigger: event
+      event_type: telegram_command
+      event_data:
+        command: '/help'
+  actions:
+    - action: telegram_bot.send_message
       data:
-        target: "{{ trigger.event.data.chat_id }}"
+        chat_id: "{{ trigger.event.data.chat_id }}"
         message: "Here's a list of commands you can use"
         keyboard:
           - "/lights, /lights_on, /lights_off"
@@ -17,4 +17,4 @@
           - "/occupancy"
           - "/shop, /clear_shop"
           - "/droopy, /droopy_snap, /droopy_off, /droopy_emergency"
-          - "/dreadnought_on, /dreadnought_off"
+          - "/leviathan_on, /leviathan_off"

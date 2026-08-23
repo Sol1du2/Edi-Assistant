@@ -1,28 +1,51 @@
-- id: turn_on_hall_light_movement
-  alias: Turn on Light in Hall when movement is detected
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.hall_motion_sensor
-      from: "off"
+- id: turn_on_entryway_light_movement
+  alias: Turn on Light in the entryway when movement is detected
+  triggers:
+    - trigger: state
+      entity_id: binary_sensor.entryway_motion_sensor_occupancy
       to: "on"
-  condition:
+  conditions:
     - condition: numeric_state
-      entity_id: sensor.hall_motion_sensor_light_level
+      entity_id: sensor.entryway_motion_sensor_illuminance
       below: 15
-  action:
-    - service: light.turn_on
-      data:
-        entity_id: light.hall_ceiling_light
-        brightness: 250
+  actions:
+    - action: switch.turn_on
+      target:
+        entity_id: switch.entryway_ceiling_light
 
-- id: turn_off_hall_light_movement
-  alias: Turn off Light in Hall when movement is detected
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.hall_motion_sensor
-      from: "on"
+- id: turn_off_entryway_light_movement
+  alias: Turn off Light in the entryway when movement no longer detected
+  triggers:
+    - trigger: state
+      entity_id: binary_sensor.entryway_motion_sensor_occupancy
       to: "off"
-  action:
-    - service: light.turn_off
-      data:
-        entity_id: light.hall_ceiling_light
+  actions:
+    - action: switch.turn_off
+      target:
+        entity_id: switch.entryway_ceiling_light
+
+- id: turn_on_hallway_light_movement
+  alias: Turn on Light in the hallway when movement is detected
+  triggers:
+    - trigger: state
+      entity_id: binary_sensor.hallway_motion_sensor_occupancy
+      to: "on"
+  conditions:
+    - condition: numeric_state
+      entity_id: sensor.hallway_motion_sensor_illuminance
+      below: 15
+  actions:
+    - action: switch.turn_on
+      target:
+        entity_id: switch.hallway_ceiling_light
+
+- id: turn_off_hallway_light_movement
+  alias: Turn off Light in the hallway when movement no longer detected
+  triggers:
+    - trigger: state
+      entity_id: binary_sensor.hallway_motion_sensor_occupancy
+      to: "off"
+  actions:
+    - action: switch.turn_off
+      target:
+        entity_id: switch.hallway_ceiling_light

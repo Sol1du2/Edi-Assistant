@@ -1,14 +1,14 @@
 - id: send_droopy_current_status_telegram
   alias: Send the current status of droopy
-  trigger:
-    platform: event
-    event_type: telegram_command
-    event_data:
-      command: '/droopy'
-  action:
-    - service: telegram_bot.send_message
+  triggers:
+    - trigger: event
+      event_type: telegram_command
+      event_data:
+        command: '/droopy'
+  actions:
+    - action: telegram_bot.send_message
       data_template:
-        target: "{{ trigger.event.data.chat_id }}"
+        chat_id: "{{ trigger.event.data.chat_id }}"
         message: |
           *State:* {{ states('sensor.octoprint_current_state') }}
           *Job Percentage:* {{ states('sensor.octoprint_job_percentage') }}%
@@ -23,41 +23,41 @@
 
 - id: send_droopy_snapshot_telegram
   alias: Send a snapshot of droopy's camera
-  trigger:
-    platform: event
-    event_type: telegram_command
-    event_data:
-      command: '/droopy_snap'
-  action:
-    - service: telegram_bot.send_photo
+  triggers:
+    - trigger: event
+      event_type: telegram_command
+      event_data:
+        command: '/droopy_snap'
+  actions:
+    - action: telegram_bot.send_photo
       data:
-        target: "{{ trigger.event.data.chat_id }}"
+        chat_id: "{{ trigger.event.data.chat_id }}"
         caption: 'Droopy''s snapshot!'
         url: !secret octoprint_url_webcam_snapshot
 
 - id: turn_off_droopy_telegram
   alias: Turn off droopy with telegram
-  trigger:
-    platform: event
-    event_type: telegram_command
-    event_data:
-      command: '/droopy_off'
-  action:
-    - service: script.turn_on
+  triggers:
+    - trigger: event
+      event_type: telegram_command
+      event_data:
+        command: '/droopy_off'
+  actions:
+    - action: script.turn_on
       entity_id: script.safely_power_off_droopy
-    - service: telegram_bot.send_message
+    - action: telegram_bot.send_message
       data:
-        target: "{{ trigger.event.data.chat_id }}"
+        chat_id: "{{ trigger.event.data.chat_id }}"
         message: 'Droopy shutdown initiated!'
 
 - id: emergency_droopy_telegram
   alias: Emergency shutdown droopy with telegram
-  trigger:
-    platform: event
-    event_type: telegram_command
-    event_data:
-      command: '/droopy_emergency'
-  action:
-    - service: light.turn_off
+  triggers:
+    - trigger: event
+      event_type: telegram_command
+      event_data:
+        command: '/droopy_emergency'
+  actions:
+    - action: light.turn_off
       data:
         entity_id: switch.droopy

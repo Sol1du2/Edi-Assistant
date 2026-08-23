@@ -1,0 +1,13 @@
+- id: turn_off_lights_no_one_home
+  alias: Turn off lights when everyone leaves
+  triggers:
+    - trigger: state
+      entity_id: binary_sensor.someone_home
+      from: 'on'
+      to: 'off'
+  actions:
+    - action: script.all_lights_off
+    - action: notify.send_message
+      data:
+        entity_id: notify.telegram_joao
+        message: "Turning off the lights!"

@@ -1,14 +1,14 @@
 - id: heating_status_telegram
   alias: Heating Status via Telegram
-  trigger:
-    platform: event
+  triggers:
+    trigger: event
     event_type: telegram_command
     event_data:
       command: '/heating'
-  action:
-    - service: telegram_bot.send_message
+  actions:
+    - action: telegram_bot.send_message
       data:
-        target: "{{ trigger.event.data.chat_id }}"
+        chat_id: "{{ trigger.event.data.chat_id }}"
         message: |
           *State:* {{ states('climate.warmy') }}
           *Current Temperature:* {{ state_attr('climate.warmy', 'current_temperature') }}°C
@@ -18,61 +18,61 @@
 
 - id: hvac_status_telegram
   alias: HVAC Status via Telegram
-  trigger:
-    platform: event
+  triggers:
+    trigger: event
     event_type: telegram_command
     event_data:
       command: '/hvac'
-  action:
-    - service: telegram_bot.send_message
+  actions:
+    - action: telegram_bot.send_message
       data:
-        target: "{{ trigger.event.data.chat_id }}"
+        chat_id: "{{ trigger.event.data.chat_id }}"
         message: |
-          *Living Room:*
-            Temperature: {{ states('sensor.living_room_temperature') }}°C
-            Humidity: {{ states('sensor.living_room_humidity') }}%
-          *Balcony:*
-            Temperature: {{ states('sensor.balcony_temperature') }}°C
-            Humidity: {{ states('sensor.balcony_humidity') }}%
-          *Bathroom:*
-            Temperature: {{ states('sensor.bathroom_temperature') }}°C
-            Humidity: {{ states('sensor.bathroom_humidity') }}%
-          *Office:*
-            Temperature: {{ states('sensor.office_temperature') }}°C
-            Humidity: {{ states('sensor.office_humidity') }}%
+          *Ground Floor:*
+            Temperature: {{ states('sensor.ground_floor_ambient_sensor_temperature') }}°C
+            Humidity: {{ states('sensor.ground_floor_ambient_sensor_humidity') }}%
+          *Shed:*
+            Temperature: {{ states('sensor.shed_ambient_sensor_temperature') }}°C
+            Humidity: {{ states('sensor.shed_ambient_sensor_humidity') }}%
           *Bedroom:*
-            Temperature: {{ states('sensor.bedroom_temperature') }}°C
-            Humidity: {{ states('sensor.bedroom_humidity') }}%
+            Temperature: {{ states('sensor.bedroom_ambient_sensor_temperature') }}°C
+            Humidity: {{ states('sensor.bedroom_ambient_sensor_humidity') }}%
+          *Bathroom:*
+            Temperature: {{ states('sensor.bathroom_ambient_sensor_temperature') }}°C
+            Humidity: {{ states('sensor.bathroom_ambient_sensor_humidity') }}%
+          *Attic:*
+            Temperature: {{ states('sensor.attic_ambient_sensor_temperature') }}°C
+            Humidity: {{ states('sensor.attic_ambient_sensor_humidity') }}%
           *Filament Box:*
-            Temperature: {{ states('sensor.filament_box_temperature') }}°C
-            Humidity: {{ states('sensor.filament_box_humidity') }}%
+            Temperature: {{ states('sensor.filament_ambient_sensor_temperature') }}°C
+            Humidity: {{ states('sensor.filament_ambient_sensor_humidity') }}%
 
 - id: heating_on_telegram
   alias: Turn on Heating via Telegram
-  trigger:
-    platform: event
+  triggers:
+    trigger: event
     event_type: telegram_command
     event_data:
       command: '/heating_on'
-  action:
-    - service: climate.turn_on
+  actions:
+    - action: climate.turn_on
       entity_id: climate.warmy
-    - service: telegram_bot.send_message
+    - action: telegram_bot.send_message
       data:
-        target: "{{ trigger.event.data.chat_id }}"
+        chat_id: "{{ trigger.event.data.chat_id }}"
         message: Heating has been turned on!
 
 - id: heating_off_telegram
   alias: Turn off Heating via Telegram
-  trigger:
-    platform: event
+  triggers:
+    trigger: event
     event_type: telegram_command
     event_data:
       command: '/heating_off'
-  action:
-    - service: climate.turn_off
+  actions:
+    - action: climate.turn_off
       entity_id: climate.warmy
-    - service: telegram_bot.send_message
+    - action: telegram_bot.send_message
       data:
-        target: "{{ trigger.event.data.chat_id }}"
+        chat_id: "{{ trigger.event.data.chat_id }}"
         message: Heating has been turned off!
