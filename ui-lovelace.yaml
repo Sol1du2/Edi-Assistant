@@ -347,12 +347,22 @@ views:
                 top: 71%
                 left: 28%
             - type: state-icon
+              icon: mdi:lamp
+              tap_action:
+                action: toggle
+              double_tap_action:
+                action: more-info
+              entity: light.living_room_tv_stand_lamp
+              style:
+                top: 10%
+                left: 46%
+            - type: state-icon
               icon: mdi:led-strip
               tap_action:
                 action: toggle
               double_tap_action:
                 action: more-info
-              entity: switch.tv_stand_light
+              entity: switch.living_room_tv_stand_light
               style:
                 top: 25%
                 left: 45%
@@ -376,6 +386,16 @@ views:
               style:
                 top: 90%
                 left: 14%
+            - type: state-icon
+              icon: mdi:awning-outline
+              tap_action:
+                action: toggle
+              double_tap_action:
+                action: more-info
+              entity: cover.awning
+              style:
+                top: 50%
+                left: 8%
       # First Floor
       - type: custom:local-conditional-card
         id: first
@@ -662,7 +682,11 @@ views:
             name: "Living Room Ceiling"
             icon: mdi:ceiling-light
           - type: tile
-            entity: light.tv_stand_light
+            entity: light.living_room_tv_stand_lamp
+            name: "TV Stand Lamp"
+            icon: mdi:lamp
+          - type: tile
+            entity: light.living_room_tv_stand_light
             name: "TV Stand"
             icon: mdi:led-strip
           - type: tile

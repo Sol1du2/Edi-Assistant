@@ -18,8 +18,8 @@ light:
     name: Living Room Ceiling Lights
     entity_id: switch.living_room_ceiling_lights
   - platform: switch
-    name: TV Stand Light
-    entity_id: switch.tv_stand_light
+    name: Living Room TV Stand Light
+    entity_id: switch.living_room_tv_stand_light
   - platform: switch
     name: Hallway Ceiling Light
     entity_id: switch.hallway_ceiling_light
