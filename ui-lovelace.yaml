@@ -386,6 +386,16 @@ views:
               style:
                 top: 90%
                 left: 14%
+            - type: state-icon
+              icon: mdi:awning-outline
+              tap_action:
+                action: toggle
+              double_tap_action:
+                action: more-info
+              entity: cover.awning
+              style:
+                top: 50%
+                left: 8%
       # First Floor
       - type: custom:local-conditional-card
         id: first
