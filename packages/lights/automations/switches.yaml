@@ -297,6 +297,7 @@
               entity_id:
                 - light.living_room_fado_lamp
                 - light.living_room_corner_lamp
+                - light.living_room_tv_stand_lamp
       # 2) Physical press + lamp turned OFF → turn OFF lamps as well
       - conditions:
         - condition: state
@@ -310,6 +311,7 @@
               entity_id:
                 - light.living_room_fado_lamp
                 - light.living_room_corner_lamp
+                - light.living_room_tv_stand_lamp
 
 - id: set_ha_toggle_when_living_room_ceiling_lights_controller_by_ha
   alias: Set HA-toggle flag when lamp is controlled by HA
@@ -375,6 +377,7 @@
         entity_id: 
           - light.living_room_corner_lamp
           - light.living_room_fado_lamp
+          - light.living_room_tv_stand_lamp
 
 - id: living_room_lamps_off
   alias: Turn Off Living Room Lamps
@@ -390,3 +393,4 @@
         entity_id:
           - light.living_room_corner_lamp
           - light.living_room_fado_lamp
+          - light.living_room_tv_stand_lamp

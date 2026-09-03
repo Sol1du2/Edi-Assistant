@@ -347,6 +347,16 @@ views:
                 top: 71%
                 left: 28%
             - type: state-icon
+              icon: mdi:lamp
+              tap_action:
+                action: toggle
+              double_tap_action:
+                action: more-info
+              entity: light.living_room_tv_stand_lamp
+              style:
+                top: 10%
+                left: 46%
+            - type: state-icon
               icon: mdi:led-strip
               tap_action:
                 action: toggle
@@ -661,6 +671,10 @@ views:
             entity: light.living_room_ceiling_lights
             name: "Living Room Ceiling"
             icon: mdi:ceiling-light
+          - type: tile
+            entity: light.living_room_tv_stand_lamp
+            name: "TV Stand Lamp"
+            icon: mdi:lamp
           - type: tile
             entity: light.living_room_tv_stand_light
             name: "TV Stand"
