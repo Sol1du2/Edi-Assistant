@@ -352,7 +352,7 @@ views:
                 action: toggle
               double_tap_action:
                 action: more-info
-              entity: switch.tv_stand_light
+              entity: switch.living_room_tv_stand_light
               style:
                 top: 25%
                 left: 45%
@@ -662,7 +662,7 @@ views:
             name: "Living Room Ceiling"
             icon: mdi:ceiling-light
           - type: tile
-            entity: light.tv_stand_light
+            entity: light.living_room_tv_stand_light
             name: "TV Stand"
             icon: mdi:led-strip
           - type: tile
