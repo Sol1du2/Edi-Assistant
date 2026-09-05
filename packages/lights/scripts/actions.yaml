@@ -11,13 +11,14 @@ tv_mode:
         area_id: kitchen
     - action: light.turn_off
       target:
-        entity_id: light.living_room_ceiling_lights
+        entity_id:
+          - light.living_room_ceiling_lights
+          - light.living_room_tv_stand_lamp
     - action: light.turn_on
       target:
-        entity_id: light.living_room_fado_lamp
-    - action: light.turn_on
-      target:
-        entity_id: light.living_room_corner_lamp
+        entity_id: 
+          - light.living_room_fado_lamp
+          - light.living_room_corner_lamp
 
 all_lights_off:
   alias: All Lights Off
