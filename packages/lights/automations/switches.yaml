@@ -245,6 +245,42 @@
       target:
         entity_id: light.attic_donut_lamp
 
+- id: attic_mechnical_room_lights_on
+  alias: Turn on Mechnical Room Ceiling Lights
+  triggers:
+    - trigger: device
+      domain: mqtt
+      device_id: 7c42bc766b9be1c21f6b93eb5b061023
+      type: action
+      subtype: "on"
+    - trigger: device
+      domain: mqtt
+      device_id: df4796b236934a49a20956442489a922
+      type: action
+      subtype: "on"
+  actions:
+    - action: light.turn_on
+      target:
+        entity_id: light.mechanical_room_ceiling_lights
+
+- id: attic_mechnical_room_lights_off
+  alias: Turn off Mechnical Room Ceiling Lights
+  triggers:
+    - trigger: device
+      domain: mqtt
+      device_id: 7c42bc766b9be1c21f6b93eb5b061023
+      type: action
+      subtype: "off"
+    - trigger: device
+      domain: mqtt
+      device_id: df4796b236934a49a20956442489a922
+      type: action
+      subtype: "off"
+  actions:
+    - action: light.turn_off
+      target:
+        entity_id: light.mechanical_room_ceiling_lights
+
 # Kitchen
 - id: kitchen_lights_on
   alias: Turn On Kitchen Lights
