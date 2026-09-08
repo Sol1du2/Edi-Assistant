@@ -1253,7 +1253,10 @@ views:
               - sensor.office_jelena_switch_battery
               - sensor.bedroom_switch_1_battery
               - sensor.bedroom_switch_2_battery
-              - sensor.attic_lights_switch_battery
+              - sensor.attic_desk_lamps_switch_battery
+              - sensor.attic_desk_ceiling_lights_switch_battery
+              - sensor.mechanical_room_ceiling_lights_switch_1_battery
+              - sensor.mechanical_room_ceiling_lights_switch_2_battery
           - type: entities
             title: "Climate Sensor Batteries"
             entities:
