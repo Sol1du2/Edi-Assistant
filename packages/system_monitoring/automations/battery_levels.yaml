@@ -1,9 +1,40 @@
 - id: warn_battery_low
   alias: Warn the battery on a sensor is low
   triggers:
+    # Light Switches
+    - trigger: numeric_state
+      entity_id: sensor.cuby_battery
+      below: 5
+    - trigger: numeric_state
+      entity_id: sensor.kitchen_switch_battery
+      below: 5
+    - trigger: numeric_state
+      entity_id: sensor.office_jelena_switch_battery
+      below: 5
+    - trigger: numeric_state
+      entity_id: sensor.bedroom_switch_1_battery
+      below: 5
+    - trigger: numeric_state
+      entity_id: sensor.bedroom_switch_2_battery
+      below: 5
+    - trigger: numeric_state
+      entity_id: sensor.attic_desk_lamps_switch_battery
+      below: 5
+    - trigger: numeric_state
+      entity_id: sensor.attic_desk_ceiling_lights_switch_battery
+      below: 5
+    - trigger: numeric_state
+      entity_id: sensor.mechanical_room_ceiling_lights_switch_1_battery
+      below: 5
+    - trigger: numeric_state
+      entity_id: sensor.mechanical_room_ceiling_lights_switch_2_battery
+      below: 5
     # Ambient Sensors
     - trigger: numeric_state
       entity_id: sensor.ground_floor_ambient_sensor_battery
+      below: 5
+    - trigger: numeric_state
+      entity_id: sensor.shed_ambient_sensor_battery
       below: 5
     - trigger: numeric_state
       entity_id: sensor.bedroom_ambient_sensor_battery
@@ -17,31 +48,12 @@
     - trigger: numeric_state
       entity_id: sensor.filament_ambient_sensor_battery
       below: 5
-    - trigger: numeric_state
-      entity_id: sensor.shed_ambient_sensor_battery
-      below: 5
-    # Light Switches
-    - trigger: numeric_state
-      entity_id: sensor.kitchen_switch_battery
-      below: 5
-    - trigger: numeric_state
-      entity_id: sensor.cuby_battery
-      below: 5
-    - trigger: numeric_state
-      entity_id: sensor.office_jelena_switch_battery
-      below: 5
-    - trigger: numeric_state
-      entity_id: sensor.bedroom_switch_1_battery
-      below: 5
-    - trigger: numeric_state
-      entity_id: sensor.bedroom_switch_2_battery
-      below: 5
-    - trigger: numeric_state
-      entity_id: sensor.attic_lights_switch_battery
-      below: 5
     # Motion sensors
     - trigger: numeric_state
       entity_id: sensor.entryway_motion_sensor_battery
+      below: 5
+    - trigger: numeric_state
+      entity_id: sensor.hallway_motion_sensor_battery
       below: 5
     # Door sensors
     - trigger: numeric_state
@@ -54,4 +66,3 @@
         message: >
           The battery of the {{ state_attr(trigger.entity_id, "friendly_name") }} ({{ trigger.entity_id }}) has
           fallen below {{ trigger.below }}
-          
