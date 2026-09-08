@@ -14,7 +14,7 @@ tv_mode:
         entity_id: light.living_room_ceiling_lights
     - action: light.turn_on
       target:
-        entity_id: 
+        entity_id:
           - light.living_room_fado_lamp
           - light.living_room_corner_lamp
           - light.living_room_tv_stand_lamp
