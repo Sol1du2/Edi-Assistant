@@ -1,0 +1,24 @@
+name: YAML Lint
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  ryl:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.x"
+
+      - name: Install ryl
+        run: pip install ryl
+
+      - name: Lint YAML
+        run: ryl check .
