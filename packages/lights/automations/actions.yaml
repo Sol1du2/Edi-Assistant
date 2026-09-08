@@ -16,22 +16,22 @@
     - trigger: state
       entity_id: media_player.rosetta
       to: "off"
-      for: "00:01:00" # Avoid shutting down too early due to reboots or things like that
+      for: "00:01:00"  # Avoid shutting down too early due to reboots or things like that
   actions:
-  - choose:
-      - conditions:
-          - condition: state
-            entity_id: media_player.rosetta
-            state: "on"
-        sequence:
-          - action: switch.turn_on
-            target:
-              entity_id: switch.living_room_tv_stand_light
-      - conditions:
-          - condition: state
-            entity_id: media_player.rosetta
-            state: "off"
-        sequence:
-          - action: switch.turn_off
-            target:
-              entity_id: switch.living_room_tv_stand_light
+    - choose:
+        - conditions:
+            - condition: state
+              entity_id: media_player.rosetta
+              state: "on"
+          sequence:
+            - action: switch.turn_on
+              target:
+                entity_id: switch.living_room_tv_stand_light
+        - conditions:
+            - condition: state
+              entity_id: media_player.rosetta
+              state: "off"
+          sequence:
+            - action: switch.turn_off
+              target:
+                entity_id: switch.living_room_tv_stand_light

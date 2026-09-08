@@ -4,7 +4,7 @@
     trigger: event
     event_type: telegram_command
     event_data:
-      command: '/leviathan_on'
+      command: "/leviathan_on"
   actions:
     - action: wake_on_lan.send_magic_packet
       data:
@@ -20,11 +20,11 @@
     - trigger: event
       event_type: telegram_command
       event_data:
-        command: '/leviathan_off'
+        command: "/leviathan_off"
     - trigger: event
       event_type: telegram_callback
       event_data:
-        command: '/leviathan_off'
+        command: "/leviathan_off"
   actions:
     - action: shell_command.shutdown_leviathan
     - action: telegram_bot.send_message
@@ -32,8 +32,8 @@
         chat_id: "{{ trigger.event.data.chat_id }}"
         message: Leviathan shutting down
     - condition:
-      - condition: template
-        value_template: "{{ trigger.event.event_type == 'telegram_callback' }}"
+        - condition: template
+          value_template: "{{ trigger.event.event_type == 'telegram_callback' }}"
     - action: telegram_bot.answer_callback_query
       data:
         callback_query_id: "{{ trigger.event.data.id }}"

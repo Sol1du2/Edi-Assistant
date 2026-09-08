@@ -25,7 +25,7 @@ views:
           # Ground Floor (inside)
           - type: custom:local-conditional-card
             id: ground_button_active
-            default: show      
+            default: show
             persist_state: true
             card:
               type: custom:button-card
@@ -53,7 +53,7 @@ views:
                     - garden: hide
           - type: custom:local-conditional-card
             id: ground_button_inactive
-            default: hide      
+            default: hide
             persist_state: true
             card:
               type: custom:button-card
@@ -254,7 +254,7 @@ views:
       # Ground Floor (inside)
       - type: custom:local-conditional-card
         id: ground
-        default: show      
+        default: show
         persist_state: true
         card:
           type: picture-elements
@@ -399,7 +399,7 @@ views:
       # First Floor
       - type: custom:local-conditional-card
         id: first
-        default: hide      
+        default: hide
         persist_state: true
         card:
           type: picture-elements
@@ -513,7 +513,7 @@ views:
       # Attic
       - type: custom:local-conditional-card
         id: attic
-        default: hide      
+        default: hide
         persist_state: true
         card:
           type: picture-elements
@@ -584,7 +584,7 @@ views:
       # Garden
       - type: custom:local-conditional-card
         id: garden
-        default: hide      
+        default: hide
         persist_state: true
         card:
           type: picture-elements
@@ -636,7 +636,7 @@ views:
         title: Shopping List
         view_layout:
           position: sidebar
-  
+
   - path: lights
     title: House Lights
     icon: mdi:lightbulb-on-outline
@@ -649,7 +649,7 @@ views:
         tap_action:
           action: perform-action
           perform_action: script.turn_on
-          target: 
+          target:
             entity_id: script.sleep_mode
     cards:
       - type: grid
@@ -702,10 +702,10 @@ views:
             features:
               - type: "light-brightness"
               - type: "light-color-temp"
-          #- type: button
-          #  entity: switch.unused_plug
-          #  name: "Christmas Tree"
-          #  icon: mdi:pine-tree
+              # - type: button
+              #  entity: switch.unused_plug
+              #  name: "Christmas Tree"
+              #  icon: mdi:pine-tree
       - type: grid
         title: "First Floor"
         columns: 2
@@ -802,7 +802,7 @@ views:
             entity: light.shed_inside_light
             name: "Shed Light"
             icon: mdi:ceiling-light
-          
+
   - path: hvac
     title: HVAC
     icon: mdi:home-thermometer-outline
@@ -827,15 +827,15 @@ views:
         entity: sensor.ecodan_heatpump_estimated_cop
         name: "Est. COP"
         show_name: true
-      - type: entity 
+      - type: entity
         entity: sensor.ecodan_heatpump_compressor_frequency
         name: "Compressor Freq."
         show_name: true
-      - type: entity 
+      - type: entity
         entity: sensor.ecodan_heatpump_output_power
         name: "Output Power"
         show_name: true
-      - type: entity 
+      - type: entity
         entity: sensor.ecodan_heatpump_pump_consumption
         name: "Pump Power"
         show_name: true
@@ -901,7 +901,7 @@ views:
                 name: "Refrigerant Temperature"
           - type: history-graph
             title: "DHW Temperatures"
-            entities:    
+            entities:
               - entity: sensor.ecodan_heatpump_dhw_current_temp
                 name: "Primary Temperature"
               - entity: sensor.ecodan_heatpump_dhw_secondary_temp
@@ -929,7 +929,7 @@ views:
                 name: DHW COP
             columns: 3
             state_color: false
-      
+
       # None Heat pump related sensors
       - type: vertical-stack
         title: "Other Sensors"
@@ -1006,7 +1006,7 @@ views:
                 entity: sensor.filament_ambient_sensor_humidity
                 name: "Humidity"
                 graph: line
- 
+
   - path: entertainment
     title: Entertainment
     icon: mdi:television-speaker
@@ -1042,13 +1042,13 @@ views:
                 entity: media_player.rosetta
               - type: media-control
                 entity: media_player.ava
-              
+
           - type: vertical-stack
             title: Office
             cards:
               - type: media-control
                 entity: media_player.voyager_1
- 
+
   - path: printer
     title: 3D Printer
     icon: mdi:printer-3d
@@ -1068,7 +1068,7 @@ views:
                 tap_action:
                   action: perform-action
                   perform_action: script.turn_on
-                  target: 
+                  target:
                     entity_id: script.power_cycle_droopy
               - type: button
                 name: "Emergency Off"
@@ -1098,7 +1098,7 @@ views:
               - sensor.droopy_estimated_total_time
               - sensor.droopy_estimated_remaining_time
               - sensor.droopy_estimated_finish_time_local
- 
+
   - path: analytics
     title: "Analytics"
     icon: mdi:home-analytics
@@ -1114,7 +1114,7 @@ views:
           - sensor.entryway_motion_sensor_illuminance
           - sensor.hallway_motion_sensor_illuminance
         hours_to_show: 24
- 
+
   - path: monitoring
     title: "Monitoring"
     icon: mdi:monitor-eye
@@ -1180,7 +1180,7 @@ views:
                     topic: bouncer/request/presence
               - type: grid
                 columns: 4
-                cards:    
+                cards:
                   - type: button
                     name: João
                     entity: input_boolean.enable_joao
@@ -1236,7 +1236,7 @@ views:
           - type: grid
             title: "Misc"
             columns: 3
-            cards:    
+            cards:
               - type: button
                 name: Halloween
                 entity: input_boolean.halloween_mode

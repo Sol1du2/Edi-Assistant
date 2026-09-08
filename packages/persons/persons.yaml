@@ -1,25 +1,25 @@
 mqtt:
   device_tracker:
-  - name: "tile_joao"
-    state_topic: "bouncer/presence/tile_joao"
-    qos: 0
-    payload_home: "home"
-    payload_not_home: "not_home"
-  - name: "tile_jelena"
-    state_topic: "bouncer/presence/tile_jelena"
-    qos: 0
-    payload_home: "home"
-    payload_not_home: "not_home"
-  - name: "tile_guest1"
-    state_topic: "bouncer/presence/tile_guest1"
-    qos: 0
-    payload_home: "home"
-    payload_not_home: "not_home"
-  - name: "tile_guest2"
-    state_topic: "bouncer/presence/tile_guest2"
-    qos: 0
-    payload_home: "home"
-    payload_not_home: "not_home"
+    - name: "tile_joao"
+      state_topic: "bouncer/presence/tile_joao"
+      qos: 0
+      payload_home: "home"
+      payload_not_home: "not_home"
+    - name: "tile_jelena"
+      state_topic: "bouncer/presence/tile_jelena"
+      qos: 0
+      payload_home: "home"
+      payload_not_home: "not_home"
+    - name: "tile_guest1"
+      state_topic: "bouncer/presence/tile_guest1"
+      qos: 0
+      payload_home: "home"
+      payload_not_home: "not_home"
+    - name: "tile_guest2"
+      state_topic: "bouncer/presence/tile_guest2"
+      qos: 0
+      payload_home: "home"
+      payload_not_home: "not_home"
 
 person:
   - name: João
@@ -52,7 +52,7 @@ input_boolean:
 template:
   - binary_sensor:
       - name: Someone Home
-        state: > 
+        state: >
           {% set someone_home = false %}
           {% if is_state('input_boolean.enable_joao', 'on') %}
             {% set someone_home = someone_home or is_state('person.joao', 'home') %}

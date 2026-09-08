@@ -1,4 +1,4 @@
-- id: notify_update 
+- id: notify_update
   alias: "Update Available Notification"
   triggers:
     - trigger: state

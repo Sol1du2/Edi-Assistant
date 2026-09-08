@@ -2,7 +2,7 @@
   alias: Humidity too low notify and turn on humidifier
   triggers:
     - trigger: numeric_state
-      entity_id: 
+      entity_id:
         - sensor.living_room_humidity
         - sensor.office_humidity
         - sensor.bedroom_humidity
@@ -25,7 +25,7 @@
       entity_id: switch.humidifier
     - action: notify.send_message
       data:
-        entity_id: 
+        entity_id:
           - notify.telegram_joao
           - notify.telegram_jelena
         message: >
@@ -43,7 +43,7 @@
   alias: Stop Humidifier Within Range
   triggers:
     - trigger: numeric_state
-      entity_id: 
+      entity_id:
         - sensor.living_room_humidity
         - sensor.office_humidity
         - sensor.bedroom_humidity
@@ -66,7 +66,7 @@
       entity_id: switch.humidifier
     - action: notify.send_message
       data:
-        entity_id: 
+        entity_id:
           - notify.telegram_joao
           - notify.telegram_jelena
         message: "Humidity's at a good level... Shutting down humidifier!"
@@ -75,7 +75,7 @@
   alias: Stop humidifier from getting humidity too high
   triggers:
     - trigger: numeric_state
-      entity_id: 
+      entity_id:
         - sensor.living_room_humidity
         - sensor.office_humidity
         - sensor.bedroom_humidity
@@ -89,7 +89,7 @@
       entity_id: switch.humidifier
     - action: notify.send_message
       data:
-        entity_id: 
+        entity_id:
           - notify.telegram_joao
           - notify.telegram_jelena
         message: "Humidity's at a good level... Shutting down humidifier!"

@@ -3,13 +3,13 @@
   triggers:
     trigger: state
     entity_id: script.sleep_mode
-    to: 'on'
+    to: "on"
   actions:
     - choose:
         - conditions:
-            - condition:  state
+            - condition: state
               entity_id: switch.leviathan_toggle
-              state: 'on'
+              state: "on"
           sequence:
             - variables:
                 joao_chat_id: !secret joao_telegram_chat_id
@@ -30,9 +30,9 @@
                   - "Shutdown Leviathan:/leviathan_off"
     - choose:
         - conditions:
-            - condition:  state
+            - condition: state
               entity_id: remote.rosetta
-              state: 'on'
+              state: "on"
           sequence:
             - variables:
                 joao_chat_id: !secret joao_telegram_chat_id
