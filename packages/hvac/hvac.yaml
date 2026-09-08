@@ -1,11 +1,11 @@
 template:
   - sensor:
-    - name: "Power Produced Negative"
-      unique_id: power_produced_negative
-      state_class: "measurement"
-      device_class: "power"
-      unit_of_measurement: "kW"
-      state: "{{ states('sensor.power_produced') | float * (-1) }}"
+      - name: "Power Produced Negative"
+        unique_id: power_produced_negative
+        state_class: "measurement"
+        device_class: "power"
+        unit_of_measurement: "kW"
+        state: "{{ states('sensor.power_produced') | float * (-1) }}"
 
 # Heat Pump Energy Sensors (based off reported consumption)
 utility_meter:

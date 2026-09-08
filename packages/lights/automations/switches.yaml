@@ -320,34 +320,34 @@
       to: "off"
   actions:
     - choose:
-      # 1) Physical press + lamp turned ON → turn ON lamps as well
-      - conditions:
-        - condition: state
-          entity_id: input_boolean.ha_toggle_in_progress
-          state: 'off'
-        - condition: template
-          value_template: "{{ trigger.to_state.state == 'on' }}"
-        sequence:
-          - action: light.turn_on
-            target:
-              entity_id:
-                - light.living_room_fado_lamp
-                - light.living_room_corner_lamp
-                - light.living_room_tv_stand_lamp
-      # 2) Physical press + lamp turned OFF → turn OFF lamps as well
-      - conditions:
-        - condition: state
-          entity_id: input_boolean.ha_toggle_in_progress
-          state: 'off'
-        - condition: template
-          value_template: "{{ trigger.to_state.state == 'off' }}"
-        sequence:
-          - action: light.turn_off
-            target:
-              entity_id:
-                - light.living_room_fado_lamp
-                - light.living_room_corner_lamp
-                - light.living_room_tv_stand_lamp
+        # 1) Physical press + lamp turned ON → turn ON lamps as well
+        - conditions:
+            - condition: state
+              entity_id: input_boolean.ha_toggle_in_progress
+              state: "off"
+            - condition: template
+              value_template: "{{ trigger.to_state.state == 'on' }}"
+          sequence:
+            - action: light.turn_on
+              target:
+                entity_id:
+                  - light.living_room_fado_lamp
+                  - light.living_room_corner_lamp
+                  - light.living_room_tv_stand_lamp
+        # 2) Physical press + lamp turned OFF → turn OFF lamps as well
+        - conditions:
+            - condition: state
+              entity_id: input_boolean.ha_toggle_in_progress
+              state: "off"
+            - condition: template
+              value_template: "{{ trigger.to_state.state == 'off' }}"
+          sequence:
+            - action: light.turn_off
+              target:
+                entity_id:
+                  - light.living_room_fado_lamp
+                  - light.living_room_corner_lamp
+                  - light.living_room_tv_stand_lamp
 
 - id: set_ha_toggle_when_living_room_ceiling_lights_controller_by_ha
   alias: Set HA-toggle flag when lamp is controlled by HA
@@ -394,7 +394,7 @@
       entity_id: input_boolean.ha_toggle_in_progress
 
     # keep the flag up just long enough for the state-change automation to see it
-    - delay: '00:00:01'
+    - delay: "00:00:01"
 
     - action: input_boolean.turn_off
       entity_id: input_boolean.ha_toggle_in_progress
@@ -410,7 +410,7 @@
   actions:
     - action: light.turn_on
       target:
-        entity_id: 
+        entity_id:
           - light.living_room_corner_lamp
           - light.living_room_fado_lamp
           - light.living_room_tv_stand_lamp

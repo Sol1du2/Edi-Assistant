@@ -1,4 +1,4 @@
-command_line:    
+command_line:
   - sensor:
       name: shopping_list_unchecked_items
       command: /config/external_scripts/print_unchecked_shopping_list_items.py

@@ -4,7 +4,7 @@
     - trigger: event
       event_type: telegram_command
       event_data:
-        command: '/rosetta_on'
+        command: "/rosetta_on"
   actions:
     - action: remote.turn_on
       entity_id: remote.rosetta
@@ -19,11 +19,11 @@
     - trigger: event
       event_type: telegram_command
       event_data:
-        command: '/rosetta_off'
+        command: "/rosetta_off"
     - trigger: event
       event_type: telegram_callback
       event_data:
-        command: '/rosetta_off'
+        command: "/rosetta_off"
   actions:
     - action: remote.turn_off
       entity_id: remote.rosetta
@@ -32,8 +32,8 @@
         chat_id: "{{ trigger.event.data.chat_id }}"
         message: Rosetta turned off
     - condition:
-      - condition: template
-        value_template: "{{ trigger.event.event_type == 'telegram_callback' }}"
+        - condition: template
+          value_template: "{{ trigger.event.event_type == 'telegram_callback' }}"
     - action: telegram_bot.answer_callback_query
       data:
         callback_query_id: "{{ trigger.event.data.id }}"

@@ -10,61 +10,61 @@ input_boolean:
 
 template:
   - sensor:
-    # This sensor displays the 3 status of droopy. On, Off and Shutting down.
-    - name: "Droopy Power Status"
-      icon: >
-        {% if is_state('input_boolean.droopy_shutting_down', 'on') %}
-          mdi:power-plug-outline
-        {% elif is_state('switch.droopy', 'on') %}
-          mdi:power-plug
-        {% else %}
-          mdi:power-plug-off-outline
-        {% endif %}
-      state: >
-        {% if is_state('input_boolean.droopy_shutting_down', 'on') %}
-          Shutting down...
-        {% elif is_state('switch.droopy', 'on') %}
-          On
-        {% else %}
-          Off
-        {% endif %}
+      # This sensor displays the 3 status of droopy. On, Off and Shutting down.
+      - name: "Droopy Power Status"
+        icon: >
+          {% if is_state('input_boolean.droopy_shutting_down', 'on') %}
+            mdi:power-plug-outline
+          {% elif is_state('switch.droopy', 'on') %}
+            mdi:power-plug
+          {% else %}
+            mdi:power-plug-off-outline
+          {% endif %}
+        state: >
+          {% if is_state('input_boolean.droopy_shutting_down', 'on') %}
+            Shutting down...
+          {% elif is_state('switch.droopy', 'on') %}
+            On
+          {% else %}
+            Off
+          {% endif %}
 
-    - name: "Droopy Estimated Total Time"
-      icon: mdi:clock-end
-      state: >
-        {% if is_state('sensor.octoprint_start_time', 'unavailable') %}
-          unavailable
-        {% elif is_state('sensor.octoprint_start_time', 'unknown') %}
-          unknown
-        {% else %}
-          {% set start = as_datetime(states('sensor.octoprint_start_time')) %}
-          {% set finish = as_datetime(states('sensor.octoprint_estimated_finish_time')) %}
-          {{ finish - start }}
-        {% endif %}
+      - name: "Droopy Estimated Total Time"
+        icon: mdi:clock-end
+        state: >
+          {% if is_state('sensor.octoprint_start_time', 'unavailable') %}
+            unavailable
+          {% elif is_state('sensor.octoprint_start_time', 'unknown') %}
+            unknown
+          {% else %}
+            {% set start = as_datetime(states('sensor.octoprint_start_time')) %}
+            {% set finish = as_datetime(states('sensor.octoprint_estimated_finish_time')) %}
+            {{ finish - start }}
+          {% endif %}
 
-    - name: "Droopy Estimated Finish Time Local"
-      icon: mdi:clock-end
-      state: >
-        {% if is_state('sensor.octoprint_estimated_finish_time', 'unavailable') %}
-          unavailable
-        {% elif is_state('sensor.octoprint_estimated_finish_time', 'unknown') %}
-          unknown
-        {% else %}
-          {% set finish = as_datetime(states('sensor.octoprint_estimated_finish_time')) %}
-          {{ as_local(finish) }}
-        {% endif %}
-        
-    - name: "Droopy Estimated Remaining Time"
-      icon: mdi:clock-end
-      state: >
-        {% if is_state('sensor.octoprint_estimated_finish_time', 'unavailable') %}
-          unavailable
-        {% elif is_state('sensor.octoprint_estimated_finish_time', 'unknown') %}
-          unknown
-        {% else %}
-          {% set finish = as_datetime(states('sensor.octoprint_estimated_finish_time')) %}
-          {{ finish - now() }}
-        {% endif %}
+      - name: "Droopy Estimated Finish Time Local"
+        icon: mdi:clock-end
+        state: >
+          {% if is_state('sensor.octoprint_estimated_finish_time', 'unavailable') %}
+            unavailable
+          {% elif is_state('sensor.octoprint_estimated_finish_time', 'unknown') %}
+            unknown
+          {% else %}
+            {% set finish = as_datetime(states('sensor.octoprint_estimated_finish_time')) %}
+            {{ as_local(finish) }}
+          {% endif %}
+
+      - name: "Droopy Estimated Remaining Time"
+        icon: mdi:clock-end
+        state: >
+          {% if is_state('sensor.octoprint_estimated_finish_time', 'unavailable') %}
+            unavailable
+          {% elif is_state('sensor.octoprint_estimated_finish_time', 'unknown') %}
+            unknown
+          {% else %}
+            {% set finish = as_datetime(states('sensor.octoprint_estimated_finish_time')) %}
+            {{ finish - now() }}
+          {% endif %}
 
 command_line:
   - sensor:

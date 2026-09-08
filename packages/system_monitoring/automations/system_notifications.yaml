@@ -37,7 +37,7 @@
   actions:
     - action: notify.send_message
       data:
-        entity_id: 
+        entity_id:
           - notify.telegram_joao
           - notify.telegram_jelena
         message: "UPS Battery too low. Shutting down systems... Bye!"
@@ -45,4 +45,4 @@
         seconds: 10
     - action: shell_command.shutdown_pihole
     - action: shell_command.shutdown_edi
-      
+

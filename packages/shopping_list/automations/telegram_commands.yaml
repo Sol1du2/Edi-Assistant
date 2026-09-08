@@ -4,7 +4,7 @@
     - trigger: event
       event_type: telegram_command
       event_data:
-        command: '/shop'
+        command: "/shop"
   actions:
     - action: telegram_bot.send_message
       data_template:
@@ -24,11 +24,11 @@
     - trigger: event
       event_type: telegram_command
       event_data:
-        command: '/clear_shop'
+        command: "/clear_shop"
     - trigger: event
       event_type: telegram_callback
       event_data:
-        command: '/clear_shop'
+        command: "/clear_shop"
   actions:
     - action: script.complete_shopping_list
     - action: telegram_bot.send_message
@@ -36,8 +36,8 @@
         chat_id: "{{ trigger.event.data.chat_id }}"
         message: The shopping list has been cleared
     - condition:
-      - condition: template
-        value_template: "{{ trigger.event.event_type == 'telegram_callback' }}"
+        - condition: template
+          value_template: "{{ trigger.event.event_type == 'telegram_callback' }}"
     - action: telegram_bot.answer_callback_query
       data:
         callback_query_id: "{{ trigger.event.data.id }}"
