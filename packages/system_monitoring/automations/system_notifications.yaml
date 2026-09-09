@@ -12,37 +12,55 @@
         entity_id: notify.telegram_joao
         message: "Edi has just rebooted ({{ (as_timestamp(now()) - as_timestamp(states('sensor.last_boot'))) | int }} seconds ago)"
 
-- id: power_cut
-  alias: Power Cut
+- id: ups_power_outage
+  alias: UPS Power outage
   triggers:
-    - trigger: state
-      entity_id: sensor.ups_status
-      to: "ONBATT"
-  actions:
-    - action: notify.send_message
-      data:
-        entity_id: notify.telegram_joao
-        message: "Power failure on Edi's UPS. Running on batteries!"
-
-- id: shutdown_low_battery
-  alias: Shutdown system when running on low battery
-  triggers:
-    - trigger: numeric_state
-      entity_id: sensor.ups_battery
-      below: 10
-  conditions:
-    - condition: state
-      entity_id: sensor.ups_status
-      state: "ONBATT"
+    - trigger: template
+      value_template: >-
+        {{ 'OB' in states('sensor.entryway_network_power_boy_status_data').split() }}
   actions:
     - action: notify.send_message
       data:
         entity_id:
           - notify.telegram_joao
           - notify.telegram_jelena
-        message: "UPS Battery too low. Shutting down systems... Bye!"
-    - delay:
-        seconds: 10
-    - action: shell_command.shutdown_pihole
-    - action: shell_command.shutdown_edi
+        message: "⚡ Power outage detected. The network is now running on UPS battery."
 
+- id: ups_power_restored
+  alias: UPS Power restored
+  triggers:
+    - trigger: state
+      entity_id: sensor.entryway_network_power_boy_status_data
+  conditions:
+    - condition: template
+      value_template: >-
+        {{ trigger.from_state is not none
+           and 'OB' in trigger.from_state.state.split()
+           and 'OL' in trigger.to_state.state.split() }}
+  actions:
+    - action: notify.send_message
+      data:
+        entity_id:
+          - notify.telegram_joao
+          - notify.telegram_jelena
+        message: "🔌 Mains power has been restored. The network is back on utility power."
+
+- id: ups_battery_low
+  alias: UPS Battery low
+  triggers:
+    - trigger: numeric_state
+      entity_id: sensor.entryway_network_power_boy_battery_charge
+      below: 30
+  conditions:
+    - condition: template
+      value_template: >-
+        {{ 'OB' in states('sensor.entryway_network_power_boy_status_data').split() }}
+  actions:
+    - action: notify.send_message
+      data:
+        entity_id:
+          - notify.telegram_joao
+          - notify.telegram_jelena
+        message: >-
+          🪫 UPS battery is below 30%. The network will shut down at 20%
+          battery charge or 5 minutes remaining runtime.
