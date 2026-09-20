@@ -469,6 +469,16 @@ views:
               style:
                 top: 72%
                 left: 77%
+            - type: state-icon
+              icon: mdi:roller-shade
+              tap_action:
+                action: toggle
+              double_tap_action:
+                action: more-info
+              entity: cover.closet_room_shade
+              style:
+                top: 80%
+                left: 94%
             # Bedroom
             - type: state-icon
               icon: mdi:ceiling-light
@@ -510,6 +520,16 @@ views:
               style:
                 top: 53%
                 left: 87.7%
+            - type: state-icon
+              icon: mdi:roller-shade
+              tap_action:
+                action: toggle
+              double_tap_action:
+                action: more-info
+              entity: cover.bedroom_shade
+              style:
+                top: 50%
+                left: 94%
       # Attic
       - type: custom:local-conditional-card
         id: attic
