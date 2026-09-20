@@ -1,0 +1,28 @@
+- id: systems_backup_notifications
+  alias: Systems backup status
+  description: Send Telegram notifications for edi and Pi-hole backups
+
+  triggers:
+    - trigger: webhook
+      webhook_id: !secret systems_backup_webhook_id
+      allowed_methods:
+        - POST
+      local_only: true
+
+  actions:
+    - action: notify.send_message
+      data:
+        entity_id:
+          - notify.telegram_joao
+        message: >-
+          {% if trigger.json.status == "started" %}
+            💾 {{ trigger.json.host }} backup started.
+          {% elif trigger.json.status == "completed" %}
+            ✅ {{ trigger.json.host }} backup completed successfully.
+          {% elif trigger.json.status == "failed" %}
+            ❌ {{ trigger.json.host }} backup failed.
+          {% else %}
+            ℹ️ {{ trigger.json.host }} backup status: {{ trigger.json.status }}
+          {% endif %}
+
+  mode: parallel
